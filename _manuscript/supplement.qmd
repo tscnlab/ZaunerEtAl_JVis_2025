@@ -1,8 +1,17 @@
 ---
 title: "Supplement 1"
-format:
+subtitle: "Tutorial on analysis pipelines for visual experience datasets"
+author: "Johannes Zauner, Aaron Nicholls, Lisa Ostrin, and Manuel Spitschan"
+sformat:
   html:
     toc: true
+    include-in-header:
+      - text: |
+          <style>
+          .quarto-notebook .cell-container .cell-decorator {
+            display: none;
+          }
+          </style>
     number-sections: true
     code-tools: true
     html-math-method:
@@ -15,7 +24,18 @@ execute:
   warning: false
 ---
 
-## Abstract
+::: {.callout-warning}
+
+Please note that this supplement is not in its final styling form, as it necessarily has to be formatted as a `notebook` to enable commenting. Current issues include:
+
+- Cross-references not working (e.g. Figure labeling and referencing figures)
+- Unnecessary indentation of code and code output
+
+These issues will be resolved when all comments have been gathered and implemented
+
+:::
+
+## Abstract {.unnumbered}
 
 This supplementary document provides a detailed, step-by-step tutorial on importing and preprocessing raw data from two wearable devices: `Clouclip` and `VEET`. We describe the structure of the raw datasets recorded by each device and explain how to parse these data, specify time zones, handle special sentinel values, clean missing observations, regularize timestamps to fixed intervals, and aggregate data as needed. All original R code from the [main tutorial](https://tscnlab.github.io/ZaunerEtAl_2025_JOV/) is preserved here for transparency, with additional guidance intended for a broad research audience. We demonstrate how to detect gaps and irregular sampling, convert implicit missing periods into explicit missing values, and address device-specific quirks such as the `Clouclip`’s use of sentinel codes for “sleep mode” and “out of range” readings. Special procedures for processing the `VEET`’s rich spectral data (e.g. normalizing sensor counts and reconstructing full spectra from multiple sensor channels) are also outlined. Finally, we show how to save the cleaned datasets from both devices into a single R data file for downstream analysis. This comprehensive walkthrough is designed to ensure reproducibility and to assist researchers in understanding and adapting the data pipeline for their own visual experience datasets.
 
@@ -188,7 +208,11 @@ tz   <- "US/Central"    # assuming device clock was set to US Central, for consi
 dataVEET <- import$VEET(path, tz = tz, modality = "ALS", manual.id = "VEET")
 ```
 
-> *Note*: We get one warning as a single time stamp could not be parsed into a datetime - with \~300k observations, this is not an issue.
+::: {.callout-note}
+
+We get one warning as a single time stamp could not be parsed into a datetime - with \~300k observations, this is not an issue.
+
+:::
 
 This call reads in only the lines corresponding to the `ALS` modality from the `VEET` file. The result `dataVEET` is a tibble[^3] with columns such as `Datetime` (parsed from the `time_stamp` epoch to POSIXct in US/Central time), `Lux` (illuminance in lux), `Flicker`, and the various sensor gains/values. Unneeded columns like the modality code or file name are also included but can be ignored or removed. After import, LightLogR again provides an overview of the data. We learn that the `VEET` light data, like the `Clouclip`, also exhibits irregularities and gaps. (The device nominally records every 2 seconds, but timing may drift or pause when not worn.)
 

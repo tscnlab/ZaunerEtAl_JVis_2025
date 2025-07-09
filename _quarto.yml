@@ -1,6 +1,12 @@
 project:
   type: manuscript
 
+manuscript:
+  resources:
+    - data/Sample_Clouclip.csv
+    - data/01_VEET_L.csv.zip
+    - data/VEET_calibration_matrix.csv
+
 website:
   title: "LightLogR tutorial on visual experience (VE) data"
   site-url: https://tscnlab.github.io/ZaunerEtAl2025JOV/
@@ -13,6 +19,8 @@ website:
     left:
       - href: index.qmd
         text: Manuscript
+      - href: _supplement.qmd
+        text: Supplement
     right:
       - icon: github
         href: https://github.com/tscnlab/ZaunerEtAl2025JOV
@@ -31,8 +39,8 @@ format:
       hypothesis: true
     format:
     toc-location: left
-    toc-depth: 2
-    toc-expand: 3
+    toc-depth: 3
+    toc-expand: 2
   # typst:
   #   toc: true
   #   toc-depth: 3

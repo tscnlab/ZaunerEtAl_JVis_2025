@@ -17,7 +17,7 @@ execute:
   echo: true
 ---
 
-## Abstract
+## Abstract {.unnumbered}
 
 This tutorial presents an analysis pipeline for visual experience datasets, with a focus on reproducible workflows for human chronobiology and myopia research. Light exposure and its retinal encoding affect human physiology and behavior across multiple time scales. Here we provide step-by-step instructions for importing, visualizing, and processing viewing distance and light exposure data using the open-source R package [**LightLogR**](https://tscnlab.github.io/LightLogR/). This includes time-series analyses for working distance, biologically relevant light metrics, and spectral characteristics. By leveraging a modular approach, the tutorial supports researchers in building flexible and robust pipelines that accommodate diverse experimental paradigms and measurement systems.
 
@@ -87,7 +87,7 @@ After these preprocessing steps, the `Clouclip` dataset had no irregular timesta
 
 The `VEET` illuminance data underwent a similar cleaning procedure. To make the `VEET`’s 2-second illuminance data more comparable to the `Clouclip`’s and to reduce computational load, we aggregated the illuminance time series to 5-second intervals. We then inserted explicit missing entries for any gaps and removed days with more than one hour of missing illuminance data. After cleaning, six days of `VEET` illuminance data with good coverage remained for analysis (see Supplementary Material for details).
 
-Finally, for spectral analysis, we imported the `VEET`’s spectral sensor modality. This required additional processing: the raw spectral data consists of counts from 10 wavelength-specific channels (approximately 415 nm through 940 nm, plus two broadband clear channels and a dark channel) along with a sensor gain setting. We aggregated the spectral data to 5-minute intervals to focus on broader trends and reduce data volume. Each channel’s counts were normalized by the appropriate gain at each moment, and the two clear channels were averaged. Using a calibration matrix provided by the manufacturer (specific to the spectral sensor model), we reconstructed full spectral power distributions for each 5-minute interval. The end result is a list-column in the dataset where each entry is the estimated spectral irradiance across wavelengths for that time interval. (Detailed spectral preprocessing steps, including the calibration and normalization, are provided in the Supplement.) After spectral reconstruction, the dataset was ready for calculating example spectrum-based metrics.
+Finally, for spectral analysis, we imported the `VEET`’s spectral sensor modality. This required additional processing: the raw spectral data consists of counts from 10 wavelength-specific channels (approximately 415 nm through 940 nm, plus two broadband clear channels and a dark channel) along with a sensor gain setting. We aggregated the spectral data to 5-minute intervals to focus on broader trends and reduce data volume. Each channel’s counts were normalized by the appropriate gain at each moment, and the two clear channels were averaged. Using a calibration matrix provided by the manufacturer (specific to the spectral sensor model), we reconstructed full spectral power distributions for each 5-minute interval. The end result is a list-column in the dataset where each entry is the estimated spectral irradiance across wavelengths for that time interval. (Detailed spectral preprocessing steps, including the calibration and normalization, are provided in the [Supplement](https://tscnlab.github.io/ZaunerEtAl_2025_JOV/supplement-preview.html).) After spectral reconstruction, the dataset was ready for calculating example spectrum-based metrics.
 
 This tutorial will start by importing a `Clouclip` dataset and providing an overview of the data. The `Clouclip` export is considerably simpler compared to the `VEET` export, only containing `Distance` and `Illuminance` measurements. The `VEET` dataset will be imported later for the spectrum related metrics.
 
@@ -347,7 +347,7 @@ dataVEET |>
   scale_x_continuous(trans = "symlog", breaks = c(0, 1, 10, 100, 1000, 10000))
 ```
 
-After confirming that the VEET data cover a broad dynamic range of lighting, we proceed with calculating light exposure metrics. (The VEET data had been cleaned for gaps and irregularities as described earlier; see Supplement for the gap summary table.)
+After confirming that the VEET data cover a broad dynamic range of lighting, we proceed with calculating light exposure metrics. (The VEET data had been cleaned for gaps and irregularities as described earlier; see [Supplement 1](https://tscnlab.github.io/ZaunerEtAl_2025_JOV/supplement-preview.html) for the gap summary table.)
 
 #### Average light exposure
 
@@ -487,7 +487,11 @@ dataVEET |>
 
 The `VEET` device’s spectral sensor provides rich data beyond simple lux values, but it requires reconstruction of the actual light spectrum from raw sensor counts. We processed the spectral sensor data in order to compute two example spectrum-based metrics. Detailed data import, normalization, and spectral reconstruction steps are given in the [Supplement 1](https://tscnlab.github.io/ZaunerEtAl_2025_JOV/supplement-preview.html); here we present the resulting metrics. Briefly, the `VEET`’s spectral sensor recorded counts in ten wavelength bands (roughly 415 nm to 940 nm), plus two clear (broadband) channels. After normalizing by sensor gain and applying the calibration matrix, we obtained an estimated spectral irradiance distribution for each 5-minute interval in the recording. With these reconstructed spectra, we can derive novel metrics that consider spectral content of the light. 
 
-> **Note:** Spectrum-based metrics in wearable data are relatively new and less established compared to distance or broadband light metrics. The following examples illustrate potential uses of spectral data in a theoretical sense, which can be adapted as needed for specific research questions.
+::: {.callout-note}
+
+Spectrum-based metrics in wearable data are relatively new and less established compared to distance or broadband light metrics. The following examples illustrate potential uses of spectral data in a theoretical sense, which can be adapted as needed for specific research questions.
+
+:::
 
 #### Ratio of short- vs. long-wavelength light
 
@@ -583,7 +587,11 @@ dataVEET |>
   gt() |> fmt_number()
 ```
 
-> (In the above, `add_photoperiod(coordinates)` is used as a convenient way to add columns to the data frame, indicating for each timestamp whether it was day or night, given the latitude/longitude.)
+::: {.callout-note}
+
+In the above, `add_photoperiod(coordinates)` is used as a convenient way to add columns to the data frame, indicating for each timestamp whether it was day or night, given the latitude/longitude.
+
+:::
 
 :::
 
