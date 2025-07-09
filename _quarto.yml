@@ -25,13 +25,14 @@ format:
       - cosmo
       - brand
     css: styles.css
+    link-external-newwindow: true
     toc: true
     comments:
       hypothesis: true
     format:
     toc-location: left
-    toc-depth: 3
-    toc-expand: 2
+    toc-depth: 2
+    toc-expand: 3
   # typst:
   #   toc: true
   #   toc-depth: 3
@@ -56,4 +57,4 @@ execute:
   warning: false
   error: false
   echo: true
-  freeze: true
+  freeze: auto
