@@ -364,6 +364,7 @@ The `Clouclip` illuminance data in our example are extremely low (the device was
 #| fig-cap: "Histogram of illuminance values from the Clouclip dataset (5-second data). Values are very low and show indoor conditions."
 dataCC |> 
   ggplot(aes(x = Lux)) + 
+  labs(x = "Photopic illuminance (lx)") +
   geom_histogram(bins = 100) + 
   theme_minimal() +
   scale_x_continuous(trans = "symlog", breaks = c(0, 1, 10, 100, 1000))
@@ -376,6 +377,7 @@ dataCC |>
 #| fig-cap: "Histogram of illuminance values from the VEET dataset (aggregated to 5 s). Note the logarithmic x-axis: the distribution is highly skewed with many low values (including zeros) and a long tail of high lux readings."
 dataVEET |> 
   ggplot(aes(x = Lux)) + 
+  labs(x = "Photopic illuminance (lx)") +
   geom_histogram(bins = 100) + 
   theme_minimal() +
   scale_x_continuous(trans = "symlog", breaks = c(0, 1, 10, 100, 1000, 10000))
@@ -395,7 +397,8 @@ dataVEET |>
   summarize_numeric(prefix = "mean ", remove = c("Datetime")) |> 
   to_mean_daily() |>             # compute mean for weekday, weekend, all days
   fmt_number(decimals = 1) |> 
-  cols_hide(`average episodes`)   # hide an irrelevant column (episodes count)
+  cols_hide(`average episodes`) |>  # hide an irrelevant column (episodes count)
+  cols_label(`average mean Lux` = "Mean photopic illuminance (lx)")
 ```
 
 However, because illuminance data tend to be extremely skewed and contain many zero values (periods of darkness), the arithmetic mean can be [misleading](https://tscnlab.github.io/LightLogR/articles/log.html). A common approach is to apply a logarithmic transform to illuminance before averaging, which down-weights extreme values and accounts for the multiplicative nature of light intensity effects. LightLogR provides helper functions [`log_zero_inflated()`]((https://tscnlab.github.io/LightLogR/reference/log_zero_inflated.html)) and its inverse [`exp_zero_inflated()`](https://tscnlab.github.io/LightLogR/reference/log_zero_inflated.html) to handle log-transformation when zeros are present (by adding a small offset before log, and back-transforming after averaging). Using this approach, we recompute the daily mean illuminance. The results in @tbl-lightexposure2 show that the log-transformed mean (back-transformed to lux) is much lower, reflecting the fact that for much of the time illuminance was near zero. This transformed mean is often more representative of typical exposure for skewed data.
@@ -409,7 +412,8 @@ dataVEET |>
   summarize_numeric(prefix = "mean ", remove = c("Datetime")) |> 
   mean_daily(prefix = "") |>                         # get daily mean of log-lux
   mutate(`mean Lux` = `mean Lux` |> exp_zero_inflated()) |>  # back-transform to lux
-  gt() |> fmt_number(decimals = 1) |> cols_hide(episodes)
+  gt() |> fmt_number(decimals = 1) |> cols_hide(episodes) |> 
+  cols_label(`mean Lux` = "Mean photopic illuminance (lx)")
 ```
 
 #### Duration in high-light (outdoor) conditions
@@ -452,7 +456,7 @@ It is also informative to visualize when these high-light conditions occurred. @
 #| label: fig-outdoor
 #| fig-cap: "Outdoor light exposure over time. Colored bands indicate periods when illuminance exceeded outdoor thresholds: violet for ≥1000 lx, green for ≥2000 lx, and yellow for ≥3000 lx. Grey shaded regions denote night (from civil dusk to dawn)."
 dataVEET |> 
-  gg_day(y.axis = Lux, y.axis.label = "Illuminance (lx)", geom = "line", jco_color = FALSE) |> 
+  gg_day(y.axis = Lux, y.axis.label = "Photopic illuminance (lx)", geom = "line", jco_color = FALSE) |> 
   gg_state(Lux_range, aes_fill = Lux_range, alpha = 0.75) |> 
   gg_photoperiod(coordinates) +
   scale_fill_viridis_d() +
