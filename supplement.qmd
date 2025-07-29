@@ -22,6 +22,7 @@ author:
     orcid: "0000-0002-8572-9268"
     corresponding: true
     email: manuel.spitschan@tum.de
+doi: 10.5281/zenodo.16566014
 format:
   html:
     toc: true
