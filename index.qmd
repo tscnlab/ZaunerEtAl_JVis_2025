@@ -485,7 +485,9 @@ dataVEET |>
 
 ### Spectrum
 
-The `VEET` device’s spectral sensor provides rich data beyond simple lux values, but it requires reconstruction of the actual light spectrum from raw sensor counts. We processed the spectral sensor data in order to compute two example spectrum-based metrics. Detailed data import, normalization, and spectral reconstruction steps are given in the [Supplement 1](https://tscnlab.github.io/ZaunerEtAl_2025_JOV/supplement-preview.html); here we present the resulting metrics. Briefly, the `VEET`’s spectral sensor recorded counts in ten wavelength bands (roughly 415 nm to 940 nm), plus two clear (broadband) channels. After normalizing by sensor gain and applying the calibration matrix, we obtained an estimated spectral irradiance distribution for each 5-minute interval in the recording. With these reconstructed spectra, we can derive novel metrics that consider spectral content of the light. 
+The `VEET` device’s spectral sensor provides rich data beyond simple lux values, but it requires reconstruction of the actual light spectrum from raw sensor counts. We processed the spectral sensor data in order to compute two example spectrum-based metrics. Detailed data import, normalization, and spectral reconstruction steps are given in the [Supplement 1](https://tscnlab.github.io/ZaunerEtAl_2025_JOV/supplement-preview.html); here we present the resulting metrics. Briefly, the `VEET`’s spectral sensor recorded counts in ten wavelength bands (roughly 415 nm to 910 nm), plus a `Dark` and a `Clear` channel[^fw]. After normalizing by sensor gain and applying the calibration matrix, we obtained an estimated spectral irradiance distribution for each 5-minute interval in the recording. With these reconstructed spectra, we can derive novel metrics that consider spectral content of the light. 
+
+[^fw]: Note that older firmware versions contained two `Clear` channels and the highest spectral channel was indicated as 940 nm. Data collected with this early firmware version are not suitable for spectral reconstruction in the context of research projects.
 
 ::: {.callout-note}
 
@@ -503,7 +505,7 @@ dataVEET <- dataVEET2 |>
   mutate(
     short = Spectrum |> map_dbl(spectral_integration, wavelength.range = c(400, 500)),
     long  = Spectrum |> map_dbl(spectral_integration, wavelength.range = c(600, 700)),
-    `sl ratio` = short / long   # compute short-to-long ratio
+    `sl ratio` = ifelse(is.nan(short / long), NA, short / long)   # compute short-to-long ratio
   )
 ```
 
@@ -511,11 +513,14 @@ dataVEET <- dataVEET2 |>
 
 ```{r}
 #| label: tbl-ratio
-#| tbl-cap: "Ratio of short-wavelength (400–500 nm) to long-wavelength (600–700 nm) light"
+#| tbl-cap: "Average (mW/m²) and ratio of short-wavelength (400–500 nm) to long-wavelength (600–700 nm) light"
 dataVEET |> 
   summarize_numeric(prefix = "", remove = c("Datetime", "Spectrum")) |> 
-  mean_daily(prefix = "") |>
-  gt() |> fmt_number(-`sl ratio`, decimals = 0) |> cols_hide(episodes)
+  # mean_daily(prefix = "") |>
+  gt() |> 
+  fmt_number(decimals = 1, scale_by = 1000) |>
+  fmt_number(`sl ratio`, decimals = 3) |>
+  cols_hide(episodes)
 ```
 
 #### Short-wavelength light at specific times of day
@@ -523,48 +528,50 @@ dataVEET |>
 The second spectral example examines short-wavelength light exposure as a function of time of day. Certain studies might be interested in, for instance, blue-light exposure during midday versus morning or night. We demonstrate three approaches: (a) filtering the data to a specific local time window, and (b) aggregating by hour of day to see a daily profile of short-wavelength exposure. Additionally, we (c) look at differences between day and night periods. 
 
 ::: panel-tabset
-##### Local midday exposure
+##### Local morning exposure
 
-@tbl-shortfilter isolates the time window between 11:00 and 14:00 each day and computes the average short-wavelength irradiance in that interval. This represents a straightforward query: “How much blue light does the subject get around midday on average?”
+@tbl-shortfilter isolates the time window between 7:00 and 11:00 each day and computes the average short-wavelength irradiance in that interval. This represents a straightforward query: “How much blue light does the subject get in the morning on average?”
 
 ```{r}
 #| label: tbl-shortfilter
-#| tbl-cap: "Average short-wavelength light (400–500 nm) exposure between 11:00 and 14:00 each day"
+#| tbl-cap: "Average short-wavelength light (400–500 nm) exposure between 7:00 and 11:00 each day"
 dataVEET |> 
-  filter_Time(start = "11:00:00", end = "14:00:00") |>    # filter data to local 11am–2pm
+  filter_Time(start = "7:00:00", end = "11:00:00") |>    # filter data to local 7am–11am
   select(-c(Spectrum, long, `sl ratio`, Time, Datetime)) |>
   summarize_numeric(prefix = "") |> 
-  mean_daily(prefix = "") |> 
-  gt() |> fmt_number(short) |> 
-  cols_label(short = "Short-wavelength irradiance (a.u.)")
+  # mean_daily(prefix = "") |> 
+  gt() |> fmt_number(short, scale_by = 1000) |> 
+  cols_label(short = "Short-wavelength irradiance (mW/m²)") |> 
+  cols_hide(episodes)
 ```
 
 ##### Hourly profile across the day
 
-To visualize short-wavelength exposure over the course of a day, we aggregate the data into hourly bins. We cut the timeline into 1-hour segments (using local time), compute the mean short-wavelength irradiance in each hour for each day, and then average across days. @fig-shorttime shows the resulting diurnal profile, with short-wavelength exposure expressed as a fraction of the daily maximum for easier comparison.
+To visualize short-wavelength exposure over the course of a day, we aggregate the data into hourly bins. We cut the timeline into 1-hour segments (using local time), compute the mean short-wavelength irradiance in each hour for each day. @fig-shorttime shows the resulting diurnal profile, with short-wavelength exposure expressed as a fraction of the daily maximum for easier comparison.
 
 ```{r}
 #| label: fig-shorttime
-#| fig-cap: "Diurnal profile of short-wavelength light exposure. Each point represents the average short-wavelength irradiance at that hour of the day (0–23 h), normalized to the daily maximum, averaged across all days."
+#| fig-cap: "Diurnal profile of short-wavelength light exposure. Each point represents the average short-wavelength irradiance at that hour of the day (0–23 h), normalized to the daily maximum."
 # Prepare hourly binned data
 dataVEETtime <- dataVEET |>
   cut_Datetime(unit = "1 hour", type = "floor", group_by = TRUE) |>  # bin timestamps by hour
   select(-c(Spectrum, long, `sl ratio`, Datetime)) |>
   summarize_numeric(prefix = "") |> 
-  group_by(Datetime.rounded, .drop = FALSE) |>    # group by the hour-of-day time bin
-  mean_daily(prefix = "", sub.zero = TRUE) |>     # average across days (sub.zero ensures missing hours are treated as zero)
-  add_Time_col(Datetime.rounded)                  # add a Time column (hour of day)
+  add_Time_col(Datetime.rounded)  |>   # add a Time column (hour of day)
+  mutate(rel_short = short / max(short))
 
 #creating the plot
 dataVEETtime |> 
-  ggplot(aes(x=Time, y = short/max(short))) +
-  geom_col(aes(fill = Date), position = "dodge") +
+  ggplot(aes(x=Time, y = rel_short)) +
+  geom_col(aes(fill = factor(Date)), position = "dodge") +
   ggsci::scale_fill_jco() +
   theme_minimal() +
-  labs(y = "Normalized short-wavelength irradianc", 
-       x = "Local time (HH:MM)") + 
+  labs(y = "Normalized short-wavelength irradiance", 
+       x = "Local time (HH:MM)",
+       fill = "Date") + 
   scale_y_continuous(labels = scales::label_percent()) +
   scale_x_time(labels = scales::label_time(format = "%H:%M"))
+
 ```
 
 ##### Day vs. night (photoperiod)
@@ -573,7 +580,7 @@ Finally, we compare short-wavelength exposure during daytime vs. nighttime. Usin
 
 ```{r}
 #| label: tbl-daytime
-#| tbl-cap: "Short wavelength light exposure during the day and at night"
+#| tbl-cap: "Short wavelength light exposure (mW/m²) during the day and at night"
 dataVEET |>
   select(-c(Spectrum, long, `sl ratio`)) |>
   add_photoperiod(coordinates) |> 
@@ -581,10 +588,10 @@ dataVEET |>
   summarize_numeric(prefix = "", 
                     remove = c("dawn", "dusk", "photoperiod", "Datetime")) |> 
   group_by(photoperiod.state) |> 
-  mean_daily(prefix = "") |> 
+  # mean_daily(prefix = "") |> 
   select(-episodes) |> 
   pivot_wider(names_from =photoperiod.state, values_from = short) |> 
-  gt() |> fmt_number()
+  gt() |> fmt_number(scale_by = 1000, decimals = 1)
 ```
 
 ::: {.callout-note}
