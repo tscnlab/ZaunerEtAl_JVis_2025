@@ -38,7 +38,7 @@ keywords:
   - spectral analysis
   - open-source
   - reproducibility
-funding: JZs position is funded by MeLiDos, The project (22NRM05 MeLiDos) has received funding from the European Partnership on Metrology, co-financed from the European Union’s Horizon Europe Research and Innovation Programme and by the Participating States. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or EURAMET. Neither the European Union nor the granting authority can be held responsible for them. JZ, LAO, and MS received funding from Meta.
+funding: "JZs position is funded by MeLiDos, The project (22NRM05 MeLiDos) has received funding from the European Partnership on Metrology, co-financed from the European Union’s Horizon Europe Research and Innovation Programme and by the Participating States. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or EURAMET. Neither the European Union nor the granting authority can be held responsible for them. JZ, LAO, and MS received funding from Meta."
 format:
   html:
     toc: true
@@ -649,6 +649,14 @@ The broad set of features in LightLogR — ranging from data import and cleaning
 ```{r}
 sessionInfo()
 ```
+
+## Data availability statement
+
+All data in the tutorial and supplement 1 are available from the github repository: https://github.com/tscnlab/ZaunerEtAl_2025_JOV/, archived on Zenodo: https://doi.org/10.5281/zenodo.16566014 under a CC-0 license
+
+## Funding statement
+
+JZs position is funded by MeLiDos, The project (22NRM05 MeLiDos) has received funding from the European Partnership on Metrology, co-financed from the European Union’s Horizon Europe Research and Innovation Programme and by the Participating States. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or EURAMET. Neither the European Union nor the granting authority can be held responsible for them. JZ, LAO, and MS received funding from Meta.
 
 ## Conflict of interest statement
 
