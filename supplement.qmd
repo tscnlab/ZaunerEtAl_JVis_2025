@@ -117,7 +117,7 @@ dataCC |> gg_gaps(Dis,
                   include.implicit.gaps = FALSE,  # only show recorded gaps, not every missing point
                   show.irregulars = TRUE,         # highlight irregular timing
                   y.axis.label = y.label,
-                  group.by.days = TRUE
+                  group.by.days = TRUE, col.irregular = alpha("red", 0.03)
                   ) + labs(title = NULL)
 ```
 
@@ -248,9 +248,9 @@ At this point, the `dataVEET` object (for illuminance) is cleaned and ready fo
 
 ### Import
 
-In addition to broad-band illuminance, the `VEET` provides **spectral sensor data** through its `PHO` modality. Unlike illuminance, the spectral data are not directly given as directly interpretable radiometric metrics but rather as raw sensor counts across multiple wavelength channels, which require conversion to reconstruct a spectral power distribution. In our analysis, spectral data allow us to compute metrics like the relative contribution of short-wavelength (blue) light versus long-wavelength light in the participant’s environment. Processing this spectral data involves several special steps.
+In addition to broad-band illuminance, the `VEET` provides **spectral sensor data** through its `PHO` modality. Unlike illuminance, the spectral data are not directly given as directly interpretable radiometric metrics but rather as raw sensor counts across multiple wavelength channels, which require conversion to reconstruct a spectral power distribution. In our analysis, spectral data allow us to compute metrics like the relative contribution of short-wavelength (blue) light versus long-wavelength light in the participant’s environment. Processing this spectral data involves several necessary steps.
 
-First, we import the spectral modality from the same `VEET` file. (The data were recorded simultaneously with the `ALS` data, but to get spectral readings we need to extract the lines marked as `PHO`.) We will store the spectral dataset in a separate object `dataVEET2` so as not to overwrite the `dataVEET` illuminance data in our R session:
+First, we import the spectral modality from a second `VEET` file. This device used the latest software version to allow for the best spectral reconstruction. This time we need to extract the lines marked as `PHO`. We will store the spectral dataset in a separate object `dataVEET2` so as not to overwrite the `dataVEET` illuminance data in our R session:
 
 ```{r}
 #| label: fig-VEET-overview2
@@ -258,10 +258,13 @@ First, we import the spectral modality from the same `VEET` file. (The data were
 #| fig-height: 2
 #| fig-width: 6
 # Import VEET Spectral Sensor (PHO) data
+path <- "data/02_VEET_L.csv.zip"
+#if a version of LightLogR ≤ 0.9.2 is used, this script needs to be imported, as the device data was collected with a newer firmware version that changes the output format.
+source("scripts/VEET_import.R")
 dataVEET2 <- import$VEET(path, tz = tz, modality = "PHO", manual.id = "VEET")
 ```
 
-After import, `dataVEET2` contains columns for the timestamp (`Datetime`), `Gain` (the sensor gain setting), and the nine spectral sensor channels plus the two clear channels and dark channel (as described earlier). These appear as numeric columns named `s415, s445, ..., s940, Dark, ClearL, ClearR`. The spectral sensor was logging at the same 2-second rate. Because this dataset is even denser and more high-dimensional, we will **aggregate it to a 5-minute interval** for computational efficiency. The assumption is that spectral composition does not need to be examined at every 2-second instant for our purposes, and 5-minute averages can capture the general trends while drastically reducing data size and downstream computational costs.
+After import, `dataVEET2` contains columns for the timestamp (`Datetime`), `Gain` (the sensor gain setting), and the nine spectral sensor channels plus a clear channel. These appear as numeric columns named `s415, s445, ..., s940, Dark, Clear`. The spectral sensor was logging at a 2-second rate. Because this dataset is even denser and more high-dimensional, we will **aggregate it to a 5-minute interval** for computational efficiency. The assumption is that spectral composition does not need to be examined at every 2-second instant for our purposes, and 5-minute averages can capture the general trends while drastically reducing data size and downstream computational costs.
 
 ```{r}
 # Aggregate spectral data to 5-minute intervals and mark gaps
@@ -269,48 +272,48 @@ dataVEET2 <- dataVEET2 |>
   aggregate_Datetime(unit = "5 mins") |>     # aggregate to 5-minute bins
   gap_handler(full.days = TRUE) |>           # explicit NA for any gaps in between
   add_Date_col(group.by = TRUE) |> 
-  remove_partial_data(ClearR, threshold.missing = "1 hour")
+  remove_partial_data(Clear, threshold.missing = "1 hour")
 ```
 
-We aggregate over 5-minute windows; within each 5-minute bin, multiple spectral readings (if present) are combined (averaged). We use one of the channels (here `ClearR`) as the reference variable for `remove_partial_data` to drop incomplete days (the choice of channel is arbitrary as all channels share the same level of completeness). After this, `dataVEET2` too covers the same six full days as `dataVEET` and `dataCC`.
+We aggregate over 5-minute windows; within each 5-minute bin, multiple spectral readings (if present) are combined (averaged). We use one of the channels (here `Clear`) as the reference variable for `remove_partial_data` to drop incomplete days (the choice of channel is arbitrary as all channels share the same level of completeness).
 
 It is informative to look at a snippet of the imported spectral data before further processing. @tbl-PHO shows the first three rows of `dataVEET2` after import (before calibration), with some technical columns omitted for brevity:
 
 ```{r}
 #| label: tbl-PHO
-#| tbl-cap: "Overview of the spectral sensor import from the VEET device (first 3 observations). Each row corresponds to a 5-minute timestamp (Datetime) and shows the raw sensor readings for the spectral channels (s415–s940, Dark, ClearL, ClearR). All values are in arbitrary sensor units (counts). Gain values and integration_time are also relevant for each interval, depending on the downstream computation."
+#| tbl-cap: "Overview of the spectral sensor import from the VEET device (first 3 observations). Each row corresponds to a 5-minute timestamp (Datetime) and shows the raw sensor readings for the spectral channels (s415–s940, Dark, Clear). All values are in arbitrary sensor units (counts). Gain values and integration_time are also relevant for each interval, depending on the downstream computation."
 dataVEET2 |> head(3) |> select(-c(modality, file.name, is.implicit, time_stamp)) |> 
-  gt() |> fmt_number(s415:ClearR) 
+  gt() |> fmt_number(s415:Clear) 
 ```
 
 ### Spectral calibration
 
-Now we proceed with **spectral calibration**. The `VEET`’s spectral sensor counts need to be converted to physical units (spectral irradiance) via a calibration matrix provided by the manufacturer. For this example, we assume we have a calibration matrix that maps all the channel readings to an estimated spectral power distribution (SPD). The LightLogR package provides a function `spectral_reconstruction()` to perform this conversion. However, before applying it, we must ensure the sensor counts are in a normalized form. In our raw data, each observation comes with a `Gain` setting that indicates how the sensor’s sensitivity was adjusted; we need to divide the raw counts by the gain to get normalized counts. LightLogR offers `normalize_counts()` for this purpose.
+Now we proceed with **spectral calibration**. The `VEET`’s spectral sensor counts need to be converted to physical units (spectral irradiance) via a calibration matrix provided by the manufacturer. For this example, we assume we have a calibration matrix that maps all the channel readings to an estimated spectral power distribution (SPD). The LightLogR package provides a function `spectral_reconstruction()` to perform this conversion. However, before applying it, we must ensure the sensor counts are in a normalized form. This procedure is laid out by the manufacturer. In our version, we refer to the *VEET SPD Reconstruction Guide.pdf*, version *06/05/2025*. Note that each manufacturer has to specify the method of count normalization (if any) and spectral reconstruction. In our raw data, each observation comes with a `Gain` setting that indicates how the sensor’s sensitivity was adjusted; we need to divide the raw counts by the gain to get normalized counts. LightLogR offers `normalize_counts()` for this purpose. We further need to scale by integration time (in milliseconds) and adjust depending on counts in the `Dark` sensor channel. 
 
 ```{r}
 count.columns <- c("s415", "s445", "s480", "s515", "s555", "s590", "s630", 
-                      "s680", "s940", "Dark", "ClearL", "ClearR") #column names
+                      "s680", "s910", "Dark", "Clear") #column names
+
+gain.ratios <- #gain ratios as specified by the manufacturers reconstruction guide
+  tibble(
+    gain = c(0.5, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512),
+    gain.ratio = c(0.008, 0.016, 0.032, 0.065, 0.125, 0.25, 0.5, 1, 2, 3.95, 7.75)
+  ) 
+
 #normalize data
 dataVEET2 <-
   dataVEET2 |> 
+  mutate(across(c(s415:Clear), \(x) (x - Dark)/integration_time)) |>  #remove dark counts & scale by integration time
   normalize_counts( #function to normalize counts
-    gain.columns = rep("Gain", 12), #all sensor channels share the gain value
-    count.columns = count.columns, #senso channels to normalize
-    gain.ratio.tables$TSL2585 #gain ratio channel for TSL2585 sensor
-  )
+    gain.columns = rep("Gain", 11), #all sensor channels share the gain value
+    count.columns = count.columns, #sensor channels to normalize
+    gain.ratios #gain ratios
+  ) |> 
+  select(-c(s415:Clear)) |> # drop original raw count columns
+  rename_with(~ str_remove(.x, ".normalized"))
 ```
 
-In this call, we specified `gain.columns = rep("Gain", 12)` because we have 12 sensor columns that all use the same gain factor column (`Gain`). This step will add new columns (with a suffix, e.g. `.normalized`) for each spectral channel representing the count normalized by the gain. Next, we handle the two *Clear* channels. The `VEET` has a Clear sensor on both the left and right sides (`ClearL` and `ClearR`). For our analysis, we have to combine them by averaging, to get a single “Clear” channel:
-
-```{r}
-# Combine left and right clear channels into one and remove original channels
-dataVEET2 <- dataVEET2 |> 
-  mutate(Clear.normalized = (ClearL.normalized + ClearR.normalized) / 2) |>    # average of left and right clear
-  select(-c(s415:ClearR)) |>                             # drop original raw count columns
-  rename_with(~ str_remove(.x, ".normalized"))           # remove the ".normalized" suffix in names
-```
-
-After this, `dataVEET2` contains the normalized sensor readings for `s415, s445, ..., s940, Dark, Clear` (note: now a single Clear channel) for each 5-minute time point. We have dropped the raw count columns, and removed the “.normalized” suffix for clarity. The dataset is now ready for spectral reconstruction.
+In this call, we specified `gain.columns = rep("Gain", 11)` because we have 11 sensor columns that all use the same gain factor column (`Gain`). This step will add new columns (with a suffix, e.g. `.normalized`) for each spectral channel representing the count normalized by the gain. We then dropped the `raw` count columns and renamed the normalized ones by dropping `.normalized` from the names. After this, `dataVEET2` contains the normalized sensor readings for `s415, s445, ..., s940, Dark, Clear` for each 5-minute time point. The dataset is now ready for spectral reconstruction.
 
 ### Spectral reconstruction
 
@@ -320,19 +323,14 @@ For spectral reconstruction, we require a calibration matrix that corresponds to
 #import calibration matrix
 calib_mtx <- 
   read_csv("data/VEET_calibration_matrix.csv", show_col_types = FALSE) |> 
-  column_to_rownames("wavelength") |> 
-  as.matrix()
-```
+  column_to_rownames("wavelength")
 
-For demonstration, assume we have loaded a calibration matrix `calib_mtx`(with dimensions matching 10 channels by *N* wavelengths of interest). We can then reconstruct the spectral power distribution for each time point:
-
-```{r}
 # Reconstruct spectral power distribution (SPD) for each observation
 dataVEET2 <- dataVEET2 |> mutate(
   Spectrum = spectral_reconstruction(
-    pick(s415:s940, Dark, Clear),   # pick the normalized sensor columns
+    pick(s415:s910),   # pick the normalized sensor columns
     calibration_matrix = calib_mtx, 
-    format = "long"                 # return a long-form list column (wavelength, intensity)
+    format = "long" # return a long-form list column (wavelength, intensity)
   )
 )
 ```
@@ -340,6 +338,27 @@ dataVEET2 <- dataVEET2 |> mutate(
 Here, we use `format = "long"` so that the result for each observation is a **list-column** `Spectrum`, where each entry is a tibble[^4] containing two columns: `wavelength` and `irradiance` (one row per wavelength in the calibration matrix). In other words, each row of `dataVEET2` now holds a full reconstructed spectrum in the `Spectrum` column. The long format is convenient for further calculations and plotting. (An alternative `format = "wide"` would add each wavelength as a separate column, but that is less practical when there are many wavelengths.)
 
 [^4]: **tibble** are data.tables with tweaked behavior, ideal for a tidy analysis workflow. For more information, visit the documentation page for [tibbles](https://tibble.tidyverse.org/index.html)
+
+To visualize the data we will calculate the photopic illuminance based on the spectra and plot each spectrum color-scaled by their illuminance. For clarity, we reduce the data to observations within the first day.
+
+```{r}
+dataVEET2 |> 
+  filter_Date(length = "1 day") |> #keep only observations for one day (from start)
+  mutate( 
+    Illuminance = Spectrum |> #Use the spectrum,...
+      map_dbl(spectral_integration, #... call the function spectral_integration for each,...
+              action.spectrum = "photopic", #... use the brightness sensitivity function,...
+              general.weight = "auto") #... and apply the appropriate efficacy weight.
+  ) |> 
+  unnest(Spectrum) |> #create a long format of the data where the spectrum is unnested
+  ggplot(aes(x = wavelength, y = irradiance*1000, group = Datetime)) +
+  geom_line(aes(col = Illuminance)) +
+  labs(y = "Irradiance (mW/m²/nm)", x = "Wavelength (nm)", col = "Illuminance (lx)")+
+  scale_color_viridis_b() +
+  coord_cartesian(ylim = c(0,5.3)) +
+  theme_minimal()
+```
+
 
 At this stage, the `dataVEET2` dataset has been processed to yield time-series of spectral power distributions. We can use these to compute biologically relevant light metrics. For instance, one possible metric is the proportion of power in short wavelengths versus long wavelengths. In the main analysis, we defined **short-wavelength (blue light) content** as the integrated intensity in the 400–500 nm range, and **long-wavelength content** as the integrated intensity in a longer range (e.g. 600–700 nm), then computed the *short-to-long ratio* (“sl ratio”). Calculating these metrics is the first step of spectrum analysis in the [main tutorial](https://tscnlab.github.io/ZaunerEtAl_2025_JOV/#spectrum).
 
