@@ -5,7 +5,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-    <meta name="author" content="Johannes Zauner, Aaron Nicholls, Lisa Ostrin, and Manuel Spitschan">
+    <meta name="author" content="Johannes Zauner">
+    <meta name="author" content="Aaron Nicholls">
+    <meta name="author" content="Lisa A. Ostrin">
+    <meta name="author" content="Manuel Spitschan">
     <meta name="dcterms.date" content="2025-07-29">
 
     <title>Supplement 1</title>
@@ -188,7 +191,11 @@
   window.document.addEventListener("DOMContentLoaded", function (_event) {
     document.body.classList.add('hypothesis-enabled');
   });
-</script>  
+</script>  <style>
+.quarto-notebook .cell-container .cell-decorator {
+  display: none;
+}
+</style>  
         <link rel="stylesheet" href="styles.css">
       </head>
 
@@ -204,23 +211,63 @@
      <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Supplement 1</h1>
-            <p class="subtitle lead">Tutorial on analysis pipelines for visual experience datasets</p>
+      <div class="quarto-title-block"><div><h1 class="title">Supplement 1</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+            <p class="subtitle lead">Analysis of human visual experience data</p>
           </div>
 
     
     <div class="quarto-title-meta-container">
       <div class="quarto-title-meta-column-start">
+            <div class="quarto-title-meta-author">
+          <div class="quarto-title-meta-heading">Authors</div>
+          <div class="quarto-title-meta-heading">Affiliations</div>
+          
+                <div class="quarto-title-meta-contents">
+            <p class="author">Johannes Zauner <a href="https://orcid.org/0000-0003-2171-4566" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Technical University of Munich, Germany
+                      </p>
+                    <p class="affiliation">
+                        Max Planck Institute for Biological Cybernetics, Tübingen, Germany
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Aaron Nicholls <a href="https://orcid.org/0009-0001-6683-6826" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Meta Reality Labs Research
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Lisa A. Ostrin <a href="https://orcid.org/0000-0001-8675-1478" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        University of Houston, Texas, USA
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Manuel Spitschan <a href="mailto:manuel.spitschan@tum.de" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-8572-9268" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Technical University of Munich, Germany
+                      </p>
+                    <p class="affiliation">
+                        Max Planck Institute for Biological Cybernetics, Tübingen, Germany
+                      </p>
+                    <p class="affiliation">
+                        Technical University of Munich Institute of advanced study (TUM-IAS), Munich, Germany
+                      </p>
+                  </div>
+                    </div>
         
         <div class="quarto-title-meta">
 
-                <div>
-            <div class="quarto-title-meta-heading">Author</div>
-            <div class="quarto-title-meta-contents">
-                        <p>Johannes Zauner, Aaron Nicholls, Lisa Ostrin, and Manuel Spitschan </p>
-                      </div>
-          </div>
-                
+                      
                 <div>
             <div class="quarto-title-meta-heading">Last modified:</div>
             <div class="quarto-title-meta-contents">
@@ -429,23 +476,23 @@ Summary of missing and observed data for the Clouclip device
 </figcaption>
 <div aria-describedby="tbl-gaps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="wkblzkuyci" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wkblzkuyci table {
+<div id="rdtfffadgy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rdtfffadgy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wkblzkuyci thead, #wkblzkuyci tbody, #wkblzkuyci tfoot, #wkblzkuyci tr, #wkblzkuyci td, #wkblzkuyci th {
+#rdtfffadgy thead, #rdtfffadgy tbody, #rdtfffadgy tfoot, #rdtfffadgy tr, #rdtfffadgy td, #rdtfffadgy th {
   border-style: none;
 }
 
-#wkblzkuyci p {
+#rdtfffadgy p {
   margin: 0;
   padding: 0;
 }
 
-#wkblzkuyci .gt_table {
+#rdtfffadgy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -471,12 +518,12 @@ Summary of missing and observed data for the Clouclip device
   border-left-color: #D3D3D3;
 }
 
-#wkblzkuyci .gt_caption {
+#rdtfffadgy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wkblzkuyci .gt_title {
+#rdtfffadgy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -488,7 +535,7 @@ Summary of missing and observed data for the Clouclip device
   border-bottom-width: 0;
 }
 
-#wkblzkuyci .gt_subtitle {
+#rdtfffadgy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -500,7 +547,7 @@ Summary of missing and observed data for the Clouclip device
   border-top-width: 0;
 }
 
-#wkblzkuyci .gt_heading {
+#rdtfffadgy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -512,13 +559,13 @@ Summary of missing and observed data for the Clouclip device
   border-right-color: #D3D3D3;
 }
 
-#wkblzkuyci .gt_bottom_border {
+#rdtfffadgy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wkblzkuyci .gt_col_headings {
+#rdtfffadgy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -533,7 +580,7 @@ Summary of missing and observed data for the Clouclip device
   border-right-color: #D3D3D3;
 }
 
-#wkblzkuyci .gt_col_heading {
+#rdtfffadgy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -553,7 +600,7 @@ Summary of missing and observed data for the Clouclip device
   overflow-x: hidden;
 }
 
-#wkblzkuyci .gt_column_spanner_outer {
+#rdtfffadgy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -565,15 +612,15 @@ Summary of missing and observed data for the Clouclip device
   padding-right: 4px;
 }
 
-#wkblzkuyci .gt_column_spanner_outer:first-child {
+#rdtfffadgy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wkblzkuyci .gt_column_spanner_outer:last-child {
+#rdtfffadgy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wkblzkuyci .gt_column_spanner {
+#rdtfffadgy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -585,11 +632,11 @@ Summary of missing and observed data for the Clouclip device
   width: 100%;
 }
 
-#wkblzkuyci .gt_spanner_row {
+#rdtfffadgy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wkblzkuyci .gt_group_heading {
+#rdtfffadgy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -615,7 +662,7 @@ Summary of missing and observed data for the Clouclip device
   text-align: left;
 }
 
-#wkblzkuyci .gt_empty_group_heading {
+#rdtfffadgy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -630,15 +677,15 @@ Summary of missing and observed data for the Clouclip device
   vertical-align: middle;
 }
 
-#wkblzkuyci .gt_from_md > :first-child {
+#rdtfffadgy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wkblzkuyci .gt_from_md > :last-child {
+#rdtfffadgy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wkblzkuyci .gt_row {
+#rdtfffadgy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -657,7 +704,7 @@ Summary of missing and observed data for the Clouclip device
   overflow-x: hidden;
 }
 
-#wkblzkuyci .gt_stub {
+#rdtfffadgy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -670,7 +717,7 @@ Summary of missing and observed data for the Clouclip device
   padding-right: 5px;
 }
 
-#wkblzkuyci .gt_stub_row_group {
+#rdtfffadgy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -684,15 +731,15 @@ Summary of missing and observed data for the Clouclip device
   vertical-align: top;
 }
 
-#wkblzkuyci .gt_row_group_first td {
+#rdtfffadgy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wkblzkuyci .gt_row_group_first th {
+#rdtfffadgy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wkblzkuyci .gt_summary_row {
+#rdtfffadgy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -702,16 +749,16 @@ Summary of missing and observed data for the Clouclip device
   padding-right: 5px;
 }
 
-#wkblzkuyci .gt_first_summary_row {
+#rdtfffadgy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wkblzkuyci .gt_first_summary_row.thick {
+#rdtfffadgy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wkblzkuyci .gt_last_summary_row {
+#rdtfffadgy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -721,7 +768,7 @@ Summary of missing and observed data for the Clouclip device
   border-bottom-color: #D3D3D3;
 }
 
-#wkblzkuyci .gt_grand_summary_row {
+#rdtfffadgy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -731,7 +778,7 @@ Summary of missing and observed data for the Clouclip device
   padding-right: 5px;
 }
 
-#wkblzkuyci .gt_first_grand_summary_row {
+#rdtfffadgy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -741,7 +788,7 @@ Summary of missing and observed data for the Clouclip device
   border-top-color: #D3D3D3;
 }
 
-#wkblzkuyci .gt_last_grand_summary_row_top {
+#rdtfffadgy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -751,11 +798,11 @@ Summary of missing and observed data for the Clouclip device
   border-bottom-color: #D3D3D3;
 }
 
-#wkblzkuyci .gt_striped {
+#rdtfffadgy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wkblzkuyci .gt_table_body {
+#rdtfffadgy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -764,7 +811,7 @@ Summary of missing and observed data for the Clouclip device
   border-bottom-color: #D3D3D3;
 }
 
-#wkblzkuyci .gt_footnotes {
+#rdtfffadgy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -778,7 +825,7 @@ Summary of missing and observed data for the Clouclip device
   border-right-color: #D3D3D3;
 }
 
-#wkblzkuyci .gt_footnote {
+#rdtfffadgy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -787,7 +834,7 @@ Summary of missing and observed data for the Clouclip device
   padding-right: 5px;
 }
 
-#wkblzkuyci .gt_sourcenotes {
+#rdtfffadgy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -801,7 +848,7 @@ Summary of missing and observed data for the Clouclip device
   border-right-color: #D3D3D3;
 }
 
-#wkblzkuyci .gt_sourcenote {
+#rdtfffadgy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -809,72 +856,72 @@ Summary of missing and observed data for the Clouclip device
   padding-right: 5px;
 }
 
-#wkblzkuyci .gt_left {
+#rdtfffadgy .gt_left {
   text-align: left;
 }
 
-#wkblzkuyci .gt_center {
+#rdtfffadgy .gt_center {
   text-align: center;
 }
 
-#wkblzkuyci .gt_right {
+#rdtfffadgy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wkblzkuyci .gt_font_normal {
+#rdtfffadgy .gt_font_normal {
   font-weight: normal;
 }
 
-#wkblzkuyci .gt_font_bold {
+#rdtfffadgy .gt_font_bold {
   font-weight: bold;
 }
 
-#wkblzkuyci .gt_font_italic {
+#rdtfffadgy .gt_font_italic {
   font-style: italic;
 }
 
-#wkblzkuyci .gt_super {
+#rdtfffadgy .gt_super {
   font-size: 65%;
 }
 
-#wkblzkuyci .gt_footnote_marks {
+#rdtfffadgy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wkblzkuyci .gt_asterisk {
+#rdtfffadgy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wkblzkuyci .gt_indent_1 {
+#rdtfffadgy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wkblzkuyci .gt_indent_2 {
+#rdtfffadgy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wkblzkuyci .gt_indent_3 {
+#rdtfffadgy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wkblzkuyci .gt_indent_4 {
+#rdtfffadgy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wkblzkuyci .gt_indent_5 {
+#rdtfffadgy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wkblzkuyci .katex-display {
+#rdtfffadgy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wkblzkuyci div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rdtfffadgy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1294,23 +1341,23 @@ Summary of missing and observed data for the VEET device
 </figcaption>
 <div aria-describedby="tbl-gaps2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="xkplzgryxn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xkplzgryxn table {
+<div id="zqrrmzmmhp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zqrrmzmmhp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xkplzgryxn thead, #xkplzgryxn tbody, #xkplzgryxn tfoot, #xkplzgryxn tr, #xkplzgryxn td, #xkplzgryxn th {
+#zqrrmzmmhp thead, #zqrrmzmmhp tbody, #zqrrmzmmhp tfoot, #zqrrmzmmhp tr, #zqrrmzmmhp td, #zqrrmzmmhp th {
   border-style: none;
 }
 
-#xkplzgryxn p {
+#zqrrmzmmhp p {
   margin: 0;
   padding: 0;
 }
 
-#xkplzgryxn .gt_table {
+#zqrrmzmmhp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1336,12 +1383,12 @@ Summary of missing and observed data for the VEET device
   border-left-color: #D3D3D3;
 }
 
-#xkplzgryxn .gt_caption {
+#zqrrmzmmhp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xkplzgryxn .gt_title {
+#zqrrmzmmhp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1353,7 +1400,7 @@ Summary of missing and observed data for the VEET device
   border-bottom-width: 0;
 }
 
-#xkplzgryxn .gt_subtitle {
+#zqrrmzmmhp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1365,7 +1412,7 @@ Summary of missing and observed data for the VEET device
   border-top-width: 0;
 }
 
-#xkplzgryxn .gt_heading {
+#zqrrmzmmhp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1377,13 +1424,13 @@ Summary of missing and observed data for the VEET device
   border-right-color: #D3D3D3;
 }
 
-#xkplzgryxn .gt_bottom_border {
+#zqrrmzmmhp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xkplzgryxn .gt_col_headings {
+#zqrrmzmmhp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1398,7 +1445,7 @@ Summary of missing and observed data for the VEET device
   border-right-color: #D3D3D3;
 }
 
-#xkplzgryxn .gt_col_heading {
+#zqrrmzmmhp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1418,7 +1465,7 @@ Summary of missing and observed data for the VEET device
   overflow-x: hidden;
 }
 
-#xkplzgryxn .gt_column_spanner_outer {
+#zqrrmzmmhp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1430,15 +1477,15 @@ Summary of missing and observed data for the VEET device
   padding-right: 4px;
 }
 
-#xkplzgryxn .gt_column_spanner_outer:first-child {
+#zqrrmzmmhp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xkplzgryxn .gt_column_spanner_outer:last-child {
+#zqrrmzmmhp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xkplzgryxn .gt_column_spanner {
+#zqrrmzmmhp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1450,11 +1497,11 @@ Summary of missing and observed data for the VEET device
   width: 100%;
 }
 
-#xkplzgryxn .gt_spanner_row {
+#zqrrmzmmhp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xkplzgryxn .gt_group_heading {
+#zqrrmzmmhp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1480,7 +1527,7 @@ Summary of missing and observed data for the VEET device
   text-align: left;
 }
 
-#xkplzgryxn .gt_empty_group_heading {
+#zqrrmzmmhp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1495,15 +1542,15 @@ Summary of missing and observed data for the VEET device
   vertical-align: middle;
 }
 
-#xkplzgryxn .gt_from_md > :first-child {
+#zqrrmzmmhp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xkplzgryxn .gt_from_md > :last-child {
+#zqrrmzmmhp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xkplzgryxn .gt_row {
+#zqrrmzmmhp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1522,7 +1569,7 @@ Summary of missing and observed data for the VEET device
   overflow-x: hidden;
 }
 
-#xkplzgryxn .gt_stub {
+#zqrrmzmmhp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1535,7 +1582,7 @@ Summary of missing and observed data for the VEET device
   padding-right: 5px;
 }
 
-#xkplzgryxn .gt_stub_row_group {
+#zqrrmzmmhp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1549,15 +1596,15 @@ Summary of missing and observed data for the VEET device
   vertical-align: top;
 }
 
-#xkplzgryxn .gt_row_group_first td {
+#zqrrmzmmhp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xkplzgryxn .gt_row_group_first th {
+#zqrrmzmmhp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xkplzgryxn .gt_summary_row {
+#zqrrmzmmhp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1567,16 +1614,16 @@ Summary of missing and observed data for the VEET device
   padding-right: 5px;
 }
 
-#xkplzgryxn .gt_first_summary_row {
+#zqrrmzmmhp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xkplzgryxn .gt_first_summary_row.thick {
+#zqrrmzmmhp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xkplzgryxn .gt_last_summary_row {
+#zqrrmzmmhp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1586,7 +1633,7 @@ Summary of missing and observed data for the VEET device
   border-bottom-color: #D3D3D3;
 }
 
-#xkplzgryxn .gt_grand_summary_row {
+#zqrrmzmmhp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1596,7 +1643,7 @@ Summary of missing and observed data for the VEET device
   padding-right: 5px;
 }
 
-#xkplzgryxn .gt_first_grand_summary_row {
+#zqrrmzmmhp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1606,7 +1653,7 @@ Summary of missing and observed data for the VEET device
   border-top-color: #D3D3D3;
 }
 
-#xkplzgryxn .gt_last_grand_summary_row_top {
+#zqrrmzmmhp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1616,11 +1663,11 @@ Summary of missing and observed data for the VEET device
   border-bottom-color: #D3D3D3;
 }
 
-#xkplzgryxn .gt_striped {
+#zqrrmzmmhp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xkplzgryxn .gt_table_body {
+#zqrrmzmmhp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1629,7 +1676,7 @@ Summary of missing and observed data for the VEET device
   border-bottom-color: #D3D3D3;
 }
 
-#xkplzgryxn .gt_footnotes {
+#zqrrmzmmhp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1643,7 +1690,7 @@ Summary of missing and observed data for the VEET device
   border-right-color: #D3D3D3;
 }
 
-#xkplzgryxn .gt_footnote {
+#zqrrmzmmhp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1652,7 +1699,7 @@ Summary of missing and observed data for the VEET device
   padding-right: 5px;
 }
 
-#xkplzgryxn .gt_sourcenotes {
+#zqrrmzmmhp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1666,7 +1713,7 @@ Summary of missing and observed data for the VEET device
   border-right-color: #D3D3D3;
 }
 
-#xkplzgryxn .gt_sourcenote {
+#zqrrmzmmhp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1674,72 +1721,72 @@ Summary of missing and observed data for the VEET device
   padding-right: 5px;
 }
 
-#xkplzgryxn .gt_left {
+#zqrrmzmmhp .gt_left {
   text-align: left;
 }
 
-#xkplzgryxn .gt_center {
+#zqrrmzmmhp .gt_center {
   text-align: center;
 }
 
-#xkplzgryxn .gt_right {
+#zqrrmzmmhp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xkplzgryxn .gt_font_normal {
+#zqrrmzmmhp .gt_font_normal {
   font-weight: normal;
 }
 
-#xkplzgryxn .gt_font_bold {
+#zqrrmzmmhp .gt_font_bold {
   font-weight: bold;
 }
 
-#xkplzgryxn .gt_font_italic {
+#zqrrmzmmhp .gt_font_italic {
   font-style: italic;
 }
 
-#xkplzgryxn .gt_super {
+#zqrrmzmmhp .gt_super {
   font-size: 65%;
 }
 
-#xkplzgryxn .gt_footnote_marks {
+#zqrrmzmmhp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xkplzgryxn .gt_asterisk {
+#zqrrmzmmhp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xkplzgryxn .gt_indent_1 {
+#zqrrmzmmhp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xkplzgryxn .gt_indent_2 {
+#zqrrmzmmhp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xkplzgryxn .gt_indent_3 {
+#zqrrmzmmhp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xkplzgryxn .gt_indent_4 {
+#zqrrmzmmhp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xkplzgryxn .gt_indent_5 {
+#zqrrmzmmhp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#xkplzgryxn .katex-display {
+#zqrrmzmmhp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#xkplzgryxn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zqrrmzmmhp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2044,23 +2091,23 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
 </figcaption>
 <div aria-describedby="tbl-PHO-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="rdvxmxmyup" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rdvxmxmyup table {
+<div id="bfizerdrdb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bfizerdrdb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rdvxmxmyup thead, #rdvxmxmyup tbody, #rdvxmxmyup tfoot, #rdvxmxmyup tr, #rdvxmxmyup td, #rdvxmxmyup th {
+#bfizerdrdb thead, #bfizerdrdb tbody, #bfizerdrdb tfoot, #bfizerdrdb tr, #bfizerdrdb td, #bfizerdrdb th {
   border-style: none;
 }
 
-#rdvxmxmyup p {
+#bfizerdrdb p {
   margin: 0;
   padding: 0;
 }
 
-#rdvxmxmyup .gt_table {
+#bfizerdrdb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2086,12 +2133,12 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   border-left-color: #D3D3D3;
 }
 
-#rdvxmxmyup .gt_caption {
+#bfizerdrdb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rdvxmxmyup .gt_title {
+#bfizerdrdb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2103,7 +2150,7 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   border-bottom-width: 0;
 }
 
-#rdvxmxmyup .gt_subtitle {
+#bfizerdrdb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2115,7 +2162,7 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   border-top-width: 0;
 }
 
-#rdvxmxmyup .gt_heading {
+#bfizerdrdb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2127,13 +2174,13 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   border-right-color: #D3D3D3;
 }
 
-#rdvxmxmyup .gt_bottom_border {
+#bfizerdrdb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rdvxmxmyup .gt_col_headings {
+#bfizerdrdb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2148,7 +2195,7 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   border-right-color: #D3D3D3;
 }
 
-#rdvxmxmyup .gt_col_heading {
+#bfizerdrdb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2168,7 +2215,7 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   overflow-x: hidden;
 }
 
-#rdvxmxmyup .gt_column_spanner_outer {
+#bfizerdrdb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2180,15 +2227,15 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   padding-right: 4px;
 }
 
-#rdvxmxmyup .gt_column_spanner_outer:first-child {
+#bfizerdrdb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rdvxmxmyup .gt_column_spanner_outer:last-child {
+#bfizerdrdb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rdvxmxmyup .gt_column_spanner {
+#bfizerdrdb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2200,11 +2247,11 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   width: 100%;
 }
 
-#rdvxmxmyup .gt_spanner_row {
+#bfizerdrdb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rdvxmxmyup .gt_group_heading {
+#bfizerdrdb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2230,7 +2277,7 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   text-align: left;
 }
 
-#rdvxmxmyup .gt_empty_group_heading {
+#bfizerdrdb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2245,15 +2292,15 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   vertical-align: middle;
 }
 
-#rdvxmxmyup .gt_from_md > :first-child {
+#bfizerdrdb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rdvxmxmyup .gt_from_md > :last-child {
+#bfizerdrdb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rdvxmxmyup .gt_row {
+#bfizerdrdb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2272,7 +2319,7 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   overflow-x: hidden;
 }
 
-#rdvxmxmyup .gt_stub {
+#bfizerdrdb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2285,7 +2332,7 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   padding-right: 5px;
 }
 
-#rdvxmxmyup .gt_stub_row_group {
+#bfizerdrdb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2299,15 +2346,15 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   vertical-align: top;
 }
 
-#rdvxmxmyup .gt_row_group_first td {
+#bfizerdrdb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rdvxmxmyup .gt_row_group_first th {
+#bfizerdrdb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rdvxmxmyup .gt_summary_row {
+#bfizerdrdb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2317,16 +2364,16 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   padding-right: 5px;
 }
 
-#rdvxmxmyup .gt_first_summary_row {
+#bfizerdrdb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rdvxmxmyup .gt_first_summary_row.thick {
+#bfizerdrdb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rdvxmxmyup .gt_last_summary_row {
+#bfizerdrdb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2336,7 +2383,7 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   border-bottom-color: #D3D3D3;
 }
 
-#rdvxmxmyup .gt_grand_summary_row {
+#bfizerdrdb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2346,7 +2393,7 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   padding-right: 5px;
 }
 
-#rdvxmxmyup .gt_first_grand_summary_row {
+#bfizerdrdb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2356,7 +2403,7 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   border-top-color: #D3D3D3;
 }
 
-#rdvxmxmyup .gt_last_grand_summary_row_top {
+#bfizerdrdb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2366,11 +2413,11 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   border-bottom-color: #D3D3D3;
 }
 
-#rdvxmxmyup .gt_striped {
+#bfizerdrdb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rdvxmxmyup .gt_table_body {
+#bfizerdrdb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2379,7 +2426,7 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   border-bottom-color: #D3D3D3;
 }
 
-#rdvxmxmyup .gt_footnotes {
+#bfizerdrdb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2393,7 +2440,7 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   border-right-color: #D3D3D3;
 }
 
-#rdvxmxmyup .gt_footnote {
+#bfizerdrdb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2402,7 +2449,7 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   padding-right: 5px;
 }
 
-#rdvxmxmyup .gt_sourcenotes {
+#bfizerdrdb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2416,7 +2463,7 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   border-right-color: #D3D3D3;
 }
 
-#rdvxmxmyup .gt_sourcenote {
+#bfizerdrdb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2424,72 +2471,72 @@ Overview of the spectral sensor import from the VEET device (first 3 observation
   padding-right: 5px;
 }
 
-#rdvxmxmyup .gt_left {
+#bfizerdrdb .gt_left {
   text-align: left;
 }
 
-#rdvxmxmyup .gt_center {
+#bfizerdrdb .gt_center {
   text-align: center;
 }
 
-#rdvxmxmyup .gt_right {
+#bfizerdrdb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rdvxmxmyup .gt_font_normal {
+#bfizerdrdb .gt_font_normal {
   font-weight: normal;
 }
 
-#rdvxmxmyup .gt_font_bold {
+#bfizerdrdb .gt_font_bold {
   font-weight: bold;
 }
 
-#rdvxmxmyup .gt_font_italic {
+#bfizerdrdb .gt_font_italic {
   font-style: italic;
 }
 
-#rdvxmxmyup .gt_super {
+#bfizerdrdb .gt_super {
   font-size: 65%;
 }
 
-#rdvxmxmyup .gt_footnote_marks {
+#bfizerdrdb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rdvxmxmyup .gt_asterisk {
+#bfizerdrdb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rdvxmxmyup .gt_indent_1 {
+#bfizerdrdb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rdvxmxmyup .gt_indent_2 {
+#bfizerdrdb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rdvxmxmyup .gt_indent_3 {
+#bfizerdrdb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rdvxmxmyup .gt_indent_4 {
+#bfizerdrdb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rdvxmxmyup .gt_indent_5 {
+#bfizerdrdb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rdvxmxmyup .katex-display {
+#bfizerdrdb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rdvxmxmyup div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#bfizerdrdb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2695,8 +2742,10 @@ Note
 <p>The above code creates (if necessary) a folder&nbsp;<code>data/cleaned/</code>&nbsp;and saves a single RData file (<code>data.RData</code>) containing the three objects. To retrieve them later, one can use&nbsp;<code>&lt;- load("data/cleaned/data.RData")</code>, which will return the objects into the environment. This single-file approach simplifies sharing and keeps the cleaned data together.</p>
 <p>In summary, this supplement has walked through the full preprocessing pipeline for two example devices. We began by describing the raw data format for each device and then demonstrated how to import the data with correct time zone settings. We handled device-specific quirks like sentinel codes (for <code>Clouclip</code>) and multiple modalities with gain normalization (for <code>VEET</code>). We showed how to detect and address irregular sampling, how to explicitly mark missing data gaps to avoid analytic pitfalls, and how to reduce data granularity via rounding or aggregation when appropriate. Throughout, we used functions from LightLogR in a tidyverse workflow, aiming to make the steps clear and modular. By saving the final cleaned datasets, we set the stage for the computation of visual experience metrics such as working distance, time in bright light, spectral composition ratios, as presented in the <a href="https://tscnlab.github.io/ZaunerEtAl_2025_JOV/">main tutorial</a>. We hope this detailed tutorial empowers researchers to adopt similar pipelines for their own data, facilitating reproducible and accurate analyses of visual experience.</p>
 </section>
-<section id="references" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<!-- -->
+
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Sah2025OphtalmicPhysiolOpt" class="csl-entry" role="listitem">
 Sah, Raman Prasad, Pavan Kalyan Narra, and Lisa A. Ostrin. 2025. <span>“A Novel Wearable Sensor for Objective Measurement of Distance and Illumination.”</span> <em>Ophthalmic and Physiological Optics</em> 00 (n/a): 1–13. https://doi.org/<a href="https://doi.org/10.1111/opo.13523">https://doi.org/10.1111/opo.13523</a>.
@@ -2791,6 +2840,57 @@ Zauner, J., S. Hartmeyer, and M. Spitschan. 2025. <span>“LightLogR: Reproducib
         container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
       clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
@@ -3125,7 +3225,438 @@ Zauner, J., S. Hartmeyer, and M. Spitschan. 2025. <span>“LightLogR: Reproducib
       }
     }
   });
-  </script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb34" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Supplement 1"</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Analysis of human visual experience data"</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co">  - name: "Johannes Zauner"</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co">    id: JZ</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co">    affiliation: </span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co">      - Technical University of Munich, Germany</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co">      - Max Planck Institute for Biological Cybernetics, Tübingen, Germany</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="co">    orcid: "0000-0003-2171-4566"</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="co">  - name: "Aaron Nicholls"</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="co">    affiliation: "Meta Reality Labs Research"</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="co">    orcid: "0009-0001-6683-6826"</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="co">  - name: "Lisa A. Ostrin"</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="co">    affiliation: "University of Houston, Texas, USA"</span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="co">    orcid: "0000-0001-8675-1478"</span></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="co">  - name: "Manuel Spitschan"</span></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="co">    affiliation: </span></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a><span class="co">      - Technical University of Munich, Germany</span></span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a><span class="co">      - Max Planck Institute for Biological Cybernetics, Tübingen, Germany</span></span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a><span class="co">      - Technical University of Munich Institute of advanced study (TUM-IAS), Munich, Germany</span></span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a><span class="co">    orcid: "0000-0002-8572-9268"</span></span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a><span class="co">    corresponding: true</span></span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a><span class="co">    email: manuel.spitschan@tum.de</span></span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a><span class="co">    include-in-header:</span></span>
+<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a><span class="co">      - text: |</span></span>
+<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a><span class="co">          &lt;style&gt;</span></span>
+<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a><span class="co">          .quarto-notebook .cell-container .cell-decorator {</span></span>
+<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a><span class="co">            display: none;</span></span>
+<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a><span class="co">          }</span></span>
+<span id="cb34-34"><a href="#cb34-34" aria-hidden="true" tabindex="-1"></a><span class="co">          &lt;/style&gt;</span></span>
+<span id="cb34-35"><a href="#cb34-35" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb34-36"><a href="#cb34-36" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb34-37"><a href="#cb34-37" aria-hidden="true" tabindex="-1"></a><span class="co">    html-math-method:</span></span>
+<span id="cb34-38"><a href="#cb34-38" aria-hidden="true" tabindex="-1"></a><span class="co">      method: mathjax</span></span>
+<span id="cb34-39"><a href="#cb34-39" aria-hidden="true" tabindex="-1"></a><span class="co">      url: "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML"</span></span>
+<span id="cb34-40"><a href="#cb34-40" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> references.bib</span></span>
+<span id="cb34-41"><a href="#cb34-41" aria-hidden="true" tabindex="-1"></a><span class="an">lightbox:</span><span class="co"> true</span></span>
+<span id="cb34-42"><a href="#cb34-42" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb34-43"><a href="#cb34-43" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
+<span id="cb34-44"><a href="#cb34-44" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb34-45"><a href="#cb34-45" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb34-46"><a href="#cb34-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-47"><a href="#cb34-47" aria-hidden="true" tabindex="-1"></a>::: {.callout-warning}</span>
+<span id="cb34-48"><a href="#cb34-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-49"><a href="#cb34-49" aria-hidden="true" tabindex="-1"></a>Please note that this supplement is not in its final styling form, as it necessarily has to be formatted as a <span class="in">`notebook`</span> to enable commenting. Current issues include:</span>
+<span id="cb34-50"><a href="#cb34-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-51"><a href="#cb34-51" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Cross-references not working (e.g. Figure labeling and referencing figures)</span>
+<span id="cb34-52"><a href="#cb34-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-53"><a href="#cb34-53" aria-hidden="true" tabindex="-1"></a>These issues will be resolved when all comments have been gathered and implemented</span>
+<span id="cb34-54"><a href="#cb34-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-55"><a href="#cb34-55" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb34-56"><a href="#cb34-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-57"><a href="#cb34-57" aria-hidden="true" tabindex="-1"></a><span class="fu">## Abstract {.unnumbered}</span></span>
+<span id="cb34-58"><a href="#cb34-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-59"><a href="#cb34-59" aria-hidden="true" tabindex="-1"></a>This supplementary document provides a detailed, step-by-step tutorial on importing and preprocessing raw data from two wearable devices: <span class="in">`Clouclip`</span> and <span class="in">`VEET`</span>. We describe the structure of the raw datasets recorded by each device and explain how to parse these data, specify time zones, handle special sentinel values, clean missing observations, regularize timestamps to fixed intervals, and aggregate data as needed. All original R code from the <span class="co">[</span><span class="ot">main tutorial</span><span class="co">](https://tscnlab.github.io/ZaunerEtAl_2025_JOV/)</span> is preserved here for transparency, with additional guidance intended for a broad research audience. We demonstrate how to detect gaps and irregular sampling, convert implicit missing periods into explicit missing values, and address device-specific quirks such as the <span class="in">`Clouclip`</span>’s use of sentinel codes for “sleep mode” and “out of range” readings. Special procedures for processing the <span class="in">`VEET`</span>’s rich spectral data (e.g. normalizing sensor counts and reconstructing full spectra from multiple sensor channels) are also outlined. Finally, we show how to save the cleaned datasets from both devices into a single R data file for downstream analysis. This comprehensive walkthrough is designed to ensure reproducibility and to assist researchers in understanding and adapting the data pipeline for their own visual experience datasets.</span>
+<span id="cb34-60"><a href="#cb34-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-61"><a href="#cb34-61" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
+<span id="cb34-62"><a href="#cb34-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-63"><a href="#cb34-63" aria-hidden="true" tabindex="-1"></a>Wearable sensors like the Clouclip and the Visual Environment Evaluation Tool (VEET) produce high-dimensional time-series data on viewing distance and light exposure. Proper handling of these raw data is essential before any analysis of visual experience metrics. In the <span class="co">[</span><span class="ot">main tutorial</span><span class="co">](https://tscnlab.github.io/ZaunerEtAl_2025_JOV/)</span>, we introduced an analysis pipeline using the open-source R package LightLogR <span class="co">[</span><span class="ot">@Zauner2025JOpenSourceSoftw</span><span class="co">]</span> to calculate various distance and light exposure metrics. Here, we present a full account of the data import and preparation steps as a supplement to the methods, with an emphasis on clarity for researchers who may be less familiar with data processing in R.</span>
+<span id="cb34-64"><a href="#cb34-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-65"><a href="#cb34-65" aria-hidden="true" tabindex="-1"></a>We use example datasets from a <span class="in">`Clouclip`</span> device <span class="co">[</span><span class="ot">@Wen2021ActaOphtalmol; @Wen2020bjophthalmol</span><span class="co">]</span> and from a <span class="in">`VEET`</span> device <span class="co">[</span><span class="ot">@Sah2025OphtalmicPhysiolOpt</span><span class="co">]</span> (both provided in the accompanying <span class="co">[</span><span class="ot">repository</span><span class="co">](https://github.com/tscnlab/ZaunerEtAl_2025_JOV)</span>). The <span class="in">`Clouclip`</span> is a glasses-mounted sensor that records working distance (distance from eyes to object, in cm) and ambient illuminance (in lux) at 5-second intervals. The <span class="in">`VEET`</span> is a head-mounted multi-modal sensor that logs ambient light and spectral information (along with other data like motion and distance via a depth sensor) - in this exemplary case at 2-second intervals. A single week of continuous data illustrates the contrast in complexity: approximately 1.6&nbsp;MB for the <span class="in">`Clouclip`</span>’s simple two-column output versus up to 270&nbsp;MB for the <span class="in">`VEET`</span>’s multi-channel output (due to its higher sampling rate and richer sensor modalities).</span>
+<span id="cb34-66"><a href="#cb34-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-67"><a href="#cb34-67" aria-hidden="true" tabindex="-1"></a>In the following sections, we detail how these raw data are structured and how to import and preprocess them using LightLogR. We cover device-specific considerations such as file format quirks and sensor range limitations, as well as general best practices like handling missing timestamps and normalizing sensor readings. All code blocks can be executed in R (with the required packages loaded) to reproduce the cleaning steps. The end result will be clean, regularized datasets (<span class="in">`dataCC`</span> for Clouclip, <span class="in">`dataVEET`</span> for VEET light data, and <span class="in">`dataVEET2`</span> for VEET spectral data) ready for calculating visual experience metrics. We conclude by saving these cleaned datasets into a single file for convenient reuse.</span>
+<span id="cb34-68"><a href="#cb34-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-69"><a href="#cb34-69" aria-hidden="true" tabindex="-1"></a><span class="fu">## `Clouclip` Data: Raw Structure and Import</span></span>
+<span id="cb34-70"><a href="#cb34-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-71"><a href="#cb34-71" aria-hidden="true" tabindex="-1"></a>The <span class="in">`Clouclip`</span> device exports its data as a text file (not a true Excel file despite sometimes using an .xls extension), which is actually tab-separated values. Each record corresponds to one timestamped observation (nominally every 5 seconds) and includes two measured variables: **distance** and **illuminance**. In the sample dataset (<span class="in">`Sample_Clouclip.csv`</span> provided), the columns are:</span>
+<span id="cb34-72"><a href="#cb34-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-73"><a href="#cb34-73" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`Date`</span> – the date and time of the observation (in the device’s local time, here one week in 2021).</span>
+<span id="cb34-74"><a href="#cb34-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-75"><a href="#cb34-75" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`Dis`</span> – the viewing distance in centimeters.</span>
+<span id="cb34-76"><a href="#cb34-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-77"><a href="#cb34-77" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`Lux`</span> – the ambient illuminance in lux.</span>
+<span id="cb34-78"><a href="#cb34-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-79"><a href="#cb34-79" aria-hidden="true" tabindex="-1"></a>For example, a raw data line might look like:</span>
+<span id="cb34-80"><a href="#cb34-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-81"><a href="#cb34-81" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb34-82"><a href="#cb34-82" aria-hidden="true" tabindex="-1"></a><span class="in">2021-07-01 08:00:00 45  320</span></span>
+<span id="cb34-83"><a href="#cb34-83" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-84"><a href="#cb34-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-85"><a href="#cb34-85" aria-hidden="true" tabindex="-1"></a>indicating that at *2021-07-01 08:00:00* local time, the device recorded a working distance of 45&nbsp;cm and illuminance of 320&nbsp;lx. The Clouclip uses special **sentinel values**[^1] in these measurement columns to denote certain device states. Specifically, a distance (`Dis`) value of **204** is a code meaning the object is *out of the sensor’s range*, and a value of **-1** in either `Dis` or `Lux` indicates the device was in *sleep mode* (not actively recording). During normal operation, distance measurements are limited by the device’s range, and illuminance readings are positive lux values. Any sentinel codes in the raw file need to be handled appropriately, as described below.</span>
+<span id="cb34-86"><a href="#cb34-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-87"><a href="#cb34-87" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>A *sentinel value* is a special placeholder value used in data recording to signal a particular condition. It does not represent a valid measured quantity but rather acts as a marker (for example, “device off” or “value out of range”).</span>
+<span id="cb34-88"><a href="#cb34-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-89"><a href="#cb34-89" aria-hidden="true" tabindex="-1"></a>We will use LightLogR’s built-in import function for <span class="in">`Clouclip`</span>, which automatically reads the file, parses the timestamps, and converts sentinel codes into a separate status annotation. To begin, we load the necessary libraries and import the raw <span class="in">`Clouclip`</span> dataset:</span>
+<span id="cb34-90"><a href="#cb34-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-93"><a href="#cb34-93" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-94"><a href="#cb34-94" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: setup</span></span>
+<span id="cb34-95"><a href="#cb34-95" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
+<span id="cb34-96"><a href="#cb34-96" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required packages</span></span>
+<span id="cb34-97"><a href="#cb34-97" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb34-98"><a href="#cb34-98" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(LightLogR)</span>
+<span id="cb34-99"><a href="#cb34-99" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb34-100"><a href="#cb34-100" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(downlit) <span class="co">#not used, but important for code-linking feature</span></span>
+<span id="cb34-101"><a href="#cb34-101" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-102"><a href="#cb34-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-105"><a href="#cb34-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-106"><a href="#cb34-106" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-importCC</span></span>
+<span id="cb34-107"><a href="#cb34-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Overview plot of imported Clouclip data"</span></span>
+<span id="cb34-108"><a href="#cb34-108" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 2</span></span>
+<span id="cb34-109"><a href="#cb34-109" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 6</span></span>
+<span id="cb34-110"><a href="#cb34-110" aria-hidden="true" tabindex="-1"></a><span class="co"># Define file path and time zone</span></span>
+<span id="cb34-111"><a href="#cb34-111" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">"data/Sample_Clouclip.csv"</span></span>
+<span id="cb34-112"><a href="#cb34-112" aria-hidden="true" tabindex="-1"></a>tz   <span class="ot">&lt;-</span> <span class="st">"US/Central"</span>   <span class="co"># Time zone in which device was recording (e.g., US Central Time)</span></span>
+<span id="cb34-113"><a href="#cb34-113" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Clouclip data</span></span>
+<span id="cb34-114"><a href="#cb34-114" aria-hidden="true" tabindex="-1"></a>dataCC <span class="ot">&lt;-</span> import<span class="sc">$</span><span class="fu">Clouclip</span>(path, <span class="at">tz =</span> tz, <span class="at">manual.id =</span> <span class="st">"Clouclip"</span>)</span>
+<span id="cb34-115"><a href="#cb34-115" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-116"><a href="#cb34-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-117"><a href="#cb34-117" aria-hidden="true" tabindex="-1"></a>In this code, <span class="in">`import$Clouclip()`</span> reads the tab-delimited file and returns a **tibble**<span class="ot">[^2]</span> (saved in the variable <span class="in">`dataCC`</span>) containing the data. We specify&nbsp;<span class="in">`tz = "US/Central"`</span>&nbsp;because the device’s clock was set to U.S. Central time; this ensures that the&nbsp;<span class="in">`Datetime`</span>values are properly interpreted with the correct time zone. The argument&nbsp;<span class="in">`manual.id = "Clouclip"`</span>&nbsp;simply tags the dataset with an identifier (useful if combining data from multiple devices).</span>
+<span id="cb34-118"><a href="#cb34-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-119"><a href="#cb34-119" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>**tibble** are data.tables with tweaked behavior, ideal for a tidy analysis workflow. For more information, visit the documentation page for <span class="co">[</span><span class="ot">tibbles</span><span class="co">](https://tibble.tidyverse.org/index.html)</span></span>
+<span id="cb34-120"><a href="#cb34-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-121"><a href="#cb34-121" aria-hidden="true" tabindex="-1"></a>During import, LightLogR automatically handles the <span class="in">`Clouclip`</span>’s sentinel codes. The&nbsp;<span class="in">`Date`</span>&nbsp;column from the raw file is parsed into a POSIX date-time (<span class="in">`Datetime`</span>) with the specified time zone. The&nbsp;<span class="in">`Lux`</span>&nbsp;and&nbsp;<span class="in">`Dis`</span>&nbsp;columns are read as numeric, but any occurrences of&nbsp;**-1**&nbsp;or&nbsp;**204**&nbsp;are treated specially: these are replaced with&nbsp;<span class="in">`NA`</span>&nbsp;(missing values) in the numeric columns, and corresponding status columns&nbsp;<span class="in">`Lux_status`</span>&nbsp;and&nbsp;<span class="in">`Dis_status`</span>&nbsp;are created to indicate the reason for those <span class="in">`NA`</span> values. For example, if a&nbsp;<span class="in">`Dis`</span>&nbsp;value of 204 was encountered, that row’s&nbsp;<span class="in">`Dis`</span>&nbsp;will be set to NA and&nbsp;<span class="in">`Dis_status`</span>&nbsp;will contain&nbsp;<span class="in">`"out_of_range"`</span>; if&nbsp;<span class="in">`Lux`</span>&nbsp;or&nbsp;<span class="in">`Dis`</span>&nbsp;was -1, the status is&nbsp;<span class="in">`"sleep_mode"`</span>. We will set all other readings to &nbsp;<span class="in">`"operational"`</span> (meaning the device was functioning normally at that time) for visualisation purposes.</span>
+<span id="cb34-122"><a href="#cb34-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-123"><a href="#cb34-123" aria-hidden="true" tabindex="-1"></a>After import, it is good practice to get an overview of the data. The import function by default prints a brief summary (and generates an overview plot of the timeline) showing the number of observations, the time span, and any irregularities or large gaps. In our case, the <span class="in">`Clouclip`</span> summary indicates the data spans one week and reveals that there are&nbsp;**irregular intervals**&nbsp;in the timestamps. This means some observations do not occur exactly every 5 seconds as expected. We can programmatically check for irregular timing:</span>
+<span id="cb34-124"><a href="#cb34-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-127"><a href="#cb34-127" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-128"><a href="#cb34-128" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if data are on a perfectly regular 5-second schedule</span></span>
+<span id="cb34-129"><a href="#cb34-129" aria-hidden="true" tabindex="-1"></a>dataCC <span class="sc">|&gt;</span> <span class="fu">has_irregulars</span>()</span>
+<span id="cb34-130"><a href="#cb34-130" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-131"><a href="#cb34-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-132"><a href="#cb34-132" aria-hidden="true" tabindex="-1"></a>If the result is&nbsp;<span class="in">`TRUE`</span>, it confirms that the time sequence has deviations from the 5-second interval. Indeed, our example dataset has many small timing irregularities and gaps (periods with no data). Understanding the pattern of these missing or irregular readings is important. We can visualize them using a gap plot:</span>
+<span id="cb34-133"><a href="#cb34-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-136"><a href="#cb34-136" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-137"><a href="#cb34-137" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-irregular</span></span>
+<span id="cb34-138"><a href="#cb34-138" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 12</span></span>
+<span id="cb34-139"><a href="#cb34-139" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb34-140"><a href="#cb34-140" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Visualization of gaps and irregular data. Black traces show available data. Red shaded areas show times of missing data. Red dots show instances where observations occur off the regular interval from start to finish, i.e., irregular data."</span></span>
+<span id="cb34-141"><a href="#cb34-141" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot gaps and irregular timestamps for Clouclip data</span></span>
+<span id="cb34-142"><a href="#cb34-142" aria-hidden="true" tabindex="-1"></a>y.label <span class="ot">&lt;-</span> <span class="st">"Distance (cm)"</span></span>
+<span id="cb34-143"><a href="#cb34-143" aria-hidden="true" tabindex="-1"></a>dataCC <span class="sc">|&gt;</span> <span class="fu">gg_gaps</span>(Dis, </span>
+<span id="cb34-144"><a href="#cb34-144" aria-hidden="true" tabindex="-1"></a>                  <span class="at">include.implicit.gaps =</span> <span class="cn">FALSE</span>,  <span class="co"># only show recorded gaps, not every missing point</span></span>
+<span id="cb34-145"><a href="#cb34-145" aria-hidden="true" tabindex="-1"></a>                  <span class="at">show.irregulars =</span> <span class="cn">TRUE</span>,         <span class="co"># highlight irregular timing</span></span>
+<span id="cb34-146"><a href="#cb34-146" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y.axis.label =</span> y.label,</span>
+<span id="cb34-147"><a href="#cb34-147" aria-hidden="true" tabindex="-1"></a>                  <span class="at">group.by.days =</span> <span class="cn">TRUE</span>, <span class="at">col.irregular =</span> <span class="fu">alpha</span>(<span class="st">"red"</span>, <span class="fl">0.03</span>)</span>
+<span id="cb34-148"><a href="#cb34-148" aria-hidden="true" tabindex="-1"></a>                  ) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="cn">NULL</span>)</span>
+<span id="cb34-149"><a href="#cb34-149" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-150"><a href="#cb34-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-151"><a href="#cb34-151" aria-hidden="true" tabindex="-1"></a>In @fig-irregular, time periods where data are missing appear as red-shaded areas, and any off-schedule observation times are marked with red dots. The <span class="in">`Clouclip`</span> example shows extensive gaps (red blocks) on certain days and irregular timing on all days except the first and last. These irregular timestamps likely arise from the device’s logging process (e.g. slight clock drift or buffering when the device was turned on/off). Such issues must be addressed before further analysis.</span>
+<span id="cb34-152"><a href="#cb34-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-153"><a href="#cb34-153" aria-hidden="true" tabindex="-1"></a>When faced with irregular or gapped data, LightLogR recommends a few strategies:</span>
+<span id="cb34-154"><a href="#cb34-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-155"><a href="#cb34-155" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>*Remove leading/trailing segments that cause irregularity.*&nbsp;For example, if only the first day is regular and subsequent days drift, one might exclude the problematic portion using date filters (see&nbsp;<span class="co">[</span><span class="ot">filter_Date() / filter_Datetime()</span><span class="co">](https://tscnlab.github.io/LightLogR/reference/filter_Datetime.html)</span>&nbsp;in LightLogR).</span>
+<span id="cb34-156"><a href="#cb34-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-157"><a href="#cb34-157" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>*Round timestamps to the nearest regular interval.*&nbsp;This can snap slightly off-schedule times back to the 5-second grid (using&nbsp;<span class="co">[</span><span class="ot">cut_Datetime()</span><span class="co">](https://tscnlab.github.io/LightLogR/reference/cut_Datetime.html)</span>&nbsp;with a 5-second interval), provided the deviations are small and this rounding won’t create duplicate timestamps.</span>
+<span id="cb34-158"><a href="#cb34-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-159"><a href="#cb34-159" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>*Aggregate to a coarser time interval.*&nbsp;For instance, grouping data into 1-minute bins with&nbsp;<span class="co">[</span><span class="ot">aggregate_Datetime()</span><span class="co">](https://tscnlab.github.io/LightLogR/reference/aggregate_Datetime.html)</span> can mask irregularities at finer scales, at the cost of some temporal resolution.</span>
+<span id="cb34-160"><a href="#cb34-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-161"><a href="#cb34-161" aria-hidden="true" tabindex="-1"></a>In this case, the deviations from the 5-second schedule are relatively minor. We choose to&nbsp;**round the timestamps to the nearest 5 seconds**&nbsp;to enforce a uniform sampling grid, which simplifies downstream gap handling. We further add a separate date column for convenience:</span>
+<span id="cb34-162"><a href="#cb34-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-165"><a href="#cb34-165" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-166"><a href="#cb34-166" aria-hidden="true" tabindex="-1"></a><span class="co"># Regularize timestamps by rounding to nearest 5-second interval</span></span>
+<span id="cb34-167"><a href="#cb34-167" aria-hidden="true" tabindex="-1"></a>dataCC <span class="ot">&lt;-</span> dataCC <span class="sc">|&gt;</span></span>
+<span id="cb34-168"><a href="#cb34-168" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cut_Datetime</span>(<span class="st">"5 secs"</span>, <span class="at">New.colname =</span> Datetime) <span class="sc">|&gt;</span>  <span class="co"># round times to 5-second bins</span></span>
+<span id="cb34-169"><a href="#cb34-169" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_Date_col</span>(<span class="at">group.by =</span> <span class="cn">TRUE</span>)                     <span class="co"># add a Date column for grouping by day</span></span>
+<span id="cb34-170"><a href="#cb34-170" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-171"><a href="#cb34-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-172"><a href="#cb34-172" aria-hidden="true" tabindex="-1"></a>After this operation, all&nbsp;<span class="in">`Datetime`</span>&nbsp;entries in&nbsp;<span class="in">`dataCC`</span>&nbsp;align perfectly on 5-second boundaries (e.g.&nbsp;**08:00:00**,&nbsp;**08:00:05**,&nbsp;**08:00:10**, etc.). We can verify that no irregular intervals remain by re-running&nbsp;`has_irregulars()`&nbsp;(it now returns&nbsp;`FALSE`). Next, we want to quantify the missing data. LightLogR distinguishes between&nbsp;**explicit missing values**&nbsp;(actual&nbsp;`NA`s in the data, possibly from sentinel replacements or gaps we have filled in) and&nbsp;**implicit missing intervals**&nbsp;(time points where the device&nbsp;*should*&nbsp;have a reading but none was recorded, and we have not yet filled them in). Initially, many gaps are still implicit (between the first and last timestamp of each day). We can generate a gap summary table:</span>
+<span id="cb34-173"><a href="#cb34-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-176"><a href="#cb34-176" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-177"><a href="#cb34-177" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-gaps</span></span>
+<span id="cb34-178"><a href="#cb34-178" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Summary of missing and observed data for the Clouclip device"</span></span>
+<span id="cb34-179"><a href="#cb34-179" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize observed vs missing data by day for distance</span></span>
+<span id="cb34-180"><a href="#cb34-180" aria-hidden="true" tabindex="-1"></a>dataCC <span class="sc">|&gt;</span> <span class="fu">gap_table</span>(Dis, <span class="at">Variable.label =</span> <span class="st">"Distance (cm)"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb34-181"><a href="#cb34-181" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_hide</span>(<span class="fu">contains</span>(<span class="st">"_n"</span>))   <span class="co"># hide absolute counts for brevity in output</span></span>
+<span id="cb34-182"><a href="#cb34-182" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-183"><a href="#cb34-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-184"><a href="#cb34-184" aria-hidden="true" tabindex="-1"></a>This summary (@tbl-gaps) breaks down, for each day, how much data is present vs. missing. It reports the total duration of recorded data and the duration of gaps. After rounding the times, there are no irregular timestamp issues, but we see substantial **implicit gaps** — periods where the device was not recording (e.g., overnight when the device was likely not worn or was in sleep mode). Notably, the first and last days of the week have very little data (less than 1 hour each), since they probably represent partial recording days (the device was put on and removed on those days).</span>
+<span id="cb34-185"><a href="#cb34-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-186"><a href="#cb34-186" aria-hidden="true" tabindex="-1"></a>To prepare the dataset for analysis, we will convert all those implicit gaps into explicit missing entries, and remove days that are mostly incomplete. Converting implicit gaps means inserting rows with <span class="in">`NA`</span> for each missing 5-second slot, so that the time series becomes continuous and explicit about missingness. We use <span class="in">`gap_handler()`</span> for this, and then drop the nearly-empty days:</span>
+<span id="cb34-187"><a href="#cb34-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-190"><a href="#cb34-190" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-191"><a href="#cb34-191" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert implicit gaps to explicit NA gaps, and drop days with &lt;1 hour of data</span></span>
+<span id="cb34-192"><a href="#cb34-192" aria-hidden="true" tabindex="-1"></a>dataCC <span class="ot">&lt;-</span> dataCC <span class="sc">|&gt;</span> </span>
+<span id="cb34-193"><a href="#cb34-193" aria-hidden="true" tabindex="-1"></a>  <span class="co"># First ensure that status columns have an "operational" tag for non-missing periods:</span></span>
+<span id="cb34-194"><a href="#cb34-194" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(Lux_status, Dis_status), <span class="sc">~</span> <span class="fu">replace_na</span>(.x, <span class="st">"operational"</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb34-195"><a href="#cb34-195" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fill in all implicit gaps with explicit NA rows (for full days range):</span></span>
+<span id="cb34-196"><a href="#cb34-196" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gap_handler</span>(<span class="at">full.days =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span>  </span>
+<span id="cb34-197"><a href="#cb34-197" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove any day that has less than 1 hour of recorded data</span></span>
+<span id="cb34-198"><a href="#cb34-198" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_partial_data</span>(Dis, <span class="at">threshold.missing =</span> <span class="st">"23 hours"</span>)</span>
+<span id="cb34-199"><a href="#cb34-199" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-200"><a href="#cb34-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-201"><a href="#cb34-201" aria-hidden="true" tabindex="-1"></a>After these steps,&nbsp;<span class="in">`dataCC`</span>&nbsp;contains continuous 5-second timestamps for each day that remains. We chose a threshold of “23 hours” missing to remove days with <span class="sc">\&lt;</span>1 hour of data, which in this dataset removes the first and last (partial) days. The cleaned <span class="in">`Clouclip`</span> data now covers six full days with bouts of continuous wear.</span>
+<span id="cb34-202"><a href="#cb34-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-203"><a href="#cb34-203" aria-hidden="true" tabindex="-1"></a>It is often helpful to double-check how the sentinel values and missing data are distributed over time. We can visualize the distance time-series with status annotations and day/night periods:</span>
+<span id="cb34-204"><a href="#cb34-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-207"><a href="#cb34-207" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-208"><a href="#cb34-208" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 8</span></span>
+<span id="cb34-209"><a href="#cb34-209" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb34-210"><a href="#cb34-210" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-state</span></span>
+<span id="cb34-211"><a href="#cb34-211" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Distance measurements across days. Blue, grey and yellow-colored areas show sentinel states of the device. Blue indicates an operational status, grey sleep mode (not recording), and yellow an out of range measurement. Red boxed areas show nighttime from civil dusk until dawn, which are calculated based on the recording date and geographic coordinates"</span></span>
+<span id="cb34-212"><a href="#cb34-212" aria-hidden="true" tabindex="-1"></a><span class="co">#setting coordinates for Houston, Texas</span></span>
+<span id="cb34-213"><a href="#cb34-213" aria-hidden="true" tabindex="-1"></a>coordinates <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">29.75</span>, <span class="sc">-</span><span class="fl">95.36</span>)</span>
+<span id="cb34-214"><a href="#cb34-214" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize observations</span></span>
+<span id="cb34-215"><a href="#cb34-215" aria-hidden="true" tabindex="-1"></a>dataCC <span class="sc">|&gt;</span> </span>
+<span id="cb34-216"><a href="#cb34-216" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span>(<span class="fu">c</span>(Lux_status, Dis_status), <span class="at">.direction =</span> <span class="st">"downup"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb34-217"><a href="#cb34-217" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gg_day</span>(<span class="at">y.axis =</span> Dis, <span class="at">geom =</span> <span class="st">"line"</span>, <span class="at">y.axis.label =</span> y.label) <span class="sc">|&gt;</span> <span class="co">#create a basic plot</span></span>
+<span id="cb34-218"><a href="#cb34-218" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gg_state</span>(Dis_status, <span class="at">aes_fill =</span> Dis_status) <span class="sc">|&gt;</span> <span class="co">#add the status times</span></span>
+<span id="cb34-219"><a href="#cb34-219" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gg_photoperiod</span>(coordinates, <span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="at">col =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="co">#add the photoperiod (day/night)</span></span>
+<span id="cb34-220"><a href="#cb34-220" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
+<span id="cb34-221"><a href="#cb34-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-222"><a href="#cb34-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-223"><a href="#cb34-223" aria-hidden="true" tabindex="-1"></a>In this plot, blue segments indicate times when the Clouclip was&nbsp;*operational*&nbsp;(actively measuring), grey segments indicate the device in&nbsp;*sleep mode*&nbsp;(no recording, typically at night), and yellow segments indicate&nbsp;*out-of-range*&nbsp;distance readings. The red outlined regions show nighttime (from civil dusk to dawn) based on the given latitude/longitude and dates. As expected, most of the grey “sleep” periods align with night hours, and we see a few yellow spans when the user’s viewing distance exceeded the device’s range (e.g. presumably when no object was within 100&nbsp;cm, such as when the user looked into the distance). At this stage, the Clouclip dataset&nbsp;<span class="in">`dataCC`</span>&nbsp;is fully preprocessed: all timestamps are regular 5-second intervals, missing data are explicitly marked, extraneous partial days are removed, and sentinel codes are handled via the status columns. The data are ready for calculating daily distance and light exposure metrics (as done in the <span class="co">[</span><span class="ot">main tutorial</span><span class="co">](https://tscnlab.github.io/ZaunerEtAl_2025_JOV/)</span>’s Results).</span>
+<span id="cb34-224"><a href="#cb34-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-225"><a href="#cb34-225" aria-hidden="true" tabindex="-1"></a><span class="fu">## `VEET` Data: Ambient Light (Illuminance) Processing</span></span>
+<span id="cb34-226"><a href="#cb34-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-227"><a href="#cb34-227" aria-hidden="true" tabindex="-1"></a>The&nbsp;**VEET**&nbsp;device [@Sah2025OphtalmicPhysiolOpt] is a more complex logger that records multiple data modalities in one combined file. Its raw data file contains interleaved records for different sensor types, distinguished by a “modality” field. We focus first on the ambient light sensor modality (abbreviated&nbsp;**ALS**), which provides broad-spectrum illuminance readings (lux) and related information like sensor gains and flicker, recorded every 2 seconds. Later we will import the spectral sensor modality (**PHO**) for spectral irradiance data.</span>
+<span id="cb34-228"><a href="#cb34-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-229"><a href="#cb34-229" aria-hidden="true" tabindex="-1"></a>In the <span class="in">`VEET`</span>’s export file, each line includes a timestamp and a modality code, followed by fields specific to that modality. Importantly, this means that the <span class="in">`VEET`</span> export is not rectangular, i.e., tabular. This makes it challenging for many import functions that expect the equal number of columns in every row, which is not the case in this instance. For the&nbsp;**ALS modality**, the relevant columns include a high-resolution timestamp (in Unix epoch format), integration time, UV/VIS/IR sensor gain settings, raw UV/VIS/IR sensor counts, a flicker measurement, and the computed illuminance in lux. For example, the ALS data columns are named:&nbsp;<span class="in">`time_stamp`</span>,&nbsp;<span class="in">`integration_time`</span>,&nbsp;<span class="in">`uvGain`</span>,&nbsp;<span class="in">`visGain`</span>,&nbsp;<span class="in">`irGain`</span>,&nbsp;<span class="in">`uvValue`</span>,&nbsp;<span class="in">`visValue`</span>,&nbsp;<span class="in">`irValue`</span>,&nbsp;<span class="in">`Flicker`</span>, and&nbsp;<span class="in">`Lux`</span>.</span>
+<span id="cb34-230"><a href="#cb34-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-231"><a href="#cb34-231" aria-hidden="true" tabindex="-1"></a>For the&nbsp;**PHO (spectral) modality**, the columns include a timestamp, integration time, a general&nbsp;<span class="in">`Gain`</span>&nbsp;factor, and nine sensor channel readings covering different wavelengths (with names like&nbsp;<span class="in">`s415, s445, ..., s680, s940`</span>) as well as a&nbsp;<span class="in">`Dark`</span>&nbsp;channel and two broadband channels&nbsp;<span class="in">`ClearL`</span>&nbsp;and&nbsp;<span class="in">`ClearR`</span>. In essence, the <span class="in">`VEET`</span>’s spectral sensor captures light in several wavelength bands (from \~415&nbsp;nm up to 940&nbsp;nm, plus an infrared and two “clear” channels) rather than outputting a single lux value like the ambient light sensor does (*PHO*).</span>
+<span id="cb34-232"><a href="#cb34-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-233"><a href="#cb34-233" aria-hidden="true" tabindex="-1"></a>To import the <span class="in">`VEET`</span> ambient light data, we again use the LightLogR import function, specifying the <span class="in">`ALS`</span> modality. The raw VEET data in our example is provided as a zip file (<span class="in">`01_VEET_L.csv.zip`</span>) containing the logged data for one week. We do the following:</span>
+<span id="cb34-234"><a href="#cb34-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-237"><a href="#cb34-237" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-238"><a href="#cb34-238" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-VEET-overview</span></span>
+<span id="cb34-239"><a href="#cb34-239" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Overview plot of imported VEET data"</span></span>
+<span id="cb34-240"><a href="#cb34-240" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 2</span></span>
+<span id="cb34-241"><a href="#cb34-241" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 6</span></span>
+<span id="cb34-242"><a href="#cb34-242" aria-hidden="true" tabindex="-1"></a><span class="co"># Import VEET Ambient Light Sensor (ALS) data</span></span>
+<span id="cb34-243"><a href="#cb34-243" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">"data/01_VEET_L.csv.zip"</span></span>
+<span id="cb34-244"><a href="#cb34-244" aria-hidden="true" tabindex="-1"></a>tz   <span class="ot">&lt;-</span> <span class="st">"US/Central"</span>    <span class="co"># assuming device clock was set to US Central, for consistency</span></span>
+<span id="cb34-245"><a href="#cb34-245" aria-hidden="true" tabindex="-1"></a>dataVEET <span class="ot">&lt;-</span> import<span class="sc">$</span><span class="fu">VEET</span>(path, <span class="at">tz =</span> tz, <span class="at">modality =</span> <span class="st">"ALS"</span>, <span class="at">manual.id =</span> <span class="st">"VEET"</span>)</span>
+<span id="cb34-246"><a href="#cb34-246" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-247"><a href="#cb34-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-248"><a href="#cb34-248" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb34-249"><a href="#cb34-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-250"><a href="#cb34-250" aria-hidden="true" tabindex="-1"></a>We get one warning as a single time stamp could not be parsed into a datetime - with \~300k observations, this is not an issue.</span>
+<span id="cb34-251"><a href="#cb34-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-252"><a href="#cb34-252" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb34-253"><a href="#cb34-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-254"><a href="#cb34-254" aria-hidden="true" tabindex="-1"></a>This call reads in only the lines corresponding to the <span class="in">`ALS`</span> modality from the <span class="in">`VEET`</span> file. The result&nbsp;<span class="in">`dataVEET`</span>&nbsp;is a tibble<span class="ot">[^3]</span> with columns such as&nbsp;<span class="in">`Datetime`</span>&nbsp;(parsed from the&nbsp;<span class="in">`time_stamp`</span>&nbsp;epoch to POSIXct in US/Central time),&nbsp;<span class="in">`Lux`</span>&nbsp;(illuminance in lux),&nbsp;<span class="in">`Flicker`</span>, and the various sensor gains/values. Unneeded columns like the modality code or file name are also included but can be ignored or removed. After import, LightLogR again provides an overview of the data. We learn that the <span class="in">`VEET`</span> light data, like the <span class="in">`Clouclip`</span>, also exhibits irregularities and gaps. (The device nominally records every 2 seconds, but timing may drift or pause when not worn.)</span>
+<span id="cb34-255"><a href="#cb34-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-256"><a href="#cb34-256" aria-hidden="true" tabindex="-1"></a><span class="ot">[^3]: </span>**tibble** are data.tables with tweaked behavior, ideal for a tidy analysis workflow. For more information, visit the documentation page for <span class="co">[</span><span class="ot">tibbles</span><span class="co">](https://tibble.tidyverse.org/index.html)</span></span>
+<span id="cb34-257"><a href="#cb34-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-258"><a href="#cb34-258" aria-hidden="true" tabindex="-1"></a>To make the VEET light data comparable to the Clouclip’s and to simplify analysis, we choose to&nbsp;**aggregate the VEET illuminance data to 5-second intervals**. This slight downsampling will both reduce data volume and help align with the Clouclip’s timeline for any combined analysis. Before aggregation, we will also explicitly mark gaps in the VEET data so that missing intervals are not overlooked.</span>
+<span id="cb34-259"><a href="#cb34-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-262"><a href="#cb34-262" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-263"><a href="#cb34-263" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate VEET light data to 5-second intervals and mark gaps</span></span>
+<span id="cb34-264"><a href="#cb34-264" aria-hidden="true" tabindex="-1"></a>dataVEET <span class="ot">&lt;-</span> dataVEET <span class="sc">|&gt;</span></span>
+<span id="cb34-265"><a href="#cb34-265" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aggregate_Datetime</span>(<span class="at">unit =</span> <span class="st">"5 seconds"</span>) <span class="sc">|&gt;</span>  <span class="co"># resample to 5-sec bins (e.g. average Lux over 2-sec readings)</span></span>
+<span id="cb34-266"><a href="#cb34-266" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gap_handler</span>(<span class="at">full.days =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span>          <span class="co"># fill in implicit gaps with NA rows</span></span>
+<span id="cb34-267"><a href="#cb34-267" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_Date_col</span>(<span class="at">group.by =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span>          <span class="co"># add Date column for daily grouping</span></span>
+<span id="cb34-268"><a href="#cb34-268" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_partial_data</span>(Lux, <span class="at">threshold.missing =</span> <span class="st">"1 hour"</span>)</span>
+<span id="cb34-269"><a href="#cb34-269" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-270"><a href="#cb34-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-271"><a href="#cb34-271" aria-hidden="true" tabindex="-1"></a>First, <span class="in">`aggregate_Datetime(unit = "5 seconds")`</span> combines the high-frequency 2-second observations into 5-second slots. By default, this function will average numeric columns like&nbsp;<span class="in">`Lux`</span>&nbsp;over each 5-second period (and handle counts or categorical appropriately). All of these *data type handlers* can be changed with the function call. The result is that&nbsp;<span class="in">`dataVEET`</span>&nbsp;now has a reading every 5 seconds (or an NA if none were present in that window). Next,&nbsp;<span class="in">`gap_handler(full.days = TRUE)`</span>&nbsp;inserts explicit NA entries for any 5-second timestamp that had no data within the continuous span of the recording. Then we add a&nbsp;<span class="in">`Date`</span>&nbsp;column for grouping, and finally we remove days with more than 1 hour of missing data (using a more strict criterion as we did for <span class="in">`Clouclip`</span>). According to the gap summary (@tbl-gaps2), this leaves six full days of <span class="in">`VEET`</span> light data with good coverage, after dropping the very incomplete start/end days.</span>
+<span id="cb34-272"><a href="#cb34-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-273"><a href="#cb34-273" aria-hidden="true" tabindex="-1"></a>We can inspect the missing-data summary for the <span class="in">`VEET`</span> illuminance data:</span>
+<span id="cb34-274"><a href="#cb34-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-277"><a href="#cb34-277" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-278"><a href="#cb34-278" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-gaps2</span></span>
+<span id="cb34-279"><a href="#cb34-279" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Summary of missing and observed data for the VEET device"</span></span>
+<span id="cb34-280"><a href="#cb34-280" aria-hidden="true" tabindex="-1"></a>dataVEET <span class="sc">|&gt;</span> <span class="fu">gap_table</span>(Lux, <span class="st">"Illuminance (lx)"</span>) <span class="sc">|&gt;</span>   </span>
+<span id="cb34-281"><a href="#cb34-281" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_hide</span>(<span class="fu">contains</span>(<span class="st">"_n"</span>)) <span class="co">#remove the absolute number of data points</span></span>
+<span id="cb34-282"><a href="#cb34-282" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-283"><a href="#cb34-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-284"><a href="#cb34-284" aria-hidden="true" tabindex="-1"></a>@tbl-gaps2 shows, for each retained day, the total recorded duration and the duration of gaps. The <span class="in">`VEET`</span> device, like the <span class="in">`Clouclip`</span>, was not worn continuously 24&nbsp;hours per day, so there are nightly gaps of wear time (when the device was likely off the participant), but not of recordings. After our preprocessing, any implicit gaps are represented as explicit missing intervals. The <span class="in">`VEET`</span>’s time sampling was originally more frequent, but by aggregating to 5&nbsp;s we have ensured a uniform timeline akin to the <span class="in">`Clouclip`</span>’s.</span>
+<span id="cb34-285"><a href="#cb34-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-286"><a href="#cb34-286" aria-hidden="true" tabindex="-1"></a>At this point, the&nbsp;<span class="in">`dataVEET`</span>&nbsp;object (for illuminance) is cleaned and ready for computing light exposure metrics. For example, one could calculate daily mean illuminance or the duration spent above certain light thresholds (e.g. “outdoor light exposure” defined as <span class="sc">\&gt;</span>1000&nbsp;lx) using this dataset. Indeed, basic summary tables in the <span class="co">[</span><span class="ot">main tutorial</span><span class="co">](https://tscnlab.github.io/ZaunerEtAl_2025_JOV/)</span> illustrate the highly skewed nature of light exposure data and the calculation of outdoor light metrics. We will not repeat those metric calculations here in the supplement, as our focus is on data preprocessing; however, having a cleaned, gap-marked time series is crucial for those metrics to be accurate.</span>
+<span id="cb34-287"><a href="#cb34-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-288"><a href="#cb34-288" aria-hidden="true" tabindex="-1"></a><span class="fu">## `VEET` Data: Spectral Data Processing</span></span>
+<span id="cb34-289"><a href="#cb34-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-290"><a href="#cb34-290" aria-hidden="true" tabindex="-1"></a><span class="fu">### Import</span></span>
+<span id="cb34-291"><a href="#cb34-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-292"><a href="#cb34-292" aria-hidden="true" tabindex="-1"></a>In addition to broad-band illuminance, the <span class="in">`VEET`</span> provides&nbsp;**spectral sensor data**&nbsp;through its <span class="in">`PHO`</span> modality. Unlike illuminance, the spectral data are not directly given as directly interpretable radiometric metrics but rather as raw sensor counts across multiple wavelength channels, which require conversion to reconstruct a spectral power distribution. In our analysis, spectral data allow us to compute metrics like the relative contribution of short-wavelength (blue) light versus long-wavelength light in the participant’s environment. Processing this spectral data involves several necessary steps.</span>
+<span id="cb34-293"><a href="#cb34-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-294"><a href="#cb34-294" aria-hidden="true" tabindex="-1"></a>First, we import the spectral modality from a second <span class="in">`VEET`</span> file. This device used the latest software version to allow for the best spectral reconstruction. This time we need to extract the lines marked as <span class="in">`PHO`</span>. We will store the spectral dataset in a separate object&nbsp;<span class="in">`dataVEET2`</span>&nbsp;so as not to overwrite the&nbsp;<span class="in">`dataVEET`</span>&nbsp;illuminance data in our R session:</span>
+<span id="cb34-295"><a href="#cb34-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-298"><a href="#cb34-298" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-299"><a href="#cb34-299" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-VEET-overview2</span></span>
+<span id="cb34-300"><a href="#cb34-300" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Overview plot of imported VEET data"</span></span>
+<span id="cb34-301"><a href="#cb34-301" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 2</span></span>
+<span id="cb34-302"><a href="#cb34-302" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 6</span></span>
+<span id="cb34-303"><a href="#cb34-303" aria-hidden="true" tabindex="-1"></a><span class="co"># Import VEET Spectral Sensor (PHO) data</span></span>
+<span id="cb34-304"><a href="#cb34-304" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">"data/02_VEET_L.csv.zip"</span></span>
+<span id="cb34-305"><a href="#cb34-305" aria-hidden="true" tabindex="-1"></a><span class="co">#if a version of LightLogR ≤ 0.9.2 is used, this script needs to be imported, as the device data was collected with a newer firmware version that changes the output format.</span></span>
+<span id="cb34-306"><a href="#cb34-306" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"scripts/VEET_import.R"</span>)</span>
+<span id="cb34-307"><a href="#cb34-307" aria-hidden="true" tabindex="-1"></a>dataVEET2 <span class="ot">&lt;-</span> import<span class="sc">$</span><span class="fu">VEET</span>(path, <span class="at">tz =</span> tz, <span class="at">modality =</span> <span class="st">"PHO"</span>, <span class="at">manual.id =</span> <span class="st">"VEET"</span>)</span>
+<span id="cb34-308"><a href="#cb34-308" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-309"><a href="#cb34-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-310"><a href="#cb34-310" aria-hidden="true" tabindex="-1"></a>After import,&nbsp;<span class="in">`dataVEET2`</span>&nbsp;contains columns for the timestamp (<span class="in">`Datetime`</span>),&nbsp;<span class="in">`Gain`</span>&nbsp;(the sensor gain setting), and the nine spectral sensor channels plus a clear channel. These appear as numeric columns named&nbsp;<span class="in">`s415, s445, ..., s940, Dark, Clear`</span>. The spectral sensor was logging at a 2-second rate. Because this dataset is even denser and more high-dimensional, we will&nbsp;**aggregate it to a 5-minute interval** for computational efficiency. The assumption is that spectral composition does not need to be examined at every 2-second instant for our purposes, and 5-minute averages can capture the general trends while drastically reducing data size and downstream computational costs.</span>
+<span id="cb34-311"><a href="#cb34-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-314"><a href="#cb34-314" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-315"><a href="#cb34-315" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate spectral data to 5-minute intervals and mark gaps</span></span>
+<span id="cb34-316"><a href="#cb34-316" aria-hidden="true" tabindex="-1"></a>dataVEET2 <span class="ot">&lt;-</span> dataVEET2 <span class="sc">|&gt;</span></span>
+<span id="cb34-317"><a href="#cb34-317" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aggregate_Datetime</span>(<span class="at">unit =</span> <span class="st">"5 mins"</span>) <span class="sc">|&gt;</span>     <span class="co"># aggregate to 5-minute bins</span></span>
+<span id="cb34-318"><a href="#cb34-318" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gap_handler</span>(<span class="at">full.days =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span>           <span class="co"># explicit NA for any gaps in between</span></span>
+<span id="cb34-319"><a href="#cb34-319" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_Date_col</span>(<span class="at">group.by =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb34-320"><a href="#cb34-320" aria-hidden="true" tabindex="-1"></a>  <span class="fu">remove_partial_data</span>(Clear, <span class="at">threshold.missing =</span> <span class="st">"1 hour"</span>)</span>
+<span id="cb34-321"><a href="#cb34-321" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-322"><a href="#cb34-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-323"><a href="#cb34-323" aria-hidden="true" tabindex="-1"></a>We aggregate over 5-minute windows; within each 5-minute bin, multiple spectral readings (if present) are combined (averaged). We use one of the channels (here&nbsp;<span class="in">`Clear`</span>) as the reference variable for&nbsp;<span class="in">`remove_partial_data`</span>&nbsp;to drop incomplete days (the choice of channel is arbitrary as all channels share the same level of completeness).</span>
+<span id="cb34-324"><a href="#cb34-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-325"><a href="#cb34-325" aria-hidden="true" tabindex="-1"></a>It is informative to look at a snippet of the imported spectral data before further processing. @tbl-PHO shows the first three rows of&nbsp;<span class="in">`dataVEET2`</span>&nbsp;after import (before calibration), with some technical columns omitted for brevity:</span>
+<span id="cb34-326"><a href="#cb34-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-329"><a href="#cb34-329" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-330"><a href="#cb34-330" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-PHO</span></span>
+<span id="cb34-331"><a href="#cb34-331" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Overview of the spectral sensor import from the VEET device (first 3 observations). Each row corresponds to a 5-minute timestamp (Datetime) and shows the raw sensor readings for the spectral channels (s415–s940, Dark, Clear). All values are in arbitrary sensor units (counts). Gain values and integration_time are also relevant for each interval, depending on the downstream computation."</span></span>
+<span id="cb34-332"><a href="#cb34-332" aria-hidden="true" tabindex="-1"></a>dataVEET2 <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">3</span>) <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(modality, file.name, is.implicit, time_stamp)) <span class="sc">|&gt;</span> </span>
+<span id="cb34-333"><a href="#cb34-333" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span> <span class="fu">fmt_number</span>(s415<span class="sc">:</span>Clear) </span>
+<span id="cb34-334"><a href="#cb34-334" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-335"><a href="#cb34-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-336"><a href="#cb34-336" aria-hidden="true" tabindex="-1"></a><span class="fu">### Spectral calibration</span></span>
+<span id="cb34-337"><a href="#cb34-337" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-338"><a href="#cb34-338" aria-hidden="true" tabindex="-1"></a>Now we proceed with&nbsp;**spectral calibration**. The <span class="in">`VEET`</span>’s spectral sensor counts need to be converted to physical units (spectral irradiance) via a calibration matrix provided by the manufacturer. For this example, we assume we have a calibration matrix that maps all the channel readings to an estimated spectral power distribution (SPD). The LightLogR package provides a function&nbsp;<span class="in">`spectral_reconstruction()`</span>&nbsp;to perform this conversion. However, before applying it, we must ensure the sensor counts are in a normalized form. This procedure is laid out by the manufacturer. In our version, we refer to the *VEET SPD Reconstruction Guide.pdf*, version *06/05/2025*. Note that each manufacturer has to specify the method of count normalization (if any) and spectral reconstruction. In our raw data, each observation comes with a&nbsp;<span class="in">`Gain`</span>&nbsp;setting that indicates how the sensor’s sensitivity was adjusted; we need to divide the raw counts by the gain to get normalized counts. LightLogR offers&nbsp;<span class="in">`normalize_counts()`</span>&nbsp;for this purpose. We further need to scale by integration time (in milliseconds) and adjust depending on counts in the <span class="in">`Dark`</span> sensor channel. </span>
+<span id="cb34-339"><a href="#cb34-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-342"><a href="#cb34-342" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-343"><a href="#cb34-343" aria-hidden="true" tabindex="-1"></a>count.columns <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"s415"</span>, <span class="st">"s445"</span>, <span class="st">"s480"</span>, <span class="st">"s515"</span>, <span class="st">"s555"</span>, <span class="st">"s590"</span>, <span class="st">"s630"</span>, </span>
+<span id="cb34-344"><a href="#cb34-344" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"s680"</span>, <span class="st">"s910"</span>, <span class="st">"Dark"</span>, <span class="st">"Clear"</span>) <span class="co">#column names</span></span>
+<span id="cb34-345"><a href="#cb34-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-346"><a href="#cb34-346" aria-hidden="true" tabindex="-1"></a>gain.ratios <span class="ot">&lt;-</span> <span class="co">#gain ratios as specified by the manufacturers reconstruction guide</span></span>
+<span id="cb34-347"><a href="#cb34-347" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb34-348"><a href="#cb34-348" aria-hidden="true" tabindex="-1"></a>    <span class="at">gain =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">16</span>, <span class="dv">32</span>, <span class="dv">64</span>, <span class="dv">128</span>, <span class="dv">256</span>, <span class="dv">512</span>),</span>
+<span id="cb34-349"><a href="#cb34-349" aria-hidden="true" tabindex="-1"></a>    <span class="at">gain.ratio =</span> <span class="fu">c</span>(<span class="fl">0.008</span>, <span class="fl">0.016</span>, <span class="fl">0.032</span>, <span class="fl">0.065</span>, <span class="fl">0.125</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="fl">3.95</span>, <span class="fl">7.75</span>)</span>
+<span id="cb34-350"><a href="#cb34-350" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb34-351"><a href="#cb34-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-352"><a href="#cb34-352" aria-hidden="true" tabindex="-1"></a><span class="co">#normalize data</span></span>
+<span id="cb34-353"><a href="#cb34-353" aria-hidden="true" tabindex="-1"></a>dataVEET2 <span class="ot">&lt;-</span></span>
+<span id="cb34-354"><a href="#cb34-354" aria-hidden="true" tabindex="-1"></a>  dataVEET2 <span class="sc">|&gt;</span> </span>
+<span id="cb34-355"><a href="#cb34-355" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(s415<span class="sc">:</span>Clear), \(x) (x <span class="sc">-</span> Dark)<span class="sc">/</span>integration_time)) <span class="sc">|&gt;</span>  <span class="co">#remove dark counts &amp; scale by integration time</span></span>
+<span id="cb34-356"><a href="#cb34-356" aria-hidden="true" tabindex="-1"></a>  <span class="fu">normalize_counts</span>( <span class="co">#function to normalize counts</span></span>
+<span id="cb34-357"><a href="#cb34-357" aria-hidden="true" tabindex="-1"></a>    <span class="at">gain.columns =</span> <span class="fu">rep</span>(<span class="st">"Gain"</span>, <span class="dv">11</span>), <span class="co">#all sensor channels share the gain value</span></span>
+<span id="cb34-358"><a href="#cb34-358" aria-hidden="true" tabindex="-1"></a>    <span class="at">count.columns =</span> count.columns, <span class="co">#sensor channels to normalize</span></span>
+<span id="cb34-359"><a href="#cb34-359" aria-hidden="true" tabindex="-1"></a>    gain.ratios <span class="co">#gain ratios</span></span>
+<span id="cb34-360"><a href="#cb34-360" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb34-361"><a href="#cb34-361" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(s415<span class="sc">:</span>Clear)) <span class="sc">|&gt;</span> <span class="co"># drop original raw count columns</span></span>
+<span id="cb34-362"><a href="#cb34-362" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_with</span>(<span class="sc">~</span> <span class="fu">str_remove</span>(.x, <span class="st">".normalized"</span>))</span>
+<span id="cb34-363"><a href="#cb34-363" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-364"><a href="#cb34-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-365"><a href="#cb34-365" aria-hidden="true" tabindex="-1"></a>In this call, we specified <span class="in">`gain.columns = rep("Gain", 11)`</span> because we have 11 sensor columns that all use the same gain factor column (<span class="in">`Gain`</span>). This step will add new columns (with a suffix, e.g. <span class="in">`.normalized`</span>) for each spectral channel representing the count normalized by the gain. We then dropped the <span class="in">`raw`</span> count columns and renamed the normalized ones by dropping <span class="in">`.normalized`</span> from the names. After this, <span class="in">`dataVEET2`</span> contains the normalized sensor readings for <span class="in">`s415, s445, ..., s940, Dark, Clear`</span> for each 5-minute time point. The dataset is now ready for spectral reconstruction.</span>
+<span id="cb34-366"><a href="#cb34-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-367"><a href="#cb34-367" aria-hidden="true" tabindex="-1"></a><span class="fu">### Spectral reconstruction</span></span>
+<span id="cb34-368"><a href="#cb34-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-369"><a href="#cb34-369" aria-hidden="true" tabindex="-1"></a>For spectral reconstruction, we require a calibration matrix that corresponds to the VEET’s sensor channels. This matrix would typically be obtained from the device manufacturer or a calibration procedure. It defines how each channel’s count relates to intensity at various wavelengths. For demonstration, the calibration matrix was provided by the manufacturer and is specific to the make and model. It should not be used for research purposes without confirming its accuracy with the manufacturer.</span>
+<span id="cb34-370"><a href="#cb34-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-373"><a href="#cb34-373" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-374"><a href="#cb34-374" aria-hidden="true" tabindex="-1"></a><span class="co">#import calibration matrix</span></span>
+<span id="cb34-375"><a href="#cb34-375" aria-hidden="true" tabindex="-1"></a>calib_mtx <span class="ot">&lt;-</span> </span>
+<span id="cb34-376"><a href="#cb34-376" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">"data/VEET_calibration_matrix.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb34-377"><a href="#cb34-377" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="st">"wavelength"</span>)</span>
+<span id="cb34-378"><a href="#cb34-378" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-379"><a href="#cb34-379" aria-hidden="true" tabindex="-1"></a><span class="co"># Reconstruct spectral power distribution (SPD) for each observation</span></span>
+<span id="cb34-380"><a href="#cb34-380" aria-hidden="true" tabindex="-1"></a>dataVEET2 <span class="ot">&lt;-</span> dataVEET2 <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb34-381"><a href="#cb34-381" aria-hidden="true" tabindex="-1"></a>  <span class="at">Spectrum =</span> <span class="fu">spectral_reconstruction</span>(</span>
+<span id="cb34-382"><a href="#cb34-382" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pick</span>(s415<span class="sc">:</span>s910),   <span class="co"># pick the normalized sensor columns</span></span>
+<span id="cb34-383"><a href="#cb34-383" aria-hidden="true" tabindex="-1"></a>    <span class="at">calibration_matrix =</span> calib_mtx, </span>
+<span id="cb34-384"><a href="#cb34-384" aria-hidden="true" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">"long"</span> <span class="co"># return a long-form list column (wavelength, intensity)</span></span>
+<span id="cb34-385"><a href="#cb34-385" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb34-386"><a href="#cb34-386" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-387"><a href="#cb34-387" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-388"><a href="#cb34-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-389"><a href="#cb34-389" aria-hidden="true" tabindex="-1"></a>Here, we use&nbsp;<span class="in">`format = "long"`</span>&nbsp;so that the result for each observation is a&nbsp;**list-column**&nbsp;<span class="in">`Spectrum`</span>, where each entry is a tibble<span class="ot">[^4]</span> containing two columns:&nbsp;<span class="in">`wavelength`</span>&nbsp;and&nbsp;<span class="in">`irradiance`</span>&nbsp;(one row per wavelength in the calibration matrix). In other words, each row of&nbsp;<span class="in">`dataVEET2`</span>&nbsp;now holds a full reconstructed spectrum in the&nbsp;<span class="in">`Spectrum`</span>&nbsp;column. The long format is convenient for further calculations and plotting. (An alternative&nbsp;<span class="in">`format = "wide"`</span>&nbsp;would add each wavelength as a separate column, but that is less practical when there are many wavelengths.)</span>
+<span id="cb34-390"><a href="#cb34-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-391"><a href="#cb34-391" aria-hidden="true" tabindex="-1"></a><span class="ot">[^4]: </span>**tibble** are data.tables with tweaked behavior, ideal for a tidy analysis workflow. For more information, visit the documentation page for <span class="co">[</span><span class="ot">tibbles</span><span class="co">](https://tibble.tidyverse.org/index.html)</span></span>
+<span id="cb34-392"><a href="#cb34-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-393"><a href="#cb34-393" aria-hidden="true" tabindex="-1"></a>To visualize the data we will calculate the photopic illuminance based on the spectra and plot each spectrum color-scaled by their illuminance. For clarity, we reduce the data to observations within the first day.</span>
+<span id="cb34-394"><a href="#cb34-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-397"><a href="#cb34-397" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-398"><a href="#cb34-398" aria-hidden="true" tabindex="-1"></a>dataVEET2 <span class="sc">|&gt;</span> </span>
+<span id="cb34-399"><a href="#cb34-399" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter_Date</span>(<span class="at">length =</span> <span class="st">"1 day"</span>) <span class="sc">|&gt;</span> <span class="co">#keep only observations for one day (from start)</span></span>
+<span id="cb34-400"><a href="#cb34-400" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( </span>
+<span id="cb34-401"><a href="#cb34-401" aria-hidden="true" tabindex="-1"></a>    <span class="at">Illuminance =</span> Spectrum <span class="sc">|&gt;</span> <span class="co">#Use the spectrum,...</span></span>
+<span id="cb34-402"><a href="#cb34-402" aria-hidden="true" tabindex="-1"></a>      <span class="fu">map_dbl</span>(spectral_integration, <span class="co">#... call the function spectral_integration for each,...</span></span>
+<span id="cb34-403"><a href="#cb34-403" aria-hidden="true" tabindex="-1"></a>              <span class="at">action.spectrum =</span> <span class="st">"photopic"</span>, <span class="co">#... use the brightness sensitivity function,...</span></span>
+<span id="cb34-404"><a href="#cb34-404" aria-hidden="true" tabindex="-1"></a>              <span class="at">general.weight =</span> <span class="st">"auto"</span>) <span class="co">#... and apply the appropriate efficacy weight.</span></span>
+<span id="cb34-405"><a href="#cb34-405" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb34-406"><a href="#cb34-406" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(Spectrum) <span class="sc">|&gt;</span> <span class="co">#create a long format of the data where the spectrum is unnested</span></span>
+<span id="cb34-407"><a href="#cb34-407" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> wavelength, <span class="at">y =</span> irradiance<span class="sc">*</span><span class="dv">1000</span>, <span class="at">group =</span> Datetime)) <span class="sc">+</span></span>
+<span id="cb34-408"><a href="#cb34-408" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">col =</span> Illuminance)) <span class="sc">+</span></span>
+<span id="cb34-409"><a href="#cb34-409" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Irradiance (mW/m²/nm)"</span>, <span class="at">x =</span> <span class="st">"Wavelength (nm)"</span>, <span class="at">col =</span> <span class="st">"Illuminance (lx)"</span>)<span class="sc">+</span></span>
+<span id="cb34-410"><a href="#cb34-410" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_b</span>() <span class="sc">+</span></span>
+<span id="cb34-411"><a href="#cb34-411" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">5.3</span>)) <span class="sc">+</span></span>
+<span id="cb34-412"><a href="#cb34-412" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb34-413"><a href="#cb34-413" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-414"><a href="#cb34-414" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-415"><a href="#cb34-415" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-416"><a href="#cb34-416" aria-hidden="true" tabindex="-1"></a>At this stage, the&nbsp;<span class="in">`dataVEET2`</span>&nbsp;dataset has been processed to yield time-series of spectral power distributions. We can use these to compute biologically relevant light metrics. For instance, one possible metric is the proportion of power in short wavelengths versus long wavelengths. In the main analysis, we defined&nbsp;**short-wavelength (blue light) content**&nbsp;as the integrated intensity in the 400–500&nbsp;nm range, and&nbsp;**long-wavelength content**&nbsp;as the integrated intensity in a longer range (e.g. 600–700&nbsp;nm), then computed the&nbsp;*short-to-long ratio*&nbsp;(“sl ratio”). Calculating these metrics is the first step of spectrum analysis in the <span class="co">[</span><span class="ot">main tutorial</span><span class="co">](https://tscnlab.github.io/ZaunerEtAl_2025_JOV/#spectrum)</span>.</span>
+<span id="cb34-417"><a href="#cb34-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-418"><a href="#cb34-418" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-419"><a href="#cb34-419" aria-hidden="true" tabindex="-1"></a><span class="in">dataVEET2 |&gt; </span></span>
+<span id="cb34-420"><a href="#cb34-420" aria-hidden="true" tabindex="-1"></a><span class="in">  select(Id, Date, Datetime, Spectrum) |&gt;    # focus on ID, date, time, and spectrum</span></span>
+<span id="cb34-421"><a href="#cb34-421" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(</span></span>
+<span id="cb34-422"><a href="#cb34-422" aria-hidden="true" tabindex="-1"></a><span class="in">    short = Spectrum |&gt; map_dbl(spectral_integration, wavelength.range = c(400, 500)),</span></span>
+<span id="cb34-423"><a href="#cb34-423" aria-hidden="true" tabindex="-1"></a><span class="in">    long  = Spectrum |&gt; map_dbl(spectral_integration, wavelength.range = c(600, 700)),</span></span>
+<span id="cb34-424"><a href="#cb34-424" aria-hidden="true" tabindex="-1"></a><span class="in">    `sl ratio` = short / long   # compute short-to-long ratio</span></span>
+<span id="cb34-425"><a href="#cb34-425" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb34-426"><a href="#cb34-426" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-427"><a href="#cb34-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-428"><a href="#cb34-428" aria-hidden="true" tabindex="-1"></a>*(The cutoff of 500&nbsp;nm here is hypothetical for demonstration; actual definitions might vary.)*&nbsp;We would then have columns&nbsp;<span class="in">`short`</span>,&nbsp;<span class="in">`long`</span>, and&nbsp;<span class="in">`sl_ratio`</span>&nbsp;for each observation, which could be averaged per day or analyzed further. The cleaned spectral data in&nbsp;<span class="in">`dataVEET2`</span>&nbsp;makes it straightforward to calculate such metrics or apply spectral weighting functions (for melatonin suppression, circadian stimulus, etc., if one has the spectral sensitivity curves).</span>
+<span id="cb34-429"><a href="#cb34-429" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-430"><a href="#cb34-430" aria-hidden="true" tabindex="-1"></a>With the <span class="in">`VEET`</span> spectral preprocessing complete, we emphasize that these steps – normaliziing by gain, applying calibration, and perhaps simplifying channels – are&nbsp;**device-specific**&nbsp;requirements. They ensure that the raw sensor counts are translated into meaningful physical measures (like spectral irradiance). Researchers using other spectral devices would follow a similar procedure, adjusting for their device’s particulars (some may output spectra directly, whereas others, like <span class="in">`VEET`</span>, require reconstruction.</span>
+<span id="cb34-431"><a href="#cb34-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-432"><a href="#cb34-432" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb34-433"><a href="#cb34-433" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-434"><a href="#cb34-434" aria-hidden="true" tabindex="-1"></a>Some devices may output normalized counts instead of raw counts. For example, the <span class="in">`ActLumus`</span> device outputs normalized counts, while the <span class="in">`VEET`</span> device records raw counts and the gain. Manufacturers will be able to speficy exact outputs for a given model and software version.</span>
+<span id="cb34-435"><a href="#cb34-435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-436"><a href="#cb34-436" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb34-437"><a href="#cb34-437" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-438"><a href="#cb34-438" aria-hidden="true" tabindex="-1"></a><span class="fu">## Saving the Cleaned Data</span></span>
+<span id="cb34-439"><a href="#cb34-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-440"><a href="#cb34-440" aria-hidden="true" tabindex="-1"></a>After executing all the above steps, we have three cleaned data frames in our R session:</span>
+<span id="cb34-441"><a href="#cb34-441" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-442"><a href="#cb34-442" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`dataCC`**&nbsp;– the processed <span class="in">`Clouclip`</span> dataset (5-second intervals, with distance and lux, including NA for gaps and sentinel statuses).</span>
+<span id="cb34-443"><a href="#cb34-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-444"><a href="#cb34-444" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`dataVEET`**&nbsp;– the processed <span class="in">`VEET`</span> ambient light dataset (5-second intervals, illuminance in lux, with gaps filled).</span>
+<span id="cb34-445"><a href="#cb34-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-446"><a href="#cb34-446" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`dataVEET2`**&nbsp;– the processed <span class="in">`VEET`</span> spectral dataset (5-minute intervals, each entry containing a spectrum or derived spectral metrics).</span>
+<span id="cb34-447"><a href="#cb34-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-448"><a href="#cb34-448" aria-hidden="true" tabindex="-1"></a>For convenience and future reproducibility, we will save these combined results to a single R data file. Storing all cleaned data together ensures that any analysis can reload the exact same data state without re-running the import and cleaning (which can be time-consuming for large raw files).</span>
+<span id="cb34-449"><a href="#cb34-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-452"><a href="#cb34-452" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-453"><a href="#cb34-453" aria-hidden="true" tabindex="-1"></a><span class="co"># Create directory for cleaned data if it doesn't exist</span></span>
+<span id="cb34-454"><a href="#cb34-454" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="st">"data/cleaned"</span>)) <span class="fu">dir.create</span>(<span class="st">"data/cleaned"</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb34-455"><a href="#cb34-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-456"><a href="#cb34-456" aria-hidden="true" tabindex="-1"></a><span class="co"># Save all cleaned datasets into one .RData file</span></span>
+<span id="cb34-457"><a href="#cb34-457" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(dataCC, dataVEET, dataVEET2,</span>
+<span id="cb34-458"><a href="#cb34-458" aria-hidden="true" tabindex="-1"></a>        <span class="at">file =</span> <span class="st">"data/cleaned/data.RData"</span>)</span>
+<span id="cb34-459"><a href="#cb34-459" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb34-460"><a href="#cb34-460" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-461"><a href="#cb34-461" aria-hidden="true" tabindex="-1"></a>The above code creates (if necessary) a folder&nbsp;<span class="in">`data/cleaned/`</span>&nbsp;and saves a single RData file (<span class="in">`data.RData`</span>) containing the three objects. To retrieve them later, one can use&nbsp;<span class="in">`&lt;- load("data/cleaned/data.RData")`</span>, which will return the objects into the environment. This single-file approach simplifies sharing and keeps the cleaned data together.</span>
+<span id="cb34-462"><a href="#cb34-462" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-463"><a href="#cb34-463" aria-hidden="true" tabindex="-1"></a>In summary, this supplement has walked through the full preprocessing pipeline for two example devices. We began by describing the raw data format for each device and then demonstrated how to import the data with correct time zone settings. We handled device-specific quirks like sentinel codes (for <span class="in">`Clouclip`</span>) and multiple modalities with gain normalization (for <span class="in">`VEET`</span>). We showed how to detect and address irregular sampling, how to explicitly mark missing data gaps to avoid analytic pitfalls, and how to reduce data granularity via rounding or aggregation when appropriate. Throughout, we used functions from LightLogR in a tidyverse workflow, aiming to make the steps clear and modular. By saving the final cleaned datasets, we set the stage for the computation of visual experience metrics such as working distance, time in bright light, spectral composition ratios, as presented in the <span class="co">[</span><span class="ot">main tutorial</span><span class="co">](https://tscnlab.github.io/ZaunerEtAl_2025_JOV/)</span>. We hope this detailed tutorial empowers researchers to adopt similar pipelines for their own data, facilitating reproducible and accurate analyses of visual experience.</span>
+<span id="cb34-464"><a href="#cb34-464" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-465"><a href="#cb34-465" aria-hidden="true" tabindex="-1"></a><span class="fu">## References</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
