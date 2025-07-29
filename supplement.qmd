@@ -1,8 +1,28 @@
 ---
 title: "Supplement 1"
-subtitle: "Tutorial on analysis pipelines for visual experience datasets"
-author: "Johannes Zauner, Aaron Nicholls, Lisa Ostrin, and Manuel Spitschan"
-sformat:
+subtitle: "Analysis of human visual experience data"
+author:
+  - name: "Johannes Zauner"
+    id: JZ
+    affiliation: 
+      - Technical University of Munich, Germany
+      - Max Planck Institute for Biological Cybernetics, Tübingen, Germany
+    orcid: "0000-0003-2171-4566"
+  - name: "Aaron Nicholls"
+    affiliation: "Meta Reality Labs Research"
+    orcid: "0009-0001-6683-6826"
+  - name: "Lisa A. Ostrin"
+    affiliation: "University of Houston, Texas, USA"
+    orcid: "0000-0001-8675-1478"
+  - name: "Manuel Spitschan"
+    affiliation: 
+      - Technical University of Munich, Germany
+      - Max Planck Institute for Biological Cybernetics, Tübingen, Germany
+      - Technical University of Munich Institute of advanced study (TUM-IAS), Munich, Germany
+    orcid: "0000-0002-8572-9268"
+    corresponding: true
+    email: manuel.spitschan@tum.de
+format:
   html:
     toc: true
     include-in-header:
@@ -29,7 +49,6 @@ execute:
 Please note that this supplement is not in its final styling form, as it necessarily has to be formatted as a `notebook` to enable commenting. Current issues include:
 
 - Cross-references not working (e.g. Figure labeling and referencing figures)
-- Unnecessary indentation of code and code output
 
 These issues will be resolved when all comments have been gathered and implemented
 
