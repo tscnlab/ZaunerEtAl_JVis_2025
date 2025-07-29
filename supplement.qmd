@@ -8,6 +8,8 @@ author:
       - Technical University of Munich, Germany
       - Max Planck Institute for Biological Cybernetics, Tübingen, Germany
     orcid: "0000-0003-2171-4566"
+    corresponding: true
+    email: johannes.zauner@tum.de
   - name: "Aaron Nicholls"
     affiliation: "Meta Reality Labs Research"
     orcid: "0009-0001-6683-6826"
@@ -20,8 +22,6 @@ author:
       - Max Planck Institute for Biological Cybernetics, Tübingen, Germany
       - Technical University of Munich Institute of advanced study (TUM-IAS), Munich, Germany
     orcid: "0000-0002-8572-9268"
-    corresponding: true
-    email: manuel.spitschan@tum.de
 doi: 10.5281/zenodo.16566014
 format:
   html:
