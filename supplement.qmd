@@ -373,7 +373,7 @@ dataVEET2 |>
   unnest(Spectrum) |> #create a long format of the data where the spectrum is unnested
   ggplot(aes(x = wavelength, y = irradiance*1000, group = Datetime)) +
   geom_line(aes(col = Illuminance)) +
-  labs(y = "Irradiance (mW/m²/nm)", x = "Wavelength (nm)", col = "Illuminance (lx)")+
+  labs(y = "Irradiance (mW/m²/nm)", x = "Wavelength (nm)", col = "Photopic illuminance (lx)")+
   scale_color_viridis_b() +
   coord_cartesian(ylim = c(0,5.3)) +
   theme_minimal()
