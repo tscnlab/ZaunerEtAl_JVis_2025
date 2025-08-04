@@ -9,9 +9,9 @@ manuscript:
 
 website:
   title: "LightLogR tutorial on visual experience (VE) data"
-  site-url: https://tscnlab.github.io/ZaunerEtAl2025JOV/
-  repo-url: https://github.com/tscnlab/ZaunerEtAl2025JOV
-  issue-url: https://github.com/tscnlab/ZaunerEtAl_2025_JOV/issues
+  site-url: https://tscnlab.github.io/ZaunerEtAl_JVis_2025/
+  repo-url: https://github.com/tscnlab/ZaunerEtAl_JVis_2025
+  issue-url: https://github.com/tscnlab/ZaunerEtAl_JVis_2025/issues
   repo-actions: [edit, issue]
   page-navigation: true
   bread-crumbs: true
@@ -23,7 +23,7 @@ website:
         text: Supplement
     right:
       - icon: github
-        href: https://github.com/tscnlab/ZaunerEtAl2025JOV
+        href: https://github.com/tscnlab/ZaunerEtAl_JVis_2025
         aria-label: Quarto GitHub
 
 
