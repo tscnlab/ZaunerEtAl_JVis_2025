@@ -33,8 +33,8 @@ authors:
 identifiers:
   - type: doi
     value: 10.5281/zenodo.16566014
-repository-code: 'https://github.com/tscnlab/ZaunerEtAl_2025_JOV/tree/main'
-url: 'https://tscnlab.github.io/ZaunerEtAl_2025_JOV/'
+repository-code: 'https://github.com/tscnlab/ZaunerEtAl_JVis_2025/'
+url: 'https://tscnlab.github.io/ZaunerEtAl_JVis_2025/'
 abstract: >-
   This tutorial presents an analysis pipeline for visual
   experience datasets, with a focus on reproducible
