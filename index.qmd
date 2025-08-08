@@ -15,7 +15,7 @@ author:
     orcid: "0009-0001-6683-6826"
   - name: "Lisa A. Ostrin"
     id: LAO
-    affiliation: "University of Houston, USA"
+    affiliation: "University of Houston College of Optometry, USA"
     orcid: "0000-0001-8675-1478"
   - name: "Manuel Spitschan"
     id: MS
@@ -25,7 +25,7 @@ author:
       - Technical University of Munich, Institute for Advanced Study (TUM-IAS), Germany
     orcid: "0000-0002-8572-9268"
 abstract: >
-  This tutorial presents an analysis pipeline for visual experience datasets, with a focus on reproducible workflows for human chronobiology and myopia research. Light exposure and its retinal encoding affect human physiology and behavior across multiple time scales. Here we provide step-by-step instructions for importing, visualizing, and processing viewing distance and light exposure data using the open-source R package [**LightLogR**](https://tscnlab.github.io/LightLogR/). This includes time-series analyses for working distance, biologically relevant light metrics, and spectral characteristics. By leveraging a modular approach, the tutorial supports researchers in building flexible and robust pipelines that accommodate diverse experimental paradigms and measurement systems.
+  Exposure to the optical environment — often referred to as *visual experience* — profoundly influences human physiology and behavior across multiple time scales. In controlled laboratory settings, stimuli can be held constant or manipulated parametrically. However, such exposures rarely replicate real-world conditions, which are inherently complex and dynamic, generating high-dimensional datasets that demand rigorous and flexible analysis strategies. This tutorial presents an analysis pipeline for visual experience datasets, with a focus on reproducible workflows for human chronobiology and myopia research. Light exposure and its retinal encoding affect human physiology and behavior across multiple time scales. Here we provide step-by-step instructions for importing, visualizing, and processing viewing distance and light exposure data using the open-source R package [**LightLogR**](https://tscnlab.github.io/LightLogR/). This includes time-series analyses for working distance, biologically relevant light metrics, and spectral characteristics. By leveraging a modular approach, the tutorial supports researchers in building flexible and robust pipelines that accommodate diverse experimental paradigms and measurement systems.
 keywords: 
   - wearable
   - light logging
@@ -65,7 +65,7 @@ In controlled laboratory settings, light exposure can be held constant or manipu
 
 Starting in the 1980s [@Okudaira1983AmJPhysiol], technology to measure optical exposure has matured, with miniaturized illuminance sensors now (in 2025) very common in consumer wearables. In research, several devices are available that differ in functionality, ranging from small pins measuring ambient illuminance [@Mohamed2021OptExpress] to head-mounted multi-modal devices capturing nearly all relevant aspects of visual experience [@Gibaldi2024TranslVisSciTechnol]. Increased capabilities in wearables bring complex, dense datasets. These go hand-in-hand with a proliferation of metrics, as highlighted by recent review papers in both circadian and myopia research.
 
-At present, the analysis processes to derive metrics are often implemented on a per-laboratory or even per-researcher basis. This fragmentation is a potential source of errors and inconsistencies between studies, and it consumes considerable researcher time [@Hartmeyer2022LightResTechnol]. Too often, more time is spent preparing data than gaining insights through rigorous statistical analysis. These preparation tasks are best handled, or at least facilitated, by standardized, transparent, community-based analysis pipelines [@Zauner2024PLOSONE].
+At present, the analysis processes to derive metrics are often implemented on a per-laboratory or even per-researcher basis. This fragmentation is a potential source of errors and inconsistencies between studies, consumes considerable researcher time [@Hartmeyer2022LightResTechnol], and these bespoke processes and formats hinder harmonization or meta-analysis across multiple studies. Too often, more time is spent preparing data than gaining insights through rigorous statistical analysis. These preparation tasks are best handled, or at least facilitated, by standardized, transparent, community-based analysis pipelines [@Zauner2024PLOSONE].
 
 In circadian research, the R package LightLogR was developed to address this need [@Zauner2025JOpenSourceSoftw]. LightLogR is an open-source, MIT-licensed, community-driven package specifically designed for data from wearable light loggers and optical radiation dosimeters. It contains functions to calculate over sixty different metrics used in the field [@Hartmeyer2023LightResTechnol]. In a recent [update](https://tscnlab.github.io/LightLogR/news/index.html#lightlogr-090-sunrise), the package was expanded to handle modalities beyond illuminance, such as viewing distance and light spectra—capabilities highly relevant for myopia research [@Honekopp2023ClinOphthalmol].
 
@@ -93,7 +93,7 @@ Data from two wearable devices are used in this analysis:
 
 -   `Clouclip`: A wearable device that measures viewing distance and ambient light [Glasson Technology Co., Ltd, Hangzhou, China; @Wen2021ActaOphtalmol; @Wen2020bjophthalmol]. The Clouclip provides a simple data output with only Distance (working distance, in centimeters) and Illuminance (ambient light, in lux). Data in our example were recorded at 5-second intervals. Approximately one week of data (\~120,960 observations) is about 1.6 MB in size.
 
--   `Visual Environment Evaluation Tool` (VEET): A head-mounted multi-modal device that logs multiple data streams [Meta Platforms, Inc., Menlo Park, CA, USA; @Sah2025OphtalmicPhysiolOpt]. The VEET dataset used here contains simultaneous measurements of distance (via a time-of-flight sensor), ambient light (illuminance), activity (accelerometer & gyroscope), and spectral irradiance (multi-channel light sensor). Data were recorded at 2-second intervals, yielding a very dense dataset (\~270 MB per week).
+-   `Visual Environment Evaluation Tool` (VEET): A head-mounted multi-modal device that logs multiple data streams [Meta Platforms, Inc., Menlo Park, CA, USA; @Sah2025OphtalmicPhysiolOpt; @Sullivan2024]. The VEET dataset used here contains simultaneous measurements of distance (via a time-of-flight sensor), ambient light (illuminance), activity (accelerometer & gyroscope), and spectral irradiance (multi-channel light sensor). Data were recorded at 2-second intervals, yielding a very dense dataset (\~270 MB per week).
 
 ### Data processing summary
 
@@ -348,6 +348,91 @@ dataCC |>
   gg_photoperiod(coordinates) +
   geom_point(data = \(x) filter(x, is.cluster), col = "red")
 ```
+
+#### Distance with spatial distribution
+
+The `Clouclip` device outputs a singular measure for distance, while the visual environment in natural contiditions contains many distances, depending on the solid angle and direction of the measurement. A device like the `VEET` increases the spatial resolution of these measurements, allowing for more in-depth analyses of the size and position of an object within the field of view. In the case of the `VEET`, data are collected from an 8x8 measurement grid, spanning 52° vertically and 41° horizontally. Here are exemplary observations from six different days at the same time.
+
+```{r}
+#| label: fig-VEET-distance
+#| fig-cap: "Example observations of the measurement grid at 1:14 p.m. for each measurement day. Text values show distance in cm. empty grid points show values with low confidence. Zero-distance values were replaced with infinite distance and plotted despite low confidence."
+#| fig-height: 5
+#| fig-width: 12
+
+slicer <- function(x){seq(min((x-1)*64+1), max(x*64, by = 1))} #allows to choose an observation
+
+#set visualization parameters
+extras <- list(
+  geom_tile(),
+  scale_fill_viridis_c(direction = -1, limits = c(0, 200),
+                       oob = scales::oob_squish_any),
+  scale_color_manual(values = c("black", "white")),
+  theme_minimal(),
+  guides(colour = "none"),
+  geom_text(aes(label = (dist1/10) |> round(0), colour = dist1>1000), size = 2.5),
+  coord_fixed(),
+  labs(x = "X position (°)", y = "Y position (°)", 
+       fill = "Distance (cm)", alpha = "Confidence (0-255)"))
+
+dataVEET3 |> 
+  slice(slicer(9530)) |>  #choose a particular observation
+  mutate(dist1 = ifelse(dist1 == 0, Inf, dist1)) |> #replace 0 distances with 5m
+  filter(conf1 >= 0.1 | dist1 == Inf) |> #remove data that has less than 10% confidence
+  ggplot(aes(x=x.pos, y=y.pos, fill = dist1/10))+ extras + #plot the data
+  facet_grid(~Datetime) #show one plot per day
+```
+
+To use these distance data in the framework shown above for the `Clouclip` device, a sensible method to condense the data has to be applied. This method has to be chosen based on theoretical assumptions what a relevant distance within the field of view is. Possible methods include:
+
+- average across all (high confidence) distance values within the grid
+- closest (high confidence) distance within the grid
+- (high confidence) values at or around a given grid position, e.g., ±10 degrees around the central view (0°)
+
+Many more options are available based on the richer dataset, e.g., condensation rules based on the number of points in the grid with a given condition, or the variation within the grid.
+
+We will demonstrate these three exemplary methods for a single day (`2024-06-10`), all leading to a data structure akin to the `Clouclip`, i.e., to be used for further calculation of visual experience metrics.
+
+```{r}
+#| label: fig-VEET-distance_methods
+#| fig-cap: "Comparison of condensation methods for spatial grid of distance measurements. The lines represent an average across all data points (yellow), the minimum distance (grey), or the central 10° (blue). Data points with confidence less than 10% were removed prior to calculation."
+#| fig-height: 5 
+#| fig-width: 8
+dataVEET3_part <- #filter one day
+dataVEET3 |>
+  filter_Date(start = "2024-06-10", length = "1 day")
+
+dataVEET3_condensed <- 
+dataVEET3_part |> 
+  group_by(Datetime, .add = TRUE) |> #group additionally by every observation
+  filter(conf1 >= 0.1) |> #remove data with low confidence
+  summarize(
+    distance_mean = mean(dist1), #average across all distance values,
+    distance_min = min(dist1), #closest across all distance values,
+    distance_central = mean(dist1[between(x.pos, -10,10) & between(y.pos, -10,10)]), #central distance
+    n = n(), #number of (valid) grid points
+    .groups = "drop_last"
+  )
+
+dataVEET3_condensed |> 
+  aggregate_Datetime("15 mins", numeric.handler = \(x) mean(x, na.rm = TRUE)) |> #create 15 minute data
+  remove_partial_data(by.date = TRUE) |> #remove midnight data points
+  pivot_longer(contains("distance"), #put all methods into a long file for plotting
+               names_to = c(".value", "method"),
+    names_pattern = "(distance)_(mean|min|max|central)"
+    ) |>
+  gg_day(y.axis = distance/10, 
+         geom = "line", 
+         aes_col = method,
+         group = method,
+         linewidth = 1, 
+         alpha = 0.75, 
+         y.scale = "identity",
+         y.axis.breaks = seq(0,150, by = 20), 
+         y.axis.label = "Distance (cm)"
+         )
+```
+
+As can be seen in @fig-VEET-distance_methods, while the overall pattern is similar regardless of the used method, there are notable differences between the methods which will consequently affect downstream analyses. Most importantly, the process of condensation has to be well documented and reproducible, as shown above. Any of these data could now be used to calculate the `frequency of continuous near work`, `visual breaks`, or `near-work episodes` as described above.
 
 ### Light {#light}
 
@@ -664,10 +749,27 @@ JZ's position is funded by the MeLiDos project. The project has received funding
 
 JZ declares the following potential conflict of interest in the past five years (2021-2025). Funding: Received research funding from Reality Labs Research.
 
-AN declares the following potential conflicts of interest in the past five years (2021-2025). xxx
+AN declares the following potential conflicts of interest in the past five years (2021-2025). none
 
-LAO declares the following potential conflict of interest in the past five years (2021-2025). Funding: xxx. Consultancy: xxx. Patents: US 11375890 B2
+LAO declares the following potential conflict of interest in the past five years (2021-2025). Consultancy: Zeiss, Alcon. Patents: US 11375890 B2
 
 MS declares the following potential conflicts of interest in the past five years (2021–2025). Academic roles: Member of the Board of Directors, Society of Light, Rhythms, and Circadian Health (SLRCH); Chair of Joint Technical Committee 20 (JTC20) of the International Commission on Illumination (CIE); Member of the Daylight Academy; Chair of Research Data Alliance Working Group Optical Radiation and Visual Experience Data. Remunerated roles: Speaker of the Steering Committee of the Daylight Academy; Ad-hoc reviewer for the Health and Digital Executive Agency of the European Commission; Ad-hoc reviewer for the Swedish Research Council; Associate Editor for LEUKOS, journal of the Illuminating Engineering Society; Examiner, University of Manchester; Examiner, Flinders University; Examiner, University of Southern Norway. Funding: Received research funding and support from the Max Planck Society, Max Planck Foundation, Max Planck Innovation, Technical University of Munich, Wellcome Trust, National Research Foundation Singapore, European Partnership on Metrology, VELUX Foundation, Bayerisch-Tschechische Hochschulagentur (BTHA), BayFrance (Bayerisch-Französisches Hochschulzentrum), BayFOR (Bayerische Forschungsallianz), and Reality Labs Research. Honoraria for talks: Received honoraria from the ISGlobal, Research Foundation of the City University of New York and the Stadt Ebersberg, Museum Wald und Umwelt. Travel reimbursements: Daimler und Benz Stiftung. Patents: Named on European Patent Application EP23159999.4A (“System and method for corneal-plane physiologically-relevant light logging with an application to personalized light interventions related to health and well-being”). With the exception of the funding source supporting this work, M.S. declares no influence of the disclosed roles or relationships on the work presented herein.
+
+## Statement of generative AI and AI-assisted technologies in the writing process
+
+The authors used ChatGPT during the preparation of this work. After using this tool, the authors reviewed and edited the content as needed and take full responsibility for the content of the publication.
+
+Use of AI in contributor roles [^3]:
+Conceptualization: no
+Data curation: no
+Formal analysis: bug fixing
+Methodology: no
+Software: bug fixing
+Validation: no
+Visualization: tweaking of options
+Writing – original draft: abstract refinement
+Writing – review & editing: improve readability and language
+
+[^3]: Based on the CRediT taxonomy. Funding acquisition, investigation, project administration, resources, and supervision were deemed irrelevant in this context and thus removed.
 
 ## References
