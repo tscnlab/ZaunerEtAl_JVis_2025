@@ -5,27 +5,27 @@ author:
     id: JZ
     affiliation: 
       - Technical University of Munich, Germany
-      - Max Planck Institute for Biological Cybernetics, Tübingen, Germany
+      - Max Planck Institute for Biological Cybernetics, Germany
     orcid: "0000-0003-2171-4566"
+    corresponding: true
+    email: johannes.zauner@tum.de
   - name: "Aaron Nicholls"
     id: AN
-    affiliation: "Meta Reality Labs Research"
+    affiliation: "Reality Labs Research, USA"
     orcid: "0009-0001-6683-6826"
   - name: "Lisa A. Ostrin"
     id: LAO
-    affiliation: "University of Houston, Texas, USA"
+    affiliation: "University of Houston College of Optometry, USA"
     orcid: "0000-0001-8675-1478"
   - name: "Manuel Spitschan"
     id: MS
     affiliation: 
       - Technical University of Munich, Germany
-      - Max Planck Institute for Biological Cybernetics, Tübingen, Germany
-      - Technical University of Munich Institute of advanced study (TUM-IAS), Munich, Germany
+      - Max Planck Institute for Biological Cybernetics, Germany
+      - Technical University of Munich, Institute for Advanced Study (TUM-IAS), Germany
     orcid: "0000-0002-8572-9268"
-    corresponding: true
-    email: manuel.spitschan@tum.de
 abstract: >
-  This tutorial presents an analysis pipeline for visual experience datasets, with a focus on reproducible workflows for human chronobiology and myopia research. Light exposure and its retinal encoding affect human physiology and behavior across multiple time scales. Here we provide step-by-step instructions for importing, visualizing, and processing viewing distance and light exposure data using the open-source R package [**LightLogR**](https://tscnlab.github.io/LightLogR/). This includes time-series analyses for working distance, biologically relevant light metrics, and spectral characteristics. By leveraging a modular approach, the tutorial supports researchers in building flexible and robust pipelines that accommodate diverse experimental paradigms and measurement systems.
+  Exposure to the optical environment — often referred to as *visual experience* — profoundly influences human physiology and behavior across multiple time scales. In controlled laboratory settings, stimuli can be held constant or manipulated parametrically. However, such exposures rarely replicate real-world conditions, which are inherently complex and dynamic, generating high-dimensional datasets that demand rigorous and flexible analysis strategies. This tutorial presents an analysis pipeline for visual experience datasets, with a focus on reproducible workflows for human chronobiology and myopia research. Light exposure and its retinal encoding affect human physiology and behavior across multiple time scales. Here we provide step-by-step instructions for importing, visualizing, and processing viewing distance and light exposure data using the open-source R package [**LightLogR**](https://tscnlab.github.io/LightLogR/). This includes time-series analyses for working distance, biologically relevant light metrics, and spectral characteristics. By leveraging a modular approach, the tutorial supports researchers in building flexible and robust pipelines that accommodate diverse experimental paradigms and measurement systems.
 keywords: 
   - wearable
   - light logging
@@ -59,19 +59,17 @@ execute:
 
 Exposure to the optical environment — often referred to as *visual experience* — profoundly influences human physiology and behavior across multiple time scales. Two notable examples, from distinct research domains, can be understood through a common retinally-referenced framework.
 
-The first example relates to the non-visual effects of light on human circadian and neuroendocrine physiology. The light–dark cycle entrains the circadian clock, and light exposure at night suppresses melatonin production [@Brown2022PLoSBiol; @Blume2019Somnologie]. The second example concerns the influence of visual experience on ocular development, particularly myopia. Time spent outdoors — characterized by distinct optical environments — has been consistently associated with protective effects on ocular growth and health outcomes [@DahlmannNoor2025GraefesArchClinExpOphthal].
+The first example relates to the non-visual effects of light on human circadian and neuroendocrine physiology. The light–dark cycle entrains the circadian clock, and light exposure at night suppresses melatonin production [@Brown2022PLoSBiol; @Blume2019Somnologie]. The second example concerns the influence of visual experience on ocular development, particularly myopia. Time spent outdoors — which features distinct optical environments — has been consistently associated with protective effects on ocular growth and health outcomes [@DahlmannNoor2025GraefesArchClinExpOphthal].
 
 In controlled laboratory settings, light exposure can be held constant or manipulated parametrically. However, such exposures rarely replicate real-world conditions, which are inherently complex and dynamic. As people move in and between spaces (indoors and outdoors) and move their body, head, and eyes, exposure to the optical environment varies significantly [@Webler2019CurrOpinBehavSci] and is modulated by behavior [@Biller2024CommunPsychol]. Wearable devices for measuring light exposure have thus emerged as vital tools to capture the richness of ecological visual experience. These tools generate high-dimensional datasets that demand rigorous and flexible analysis strategies.
 
 Starting in the 1980s [@Okudaira1983AmJPhysiol], technology to measure optical exposure has matured, with miniaturized illuminance sensors now (in 2025) very common in consumer wearables. In research, several devices are available that differ in functionality, ranging from small pins measuring ambient illuminance [@Mohamed2021OptExpress] to head-mounted multi-modal devices capturing nearly all relevant aspects of visual experience [@Gibaldi2024TranslVisSciTechnol]. Increased capabilities in wearables bring complex, dense datasets. These go hand-in-hand with a proliferation of metrics, as highlighted by recent review papers in both circadian and myopia research.
 
-At present, the analysis processes to derive metrics are often implemented on a per-laboratory or even per-researcher basis. This fragmentation is a potential source of errors and inconsistencies between studies, and it consumes considerable researcher time [@Hartmeyer2022LightResTechnol]. Too often, more time is spent preparing data than gaining insights through rigorous statistical analysis. These preparation tasks are best handled, or at least facilitated, by standardized, transparent, community-based analysis pipelines [@Zauner2024PLOSONE].
+At present, the analysis processes to derive metrics are often implemented on a per-laboratory or even per-researcher basis. This fragmentation is a potential source of errors and inconsistencies between studies, consumes considerable researcher time [@Hartmeyer2022LightResTechnol], and these bespoke processes and formats hinder harmonization or meta-analysis across multiple studies. Too often, more time is spent preparing data than gaining insights through rigorous statistical analysis. These preparation tasks are best handled, or at least facilitated, by standardized, transparent, community-based analysis pipelines [@Zauner2024PLOSONE].
 
 In circadian research, the R package LightLogR was developed to address this need [@Zauner2025JOpenSourceSoftw]. LightLogR is an open-source, MIT-licensed, community-driven package specifically designed for data from wearable light loggers and optical radiation dosimeters. It contains functions to calculate over sixty different metrics used in the field [@Hartmeyer2023LightResTechnol]. In a recent [update](https://tscnlab.github.io/LightLogR/news/index.html#lightlogr-090-sunrise), the package was expanded to handle modalities beyond illuminance, such as viewing distance and light spectra—capabilities highly relevant for myopia research [@Honekopp2023ClinOphthalmol].
 
-In this article we show that the analysis pipelines and metric functions in LightLogR naturally apply to the whole field of visual experience, not just circadian research and chronobiology. Our approach is modular and extensible, allowing researchers to adapt it to a variety of devices and research questions. Emphasis is placed on clarity, transparency, and reproducibility, aligning with best practices in scientific computing and open science. We use data from two devices to demonstrate the LightLogR workflow and output with metrics relevant in the field of myopia, covering metrics for working distance, daylight exposure, and spectral analyses. It is recommended to recreate the analysis in this script. All necessary data and code are provided under an open license in the [GitHub repository](https://github.com/tscnlab/ZaunerEtAl2025JOV).
-
-In this article, we demonstrate that LightLogR’s analysis pipelines and metric functions apply broadly across the field of visual experience research, not just to circadian rhythms and chronobiology. Our approach is modular and extensible, allowing researchers to adapt it to a variety of devices and research questions. Emphasis is placed on clarity, transparency, and reproducibility, aligning with best practices in scientific computing and open science. We use example data from two devices to showcase the LightLogR workflow with metrics relevant to myopia research, covering working distance, (day)light exposure, and spectral analysis. Readers are encouraged to recreate the analysis using the provided code. All necessary data and code are openly available in the [GitHub repository](https://github.com/tscnlab/ZaunerEtAl2025JOV).
+In this article, we demonstrate that LightLogR’s analysis pipelines and metric functions apply broadly across the field of visual experience research, not just to circadian rhythms and chronobiology. Our approach is modular and extensible, allowing researchers to adapt it to a variety of devices and research questions. Emphasis is placed on clarity, transparency, and reproducibility, aligning with best practices in scientific computing and open science. We use example data from two devices to showcase the LightLogR workflow with metrics relevant to myopia research, covering working distance, (day)light exposure, and spectral analysis. Readers are encouraged to recreate the analysis using the provided code. All necessary data and code are openly available in the [GitHub repository](https://github.com/tscnlab/ZaunerEtAl_JVis_2025).
 
 ## Methods and materials
 
@@ -81,7 +79,7 @@ This tutorial was built with `Quarto`, an open-source scientific and technical p
 
 ### Metric selection and definitions
 
-In March 2025, two workshops with myopia researchers — initiated by the Research Data Alliance (RDA) Working Group on Optical Radiation Exposure and Visual Experience Data — focused on current needs and future opportunities in data analysis, including the development and standardization of metrics. Based on expert input from these workshops, the authores of this tutorial compiled a list of visual experience metrics, shown in @tbl-one. These include many currently used metrics and definitions [@Wen2020bjophthalmol; @Wen2019TransVisSciTech; @Bhandari2020OphthalmicPhysiolOpt; @Williams2019Scientificreports], as well as new metrics enabled by spectrally-resolved measurements.
+In March 2025, two workshops with myopia researchers — initiated by the Research Data Alliance (RDA) Working Group on Optical Radiation Exposure and Visual Experience Data — focused on current needs and future opportunities in data analysis, including the development and standardization of metrics. Based on expert input from these workshops, the authors of this tutorial compiled a list of visual experience metrics, shown in @tbl-one. These include many currently used metrics and definitions [@Wen2020bjophthalmol; @Wen2019TransVisSciTech; @Bhandari2020OphthalmicPhysiolOpt; @Williams2019Scientificreports], as well as new metrics enabled by spectrally-resolved measurements.
 
 {{< include _Table1.qmd >}}
 
@@ -95,17 +93,17 @@ Data from two wearable devices are used in this analysis:
 
 -   `Clouclip`: A wearable device that measures viewing distance and ambient light [Glasson Technology Co., Ltd, Hangzhou, China; @Wen2021ActaOphtalmol; @Wen2020bjophthalmol]. The Clouclip provides a simple data output with only Distance (working distance, in centimeters) and Illuminance (ambient light, in lux). Data in our example were recorded at 5-second intervals. Approximately one week of data (\~120,960 observations) is about 1.6 MB in size.
 
--   `Visual Environment Evaluation Tool` (VEET): A head-mounted multi-modal device that logs multiple data streams [Meta Platforms, Inc., Menlo Park, CA, USA; @Sah2025OphtalmicPhysiolOpt]. The VEET dataset used here contains simultaneous measurements of distance (via a time-of-flight sensor), ambient light (illuminance), activity (accelerometer & gyroscope), and spectral irradiance (multi-channel light sensor). Data were recorded at 2-second intervals, yielding a very dense dataset (\~270 MB per week).
+-   `Visual Environment Evaluation Tool` (VEET): A head-mounted multi-modal device that logs multiple data streams [Meta Platforms, Inc., Menlo Park, CA, USA; @Sah2025OphtalmicPhysiolOpt; @Sullivan2024]. The VEET dataset used here contains simultaneous measurements of distance (via a time-of-flight sensor), ambient light (illuminance), activity (accelerometer & gyroscope), and spectral irradiance (multi-channel light sensor). Data were recorded at 2-second intervals, yielding a very dense dataset (\~270 MB per week).
 
 ### Data processing summary
 
-The [Results](#results) section uses imported and pre-processed data from the two devices to calculate metrics. [Supplement 1](https://tscnlab.github.io/ZaunerEtAl_2025_JOV/supplement-preview.html) contains the annotated code and description for the steps involved. Following summary of the steps involved:
+The [Results](#results) section uses imported and pre-processed data from the two devices to calculate metrics. [Supplement 1](https://tscnlab.github.io/ZaunerEtAl_JVis_2025/supplement-preview.html) contains the annotated code and description for the steps involved. The following summarizes the steps involved:
 
-**Data Import:** We imported raw data from the `Clouclip` and `VEET` devices using LightLogR’s built-in import functions, which automatically handle device-specific formats and idiosyncrasies. The `Clouclip` export file (provided as a tab-delimited text file) contains timestamped records of distance (cm) and illuminance (lux). LightLogR’s `import$Clouclip` function reads this file, after specifying the device’s recording timezone, and converts device-specific sentinel codes into proper missing values. For instance, the Clouclip uses special numeric codes to indicate when it is in “sleep mode” or when a reading is out of the sensor’s range, rather than recording a normal value. LightLogR identifies `-1` (for both distance and lux) as indicating the device’s sleep mode and `204` (for distance) as indicating the object was beyond the measurable range, replacing these with `NA` and logging their status in separate columns. The import routine also provides an initial summary of the dataset, including start and end times and any irregular sampling intervals or gaps.
+**Data import:** We imported raw data from the `Clouclip` and `VEET` devices using LightLogR’s built-in import functions, which automatically handle device-specific formats and idiosyncrasies. The `Clouclip` export file (provided as a tab-delimited text file) contains timestamped records of distance (cm) and illuminance (lux). LightLogR’s `import$Clouclip` function reads this file, after specifying the device’s recording timezone, and converts device-specific sentinel codes into proper missing values. For instance, the Clouclip uses special numeric codes to indicate when it is in “sleep mode” or when a reading is out of the sensor’s range, rather than recording a normal value. LightLogR identifies `-1` (for both distance and lux) as indicating the device’s sleep mode and `204` (for distance) as indicating the object was beyond the measurable range, replacing these with `NA` and logging their status in separate columns. The import routine also provides an initial summary of the dataset, including start and end times and any irregular sampling intervals or gaps.
 
 For the `VEET` device, data were provided as CSV logs (zipped on Github, due to size). We focused on the ambient light sensor modality first. Using `import$VEET(..., modality = "ALS")`, we extracted the illuminance (`Lux`) data stream and its timestamps. The raw VEET data similarly can contain irregular intervals or missing periods (e.g., if the device stopped recording or was reset); the import summary flags these issues.
 
-**Irregular Intervals and Gaps:** Both datasets showed irregular timing and missing data, i.e., gaps. Irregular data means that some observations did not align to the nominal sampling interval (e.g., slight timing drift or pauses in recording). For the `Clouclip` 5-second data, we detected irregular timestamps spanning all but the first and last day of the recording. Handling such irregularities is important because many downstream analyses assume a regular time series. We evaluated strategies to address this, including:
+**Irregular intervals and gaps:** Both datasets showed irregular timing and missing data, i.e., gaps. Irregular data means that some observations did not align to the nominal sampling interval (e.g., slight timing drift or pauses in recording). For the `Clouclip` 5-second data, we detected irregular timestamps spanning all but the first and last day of the recording. Handling such irregularities is important because many downstream analyses assume a regular time series. We evaluated strategies to address this, including:
 
 -   Removing an initial portion of data if irregularities occur mainly during device start-up.
 
@@ -121,7 +119,7 @@ After these preprocessing steps, the `Clouclip` dataset had no irregular timesta
 
 The `VEET` illuminance data underwent a similar cleaning procedure. To make the `VEET`’s 2-second illuminance data more comparable to the `Clouclip`’s and to reduce computational load, we aggregated the illuminance time series to 5-second intervals. We then inserted explicit missing entries for any gaps and removed days with more than one hour of missing illuminance data. After cleaning, six days of `VEET` illuminance data with good coverage remained for analysis (see Supplementary Material for details).
 
-Finally, for spectral analysis, we imported the `VEET`’s spectral sensor modality. This required additional processing: the raw spectral data consists of counts from 10 wavelength-specific channels (approximately 415 nm through 940 nm, plus two broadband clear channels and a dark channel) along with a sensor gain setting. We aggregated the spectral data to 5-minute intervals to focus on broader trends and reduce data volume. Each channel’s counts were normalized by the appropriate gain at each moment, and the two clear channels were averaged. Using a calibration matrix provided by the manufacturer (specific to the spectral sensor model), we reconstructed full spectral power distributions for each 5-minute interval. The end result is a list-column in the dataset where each entry is the estimated spectral irradiance across wavelengths for that time interval. (Detailed spectral preprocessing steps, including the calibration and normalization, are provided in the [Supplement](https://tscnlab.github.io/ZaunerEtAl_2025_JOV/supplement-preview.html).) After spectral reconstruction, the dataset was ready for calculating example spectrum-based metrics.
+Finally, for spectral analysis, we imported the `VEET`’s spectral sensor modality. This required additional processing: the raw spectral data consists of counts from 10 wavelength-specific channels (approximately 415 nm through 940 nm, plus two broadband clear channels and a dark channel) along with a sensor gain setting. We aggregated the spectral data to 5-minute intervals to focus on broader trends and reduce data volume. Each channel’s counts were normalized by the appropriate gain at each moment, and the two clear channels were averaged. Using a calibration matrix provided by the manufacturer (specific to the spectral sensor model), we reconstructed full spectral power distributions for each 5-minute interval. The end result is a list-column in the dataset where each entry is the estimated spectral irradiance across wavelengths for that time interval. (Detailed spectral preprocessing steps, including the calibration and normalization, are provided in the [Supplement](https://tscnlab.github.io/ZaunerEtAl_JVis_2025/supplement-preview.html).) After spectral reconstruction, the dataset was ready for calculating example spectrum-based metrics.
 
 This tutorial will start by importing a `Clouclip` dataset and providing an overview of the data. The `Clouclip` export is considerably simpler compared to the `VEET` export, only containing `Distance` and `Illuminance` measurements. The `VEET` dataset will be imported later for the spectrum related metrics.
 
@@ -248,7 +246,7 @@ dataCC |>
 
 :::
 
-#### Frequency of Continuous near work
+#### Frequency of continuous near work
 
 Continuous near-work is typically defined as sustained viewing within a near distance for some minimum duration, allowing only brief interruptions. We use LightLogR’s `cluster` function to identify episodes of continuous near work. Here we define a near-work episode as viewing distance between 20 cm and 60 cm that lasts at least 30 minutes, with interruptions of up to 1 minute allowed (meaning short breaks ≤1 min do not end the episode). Using [extract_clusters()](https://tscnlab.github.io/LightLogR/reference/extract_clusters.html) with those parameters, we count how many such episodes occur per day.
 
@@ -286,7 +284,7 @@ dataCC |>
   geom_hline(yintercept = c(20, 60), col = "red", linetype = "dashed")
 ```
 
-#### Near Work episodes
+#### Near-work episodes
 
 Beyond frequency, we can characterize near-work episodes by their duration and typical viewing distance. This section extracts all near-work episodes (using a shorter minimum duration to capture more routine near-work bouts) and summarizes three aspects: (1) frequency (count of episodes per day), (2) average duration of episodes, and (3) average distance during those episodes. These results are combined in @tbl-nearworkepisodes.
 
@@ -312,7 +310,7 @@ dataCC |>
 
 #### Visual breaks
 
-`Visual breaks` are a little different, compared to the previous metrics. The difference is that in this case, the minimum break and the previous episode is important. This leads to a two step process, where we first extract instances of `Distance` above 100 cm for at least 20 seconds, before we filter for a previous duration of at maximum 20 minutes. @tbl-visualbreaks provides the daily frequency of visual breaks.
+`Visual breaks` are a little different, compared to the previous metrics. The difference is that, in this case, the minimum break and the previous episode is important. This leads to a two step process, where we first extract instances of `Distance` above 100 cm for at least 20 seconds, before we filter for a previous duration of at maximum 20 minutes. @tbl-visualbreaks provides the daily frequency of visual breaks.
 
 ```{r}
 #| label: tbl-visualbreaks
@@ -351,19 +349,105 @@ dataCC |>
   geom_point(data = \(x) filter(x, is.cluster), col = "red")
 ```
 
+#### Distance with spatial distribution
+
+The `Clouclip` device outputs a singular measure for distance, while the visual environment in natural contiditions contains many distances, depending on the solid angle and direction of the measurement. A device like the `VEET` increases the spatial resolution of these measurements, allowing for more in-depth analyses of the size and position of an object within the field of view. In the case of the `VEET`, data are collected from an 8x8 measurement grid, spanning 52° vertically and 41° horizontally. Here are exemplary observations from six different days at the same time.
+
+```{r}
+#| label: fig-VEET-distance
+#| fig-cap: "Example observations of the measurement grid at 1:14 p.m. for each measurement day. Text values show distance in cm. empty grid points show values with low confidence. Zero-distance values were replaced with infinite distance and plotted despite low confidence."
+#| fig-height: 5
+#| fig-width: 12
+
+slicer <- function(x){seq(min((x-1)*64+1), max(x*64, by = 1))} #allows to choose an observation
+
+#set visualization parameters
+extras <- list(
+  geom_tile(),
+  scale_fill_viridis_c(direction = -1, limits = c(0, 200),
+                       oob = scales::oob_squish_any),
+  scale_color_manual(values = c("black", "white")),
+  theme_minimal(),
+  guides(colour = "none"),
+  geom_text(aes(label = (dist1/10) |> round(0), colour = dist1>1000), size = 2.5),
+  coord_fixed(),
+  labs(x = "X position (°)", y = "Y position (°)", 
+       fill = "Distance (cm)", alpha = "Confidence (0-255)"))
+
+dataVEET3 |> 
+  slice(slicer(9530)) |>  #choose a particular observation
+  mutate(dist1 = ifelse(dist1 == 0, Inf, dist1)) |> #replace 0 distances with 5m
+  filter(conf1 >= 0.1 | dist1 == Inf) |> #remove data that has less than 10% confidence
+  ggplot(aes(x=x.pos, y=y.pos, fill = dist1/10))+ extras + #plot the data
+  facet_grid(~Datetime) #show one plot per day
+```
+
+To use these distance data in the framework shown above for the `Clouclip` device, a sensible method to condense the data has to be applied. This method has to be chosen based on theoretical assumptions what a relevant distance within the field of view is. Possible methods include:
+
+- average across all (high confidence) distance values within the grid
+- closest (high confidence) distance within the grid
+- (high confidence) values at or around a given grid position, e.g., ±10 degrees around the central view (0°)
+
+Many more options are available based on the richer dataset, e.g., condensation rules based on the number of points in the grid with a given condition, or the variation within the grid.
+
+We will demonstrate these three exemplary methods for a single day (`2024-06-10`), all leading to a data structure akin to the `Clouclip`, i.e., to be used for further calculation of visual experience metrics.
+
+```{r}
+#| label: fig-VEET-distance_methods
+#| fig-cap: "Comparison of condensation methods for spatial grid of distance measurements. The lines represent an average across all data points (yellow), the minimum distance (grey), or the central 10° (blue). Data points with confidence less than 10% were removed prior to calculation."
+#| fig-height: 5 
+#| fig-width: 8
+dataVEET3_part <- #filter one day
+dataVEET3 |>
+  filter_Date(start = "2024-06-10", length = "1 day")
+
+dataVEET3_condensed <- 
+dataVEET3_part |> 
+  group_by(Datetime, .add = TRUE) |> #group additionally by every observation
+  filter(conf1 >= 0.1) |> #remove data with low confidence
+  summarize(
+    distance_mean = mean(dist1), #average across all distance values,
+    distance_min = min(dist1), #closest across all distance values,
+    distance_central = mean(dist1[between(x.pos, -10,10) & between(y.pos, -10,10)]), #central distance
+    n = n(), #number of (valid) grid points
+    .groups = "drop_last"
+  )
+
+dataVEET3_condensed |> 
+  aggregate_Datetime("15 mins", numeric.handler = \(x) mean(x, na.rm = TRUE)) |> #create 15 minute data
+  remove_partial_data(by.date = TRUE) |> #remove midnight data points
+  pivot_longer(contains("distance"), #put all methods into a long file for plotting
+               names_to = c(".value", "method"),
+    names_pattern = "(distance)_(mean|min|max|central)"
+    ) |>
+  gg_day(y.axis = distance/10, 
+         geom = "line", 
+         aes_col = method,
+         group = method,
+         linewidth = 1, 
+         alpha = 0.75, 
+         y.scale = "identity",
+         y.axis.breaks = seq(0,150, by = 20), 
+         y.axis.label = "Distance (cm)"
+         )
+```
+
+As can be seen in @fig-VEET-distance_methods, while the overall pattern is similar regardless of the used method, there are notable differences between the methods which will consequently affect downstream analyses. Most importantly, the process of condensation has to be well documented and reproducible, as shown above. Any of these data could now be used to calculate the `frequency of continuous near work`, `visual breaks`, or `near-work episodes` as described above.
+
 ### Light {#light}
 
 The `Clouclip` illuminance data in our example are extremely low (the device was mostly used in dim conditions), which would make certain light exposure summaries trivial or not meaningful. To better illustrate light exposure metrics, we turn to the exemplary `VEET` device’s illuminance data, which capture a broader range of lighting conditions. We import the `VEET` ambient light data (already preprocessed to have regular 5-second intervals as described above) and briefly examine its distribution.
 
-**Illuminance Distribution**: The illuminance values from the Clouclip were almost always near zero, while the VEET data include outdoor exposures up to several thousand lux. The contrast is evident by comparing histograms of the two datasets’ lux values (Clouclip vs. VEET). The VEET illuminance histogram (see @fig-hist-VEETlight) shows a heavily skewed distribution with a spike at zero (indicating many intervals of complete darkness or the sensor covered) and a long tail extending to very high lux values. Such zero-inflated and skewed data are common in wearable light measurements [@ZaunerEtAl2025JBR].
+**Illuminance distribution**: The illuminance values from the Clouclip were almost always near zero, while the VEET data include outdoor exposures up to several thousand lux. The contrast is evident from comparing histograms of the two datasets’ lux values (Clouclip vs. VEET). The VEET illuminance histogram (see @fig-hist-VEETlight) shows a heavily skewed distribution with a spike at zero (indicating many intervals of complete darkness or the sensor covered) and a long tail extending to very high lux values. Such zero-inflated and skewed data are common in wearable light measurements [@ZaunerEtAl2025JBR].
 
 ```{r}
 #| label: fig-hist-CClight
 #| column: margin
 #| echo: false
-#| fig-cap: "Histogram of illuminance values from the Clouclip dataset (5-second data). Values are very low and show indoor conditions."
+#| fig-cap: "Histogram of illuminance values from the Clouclip dataset (5-second data). THe values are very low and are typical of indoor conditions."
 dataCC |> 
   ggplot(aes(x = Lux)) + 
+  labs(x = "Photopic illuminance (lx)") +
   geom_histogram(bins = 100) + 
   theme_minimal() +
   scale_x_continuous(trans = "symlog", breaks = c(0, 1, 10, 100, 1000))
@@ -376,12 +460,13 @@ dataCC |>
 #| fig-cap: "Histogram of illuminance values from the VEET dataset (aggregated to 5 s). Note the logarithmic x-axis: the distribution is highly skewed with many low values (including zeros) and a long tail of high lux readings."
 dataVEET |> 
   ggplot(aes(x = Lux)) + 
+  labs(x = "Photopic illuminance (lx)") +
   geom_histogram(bins = 100) + 
   theme_minimal() +
   scale_x_continuous(trans = "symlog", breaks = c(0, 1, 10, 100, 1000, 10000))
 ```
 
-After confirming that the VEET data cover a broad dynamic range of lighting, we proceed with calculating light exposure metrics. (The VEET data had been cleaned for gaps and irregularities as described earlier; see [Supplement 1](https://tscnlab.github.io/ZaunerEtAl_2025_JOV/supplement-preview.html) for the gap summary table.)
+After confirming that the VEET data cover a broad dynamic range of lighting, we proceed with calculating light exposure metrics. (The VEET data had been cleaned for gaps and irregularities as described earlier; see [Supplement 1](https://tscnlab.github.io/ZaunerEtAl_JVis_2025/supplement-preview.html) for the gap summary table.)
 
 #### Average light exposure
 
@@ -395,7 +480,8 @@ dataVEET |>
   summarize_numeric(prefix = "mean ", remove = c("Datetime")) |> 
   to_mean_daily() |>             # compute mean for weekday, weekend, all days
   fmt_number(decimals = 1) |> 
-  cols_hide(`average episodes`)   # hide an irrelevant column (episodes count)
+  cols_hide(`average episodes`) |>  # hide an irrelevant column (episodes count)
+  cols_label(`average mean Lux` = "Mean photopic illuminance (lx)")
 ```
 
 However, because illuminance data tend to be extremely skewed and contain many zero values (periods of darkness), the arithmetic mean can be [misleading](https://tscnlab.github.io/LightLogR/articles/log.html). A common approach is to apply a logarithmic transform to illuminance before averaging, which down-weights extreme values and accounts for the multiplicative nature of light intensity effects. LightLogR provides helper functions [`log_zero_inflated()`]((https://tscnlab.github.io/LightLogR/reference/log_zero_inflated.html)) and its inverse [`exp_zero_inflated()`](https://tscnlab.github.io/LightLogR/reference/log_zero_inflated.html) to handle log-transformation when zeros are present (by adding a small offset before log, and back-transforming after averaging). Using this approach, we recompute the daily mean illuminance. The results in @tbl-lightexposure2 show that the log-transformed mean (back-transformed to lux) is much lower, reflecting the fact that for much of the time illuminance was near zero. This transformed mean is often more representative of typical exposure for skewed data.
@@ -409,7 +495,8 @@ dataVEET |>
   summarize_numeric(prefix = "mean ", remove = c("Datetime")) |> 
   mean_daily(prefix = "") |>                         # get daily mean of log-lux
   mutate(`mean Lux` = `mean Lux` |> exp_zero_inflated()) |>  # back-transform to lux
-  gt() |> fmt_number(decimals = 1) |> cols_hide(episodes)
+  gt() |> fmt_number(decimals = 1) |> cols_hide(episodes) |> 
+  cols_label(`mean Lux` = "Mean photopic illuminance (lx)")
 ```
 
 #### Duration in high-light (outdoor) conditions
@@ -452,7 +539,7 @@ It is also informative to visualize when these high-light conditions occurred. @
 #| label: fig-outdoor
 #| fig-cap: "Outdoor light exposure over time. Colored bands indicate periods when illuminance exceeded outdoor thresholds: violet for ≥1000 lx, green for ≥2000 lx, and yellow for ≥3000 lx. Grey shaded regions denote night (from civil dusk to dawn)."
 dataVEET |> 
-  gg_day(y.axis = Lux, y.axis.label = "Illuminance (lx)", geom = "line", jco_color = FALSE) |> 
+  gg_day(y.axis = Lux, y.axis.label = "Photopic illuminance (lx)", geom = "line", jco_color = FALSE) |> 
   gg_state(Lux_range, aes_fill = Lux_range, alpha = 0.75) |> 
   gg_photoperiod(coordinates) +
   scale_fill_viridis_d() +
@@ -519,7 +606,7 @@ dataVEET |>
 
 ### Spectrum
 
-The `VEET` device’s spectral sensor provides rich data beyond simple lux values, but it requires reconstruction of the actual light spectrum from raw sensor counts. We processed the spectral sensor data in order to compute two example spectrum-based metrics. Detailed data import, normalization, and spectral reconstruction steps are given in the [Supplement 1](https://tscnlab.github.io/ZaunerEtAl_2025_JOV/supplement-preview.html); here we present the resulting metrics. Briefly, the `VEET`’s spectral sensor recorded counts in ten wavelength bands (roughly 415 nm to 910 nm), plus a `Dark` and a `Clear` channel[^fw]. After normalizing by sensor gain and applying the calibration matrix, we obtained an estimated spectral irradiance distribution for each 5-minute interval in the recording. With these reconstructed spectra, we can derive novel metrics that consider spectral content of the light. 
+The `VEET` device’s spectral sensor provides rich data beyond simple lux values, but it requires reconstruction of the actual light spectrum from raw sensor counts. We processed the spectral sensor data in order to compute two example spectrum-based metrics. Detailed data import, normalization, and spectral reconstruction steps are given in the [Supplement 1](https://tscnlab.github.io/ZaunerEtAl_JVis_2025/supplement-preview.html); here we present the resulting metrics. Briefly, the `VEET`’s spectral sensor recorded counts in ten wavelength bands (roughly 415 nm to 910 nm), plus a `Dark` and a `Clear` channel[^fw]. After normalizing by sensor gain and applying the calibration matrix, we obtained an estimated spectral irradiance distribution for each 5-minute interval in the recording. With these reconstructed spectra, we can derive novel metrics that consider spectral content of the light. 
 
 [^fw]: Note that older firmware versions contained two `Clear` channels and the highest spectral channel was indicated as 940 nm. Data collected with this early firmware version are not suitable for spectral reconstruction in the context of research projects.
 
@@ -652,15 +739,37 @@ sessionInfo()
 
 ## Data availability statement
 
-All data in the tutorial and supplement 1 are available from the github repository: https://github.com/tscnlab/ZaunerEtAl_2025_JOV/, archived on Zenodo: https://doi.org/10.5281/zenodo.16566014 under a CC-0 license
+All data in this tutorial and Supplement 1 are available from the GitHub repository: https://github.com/tscnlab/ZaunerEtAl_JVis_2025/, archived on Zenodo: https://doi.org/10.5281/zenodo.16566014 under a CC0 license.
 
 ## Funding statement
 
-JZs position is funded by MeLiDos, The project (22NRM05 MeLiDos) has received funding from the European Partnership on Metrology, co-financed from the European Union’s Horizon Europe Research and Innovation Programme and by the Participating States. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or EURAMET. Neither the European Union nor the granting authority can be held responsible for them. JZ, LAO, and MS received funding from Meta.
+JZ's position is funded by the MeLiDos project. The project has received funding from the European Partnership on Metrology (22NRM05 MeLiDos), co-financed from the European Union’s Horizon Europe Research and Innovation Programme and by the Participating States. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or EURAMET. Neither the European Union nor the granting authority can be held responsible for them. JZ, LAO, and MS received research funding from Reality Labs Research. The funders had no role in study design, data collection and analysis, decision to publish or preparation of the manuscript.
 
 ## Conflict of interest statement
 
-JZ, LAO, and MS: Meta (research funding)
-LAO: Zeiss (consulting), Patent (US 11375890 B2).
+JZ declares the following potential conflict of interest in the past five years (2021-2025). Funding: Received research funding from Reality Labs Research.
+
+AN declares the following potential conflicts of interest in the past five years (2021-2025). none
+
+LAO declares the following potential conflict of interest in the past five years (2021-2025). Consultancy: Zeiss, Alcon. Patents: US 11375890 B2
+
+MS declares the following potential conflicts of interest in the past five years (2021–2025). Academic roles: Member of the Board of Directors, Society of Light, Rhythms, and Circadian Health (SLRCH); Chair of Joint Technical Committee 20 (JTC20) of the International Commission on Illumination (CIE); Member of the Daylight Academy; Chair of Research Data Alliance Working Group Optical Radiation and Visual Experience Data. Remunerated roles: Speaker of the Steering Committee of the Daylight Academy; Ad-hoc reviewer for the Health and Digital Executive Agency of the European Commission; Ad-hoc reviewer for the Swedish Research Council; Associate Editor for LEUKOS, journal of the Illuminating Engineering Society; Examiner, University of Manchester; Examiner, Flinders University; Examiner, University of Southern Norway. Funding: Received research funding and support from the Max Planck Society, Max Planck Foundation, Max Planck Innovation, Technical University of Munich, Wellcome Trust, National Research Foundation Singapore, European Partnership on Metrology, VELUX Foundation, Bayerisch-Tschechische Hochschulagentur (BTHA), BayFrance (Bayerisch-Französisches Hochschulzentrum), BayFOR (Bayerische Forschungsallianz), and Reality Labs Research. Honoraria for talks: Received honoraria from the ISGlobal, Research Foundation of the City University of New York and the Stadt Ebersberg, Museum Wald und Umwelt. Travel reimbursements: Daimler und Benz Stiftung. Patents: Named on European Patent Application EP23159999.4A (“System and method for corneal-plane physiologically-relevant light logging with an application to personalized light interventions related to health and well-being”). With the exception of the funding source supporting this work, M.S. declares no influence of the disclosed roles or relationships on the work presented herein.
+
+## Statement of generative AI and AI-assisted technologies in the writing process
+
+The authors used ChatGPT during the preparation of this work. After using this tool, the authors reviewed and edited the content as needed and take full responsibility for the content of the publication.
+
+Use of AI in contributor roles [^3]:
+Conceptualization: no
+Data curation: no
+Formal analysis: bug fixing
+Methodology: no
+Software: bug fixing
+Validation: no
+Visualization: tweaking of options
+Writing – original draft: abstract refinement
+Writing – review & editing: improve readability and language
+
+[^3]: Based on the CRediT taxonomy. Funding acquisition, investigation, project administration, resources, and supervision were deemed irrelevant in this context and thus removed.
 
 ## References

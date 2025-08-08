@@ -8,6 +8,8 @@ author:
       - Technical University of Munich, Germany
       - Max Planck Institute for Biological Cybernetics, Tübingen, Germany
     orcid: "0000-0003-2171-4566"
+    corresponding: true
+    email: johannes.zauner@tum.de
   - name: "Aaron Nicholls"
     affiliation: "Meta Reality Labs Research"
     orcid: "0009-0001-6683-6826"
@@ -20,8 +22,6 @@ author:
       - Max Planck Institute for Biological Cybernetics, Tübingen, Germany
       - Technical University of Munich Institute of advanced study (TUM-IAS), Munich, Germany
     orcid: "0000-0002-8572-9268"
-    corresponding: true
-    email: manuel.spitschan@tum.de
 doi: 10.5281/zenodo.16566014
 format:
   html:
@@ -209,7 +209,7 @@ In this plot, blue segments indicate times when the Clouclip was *operational*�
 
 ## `VEET` Data: Ambient Light (Illuminance) Processing
 
-The **VEET** device [@Sah2025OphtalmicPhysiolOpt] is a more complex logger that records multiple data modalities in one combined file. Its raw data file contains interleaved records for different sensor types, distinguished by a “modality” field. We focus first on the ambient light sensor modality (abbreviated **ALS**), which provides broad-spectrum illuminance readings (lux) and related information like sensor gains and flicker, recorded every 2 seconds. Later we will import the spectral sensor modality (**PHO**) for spectral irradiance data.
+The **VEET** device [@Sah2025OphtalmicPhysiolOpt, @Sullivan2024] is a more complex logger that records multiple data modalities in one combined file. Its raw data file contains interleaved records for different sensor types, distinguished by a “modality” field. We focus first on the ambient light sensor modality (abbreviated **ALS**), which provides broad-spectrum illuminance readings (lux) and related information like sensor gains and flicker, recorded every 2 seconds. Later we will import the spectral sensor modality (**PHO**) for spectral irradiance data, and the time-of-flight modality (**TOF**) for distance data.
 
 In the `VEET`’s export file, each line includes a timestamp and a modality code, followed by fields specific to that modality. Importantly, this means that the `VEET` export is not rectangular, i.e., tabular. This makes it challenging for many import functions that expect the equal number of columns in every row, which is not the case in this instance. For the **ALS modality**, the relevant columns include a high-resolution timestamp (in Unix epoch format), integration time, UV/VIS/IR sensor gain settings, raw UV/VIS/IR sensor counts, a flicker measurement, and the computed illuminance in lux. For example, the ALS data columns are named: `time_stamp`, `integration_time`, `uvGain`, `visGain`, `irGain`, `uvValue`, `visValue`, `irValue`, `Flicker`, and `Lux`.
 
@@ -268,7 +268,7 @@ At this point, the `dataVEET` object (for illuminance) is cleaned and ready fo
 
 ### Import
 
-In addition to broad-band illuminance, the `VEET` provides **spectral sensor data** through its `PHO` modality. Unlike illuminance, the spectral data are not directly given as directly interpretable radiometric metrics but rather as raw sensor counts across multiple wavelength channels, which require conversion to reconstruct a spectral power distribution. In our analysis, spectral data allow us to compute metrics like the relative contribution of short-wavelength (blue) light versus long-wavelength light in the participant’s environment. Processing this spectral data involves several necessary steps.
+In addition to broad-band illuminance and distance, the `VEET` provides **spectral sensor data** through its `PHO` modality. Unlike illuminance, the spectral data are not directly given as directly interpretable radiometric metrics but rather as raw sensor counts across multiple wavelength channels, which require conversion to reconstruct a spectral power distribution. In our analysis, spectral data allow us to compute metrics like the relative contribution of short-wavelength (blue) light versus long-wavelength light in the participant’s environment. Processing this spectral data involves several necessary steps.
 
 First, we import the spectral modality from a second `VEET` file. This device used the latest software version to allow for the best spectral reconstruction. This time we need to extract the lines marked as `PHO`. We will store the spectral dataset in a separate object `dataVEET2` so as not to overwrite the `dataVEET` illuminance data in our R session:
 
@@ -362,6 +362,10 @@ Here, we use `format = "long"` so that the result for each observation is a *
 To visualize the data we will calculate the photopic illuminance based on the spectra and plot each spectrum color-scaled by their illuminance. For clarity, we reduce the data to observations within the first day.
 
 ```{r}
+#| label: fig-VEET-spectra
+#| fig-cap: "Overview of the reconstructed spectra, color-scaled by photopic illuminance (lx)"
+#| fig-height: 5
+#| fig-width: 8
 dataVEET2 |> 
   filter_Date(length = "1 day") |> #keep only observations for one day (from start)
   mutate( 
@@ -373,7 +377,7 @@ dataVEET2 |>
   unnest(Spectrum) |> #create a long format of the data where the spectrum is unnested
   ggplot(aes(x = wavelength, y = irradiance*1000, group = Datetime)) +
   geom_line(aes(col = Illuminance)) +
-  labs(y = "Irradiance (mW/m²/nm)", x = "Wavelength (nm)", col = "Illuminance (lx)")+
+  labs(y = "Irradiance (mW/m²/nm)", x = "Wavelength (nm)", col = "Photopic illuminance (lx)")+
   scale_color_viridis_b() +
   coord_cartesian(ylim = c(0,5.3)) +
   theme_minimal()
@@ -402,6 +406,95 @@ Some devices may output normalized counts instead of raw counts. For example, th
 
 :::
 
+## `VEET` Data: Time of flight (distance)
+
+In this last section, the distance data of the `VEET` device will be imported, analogous to the other modalities. The `TOF` modality contains information for up to two objects in a 8x8 grid of measurements, spanning a total of about 52° vertically and 41° horizontally. Because the `VEET` device can detect up to two objects in a given grid point, and there is a confidence value assigned to every measurement, each observation contains $2*2*8*8 = 256$ measurements.
+
+```{r}
+#| label: fig-VEET-overview3
+#| fig-cap: "Overview plot of imported VEET data"
+#| fig-height: 2
+#| fig-width: 6
+# Import VEET Spectral Sensor (TOF) data
+path <- "data/01_VEET_L.csv.zip"
+dataVEET3 <- LightLogR::import$VEET(path, tz = tz, modality = "TOF", manual.id = "VEET")
+```
+
+In a first step, we condition the data similarly to the other `VEET` modalities.
+
+```{r}
+#| label: VEET-cleaning
+# Aggregate spectral data to 5-minute intervals and mark gaps
+dataVEET3 <- dataVEET3 |>
+  aggregate_Datetime(unit = "5 secs") |>     # aggregate to 5-second bins
+  gap_handler(full.days = TRUE) |>           # explicit NA for any gaps in between
+  add_Date_col(group.by = TRUE) |> 
+  remove_partial_data(dist1_0, threshold.missing = "1 hour")
+```
+
+In the next step, we need to transform the `wide` format of the imported dataset into a `long` format, where each row contains exactly one observation for one grid-point. 
+
+```{r}
+#| label: VEET-long
+dataVEET3 <- 
+  dataVEET3 |> 
+  pivot_longer(
+    cols = -c(Datetime, file.name, Id, is.implicit, time_stamp, modality, Date),
+    names_to = c(".value", "position"),
+    names_pattern = "(conf1|conf2|dist1|dist2)_(\\d+)"
+  )
+```
+
+In a final step before we can use the data in the analysis, we need to assign `x` and `y` coordinates based on the `position` column that was created when pivoting longer. Positions are counted from 0 to 63 starting at the top left and increasing towards the right, before continuing on the left in the next row below. `y` positions thus depend on the row count, i.e., how often a row of 8 values fits into the `position` column. `x` positions consequently depend on the `position` within each 8-value row. We also add an `observation` variable that increases by `+1` every time, the `position` column hits `0`. We then center both `x` and `y` coordinates to receive meaningful values, i.e., 0° indicates the center of the overall measurement cone. Lastly, we convert both confidence columns, which are scaled from 0-255 into percentages by dividing them by `255`. Empirical data from the manufacturer points to a threshold of about `10%`, under which the respective distance data is not reliable. 
+
+```{r}
+#| label: VEET-distance preparation
+dataVEET3 <- 
+  dataVEET3 |> 
+  # ungroup() |> 
+  mutate(position = as.numeric(position),
+         y.pos = (position %/% 8)+1,
+         y.pos = scale(y.pos, scale = FALSE)*52/8,
+         x.pos = (position %% 8)+1,
+         x.pos = scale(x.pos, scale = FALSE)*41/8,
+         observation = cumsum(position == 0),
+         across(starts_with("conf"), \(x) x/255)
+         )
+```
+
+Now this dataset is ready for further analysis. We finish by visualizing the same observation time on different days. Note that we replace zero distance values with `5 meters`, which is the maximum distance the `VEET` can measure.
+
+```{r}
+#| label: fig-VEET-distance
+#| fig-cap: "Example observations of the measurement grid"
+#| fig-height: 5
+#| fig-width: 12
+
+#set visualization parameters
+extras <- list(
+  geom_tile(),
+  scale_fill_viridis_c(direction = -1, limits = c(0, 200),
+                       oob = scales::oob_squish_any),
+  scale_color_manual(values = c("black", "white")),
+  theme_minimal(),
+  guides(colour = "none"),
+  geom_text(aes(label = (dist1/10) |> round(0), colour = dist1>1000), size = 2.5),
+  coord_fixed(),
+  labs(x = "X position (°)", y = "Y position (°)", 
+       fill = "Distance (cm)", alpha = "Confidence (0-255)"))
+
+slicer <- function(x){seq(min((x-1)*64+1), max(x*64, by = 1))} #allows to choose an observation
+
+dataVEET3 |> 
+  slice(slicer(9530)) |>  #choose a particular observation
+  mutate(dist1 = ifelse(dist1 == 0, Inf, dist1)) |> #replace 0 distances with 5m
+  filter(conf1 >= 0.1 | dist1 == Inf) |> #remove data that has less than 10% confidence
+  ggplot(aes(x=x.pos, y=y.pos, fill = dist1/10))+ extras + #plot the data
+  facet_grid(~Datetime) #show one plot per day
+```
+
+As we can see from the figure, different days have a vastly different distribution of distance data, and measurement confidence (values with confidence < 10% are removed)
+
 ## Saving the Cleaned Data
 
 After executing all the above steps, we have three cleaned data frames in our R session:
@@ -412,6 +505,8 @@ After executing all the above steps, we have three cleaned data frames in our R 
 
 -   **`dataVEET2`** – the processed `VEET` spectral dataset (5-minute intervals, each entry containing a spectrum or derived spectral metrics).
 
+-   **`dataVEET3`** – the processed `VEET` distance dataset (5-second intervals, each entry containing the distance of up to two objects in the 8x8 grid).
+
 For convenience and future reproducibility, we will save these combined results to a single R data file. Storing all cleaned data together ensures that any analysis can reload the exact same data state without re-running the import and cleaning (which can be time-consuming for large raw files).
 
 ```{r}
@@ -419,7 +514,7 @@ For convenience and future reproducibility, we will save these combined results 
 if (!dir.exists("data/cleaned")) dir.create("data/cleaned", recursive = TRUE)
 
 # Save all cleaned datasets into one .RData file
-save(dataCC, dataVEET, dataVEET2,
+save(dataCC, dataVEET, dataVEET2, dataVEET3,
         file = "data/cleaned/data.RData")
 ```
 
