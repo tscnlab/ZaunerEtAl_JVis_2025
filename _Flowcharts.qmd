@@ -1,0 +1,15 @@
+---
+title: "_Flowcharts"
+format:
+  html:
+    mermaid-format: png
+    mermaid:
+      flowchart:
+        diagramPadding: 20
+---
+
+
+{{< include _flowchart_supplement.qmd >}}
+
+{{< include _flowchart_main.qmd >}}
+

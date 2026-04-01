@@ -55,19 +55,21 @@ Wearable sensors like the `Clouclip` and the Visual Environment Evaluation Tool 
 
 {{< include _flowchart_supplement.qmd >}}
 
-We use example datasets from a `Clouclip` device [@Wen2021ActaOphtalmol; @Wen2020bjophthalmol] and from a `VEET` device [@Sah2025OphtalmicPhysiolOpt] (both provided in the accompanying [repository](https://github.com/tscnlab/ZaunerEtAl_JVis_2026)). The `Clouclip` is a glasses-mounted sensor that records working distance (distance from eyes to object, in cm) and ambient illuminance (in lux) at 5-second intervals. The `VEET` is a head-mounted multi-modal sensor that logs ambient light and spectral information (along with other data like motion and distance via a depth sensor) - in this exemplary case at 2-second intervals. A single week of continuous data illustrates the contrast in complexity: approximately 1.6 MB for the `Clouclip`’s simple two-column output versus up to 270 MB for the `VEET`’s multi-channel output (due to its higher sampling rate and richer sensor modalities).
+We use example datasets from a `Clouclip` device [@Wen2021ActaOphtalmol; @Wen2020bjophthalmol] and from a `VEET` device [@Sah2025OphtalmicPhysiolOpt] (both provided in the accompanying [repository](https://github.com/tscnlab/ZaunerEtAl_JVis_2026)). The `Clouclip` is a glasses-mounted sensor that records working distance (distance from eyes to object, in cm) and ambient illuminance (in lux) at 5-second intervals. The `VEET` is a head-mounted multi-modal sensor that logs ambient light and spectral information (along with other data like motion and distance via a depth sensor) - in this exemplary case at 2-second intervals. A single week of continuous data illustrates the contrast in complexity: approximately 2 MB for the `Clouclip`’s simple three-column output versus up to 270 MB for the `VEET`’s multi-channel output (due to its higher sampling rate and richer sensor modalities).
 
 In the following sections, we detail how these raw data are structured and how to import and preprocess them using LightLogR. We cover device-specific considerations such as file format quirks and sensor range limitations, as well as general best practices like handling missing timestamps and normalizing sensor readings. All code blocks can be executed in R (with the required packages loaded) to reproduce the cleaning steps. The end result will be clean, regularized datasets (`dataCC` for Clouclip, `dataVEET` for VEET light data, `dataVEET2` for VEET spectral data, and `dataVEET3` for VEET distance) ready for calculating visual experience metrics. We conclude by saving these cleaned datasets into a single file for convenient reuse.
 
 ## `Clouclip` Data: Raw Structure and Import
 
-The `Clouclip` device exports its data as a text file (not a true Excel file despite sometimes using an .xls extension), which is actually tab-separated values. See @fig-Clouclip_file for the raw file.
+The `Clouclip` device exports its data as a text file (not a true Excel file despite sometimes using an .xls extension), which is actually tab-separated values. See @fig-Clouclip_file for the structure of this type of file.
 
-![Screenshot of the first rows of the `Clouclip` export file format as seen in a text editor](assets/Clouclip_fileformat.png){#fig-Clouclip_file width=35%}
+The dataset we will be using comes from a data collection during COVID-19 (November 2020). More information on the context of data collection are to be found in [@bhandari2022]
+
+![Screenshot of the first rows of the `Clouclip` export file format as seen in a text editor](assets/Clouclip_fileformat.png){#fig-Clouclip_file width="35%"}
 
 Each record corresponds to one timestamped observation (nominally every 5 seconds) and includes two measured variables: **distance** and **illuminance**. In the sample dataset (`Sample_Clouclip.csv` provided), the columns are:
 
--   `Date` – the date and time of the observation (in the device’s local time, here one week in 2021).
+-   `Date` – the date and time of the observation (in the device’s local time).
 
 -   `Dis` – the viewing distance in centimeters.
 
@@ -97,11 +99,11 @@ library(downlit) #<5>
 library(magick) #<5>
 ```
 
-1. For tidy data science
-2. Wearable analysis package
-3. For great tables
-4. For ridgeline plots
-5. These packages are not used, but are needed for dependencies
+1.  For tidy data science
+2.  Wearable analysis package
+3.  For great tables
+4.  For ridgeline plots
+5.  These packages are not used, but are needed for dependencies
 
 ```{r}
 #| label: fig-importCC
@@ -114,9 +116,9 @@ tz   <- "US/Central"   #<2>
 dataCC <- import$Clouclip(path, tz = tz, manual.id = "Clouclip") #<3>
 ```
 
-1. Define file path
-2. Time zone in which device was recording (e.g., US Central Time)
-3. Import Clouclip data
+1.  Define file path
+2.  Time zone in which device was recording (e.g., US Central Time)
+3.  Import Clouclip data
 
 In this code, `import$Clouclip()` reads the tab-delimited file and returns a **tibble**[^2] (saved in the variable `dataCC`) containing the data. We specify `tz = "US/Central"` because the device’s clock was set to U.S. Central time; this ensures that the `Datetime`values are properly interpreted with the correct time zone. The argument `manual.id = "Clouclip"` simply tags the dataset with an identifier (useful if combining data from multiple devices).
 
@@ -128,7 +130,6 @@ During import, LightLogR automatically handles the `Clouclip`’s sentinel codes
 #| filename: Print the first 6 rows of the Clouclip dataset
 dataCC |> head()
 ```
-
 
 After import, it is good practice to get an overview of the data. The import function by default prints a brief summary (and generates an overview plot of the timeline) showing the number of observations, the time span, and any irregularities or large gaps. In our case, the `Clouclip` summary indicates the data spans one week and reveals that there are **irregular intervals** in the timestamps. This means some observations do not occur exactly every 5 seconds as expected. We can programmatically check for irregular timing:
 
@@ -145,20 +146,27 @@ If the result is `TRUE`, it confirms that the time sequence has deviations from
 #| fig-height: 12
 #| warning: false
 #| fig-cap: "Visualization of gaps and irregular data. Black traces show available data. Red shaded areas show times of missing data. Red dots show instances where observations occur off the regular interval from start to finish, i.e., irregular data."
-y.label <- "Distance (cm)"
-dataCC |> gg_gaps(Dis, #<1>
+y.label <- "Illuminance (lx)"
+dataCC |> gg_gaps(Lux, #<1>
                   include.implicit.gaps = FALSE,  #<2>
                   show.irregulars = TRUE,         #<3>
                   y.axis.label = y.label,
-                  group.by.days = TRUE, col.irregular = alpha("red", 0.03)
+                  group.by.days = TRUE, 
+                  col.irregular = alpha("red", 0.03)
                   ) + labs(title = NULL)
 ```
 
-1. Basing the gap-figure on the `Dis` distance variable
-2. Only show missing observations (`NA` values)
-3. Highlight irregular timing
+1.  Basing the gap-figure on the `Lux` illuminance variable
+2.  Only show missing observations (`NA` values)
+3.  Highlight irregular timing
 
-In @fig-irregular, time periods where data are missing appear as red-shaded areas, and any off-schedule observation times are marked with red dots. The `Clouclip` example shows extensive gaps (red blocks) on certain days and irregular timing on all days except the first and last. These irregular timestamps likely arise from the device’s logging process (e.g. slight clock drift or buffering when the device was turned on/off). Such issues must be addressed before further analysis.
+In @fig-irregular, time periods where data are missing appear as red-shaded areas, and any off-schedule observation times are marked with red dots. The `Clouclip` example shows extensive gaps (red blocks) on certain days and irregular timing on all days except the first. These irregular timestamps likely arise from the device’s logging process (e.g. slight clock drift or buffering when the device was turned on/off). Such issues must be addressed before further analysis.
+
+::: callout-note
+### Why are we using illuminance to handle gaps instead of distance?
+
+Usind distance would have worked just as well for `gap_handler()` and the subsequent functions used here. However, there are actual recordings in the `ClouClip` data for distance that have a missing value due to being `Out of bounds`. We are, however, rather interested in the times when there is no time stamp at all. Here, illuminance is the safer bet.
+:::
 
 When faced with irregular or gapped data, we recommend a few strategies:
 
@@ -177,26 +185,27 @@ dataCC <- dataCC |>
   add_Date_col(group.by = TRUE)                     #<2>
 ```
 
-1. Round times to 5-second bins
-2. Add a Date column for grouping by day
+1.  Round times to 5-second bins
+2.  Add a Date column for grouping by day
 
-After this operation, all `Datetime` entries in `dataCC` align perfectly on 5-second boundaries (e.g. **08:00:00**, **08:00:05**, **08:00:10**, etc.). We can verify that no irregular intervals remain by re-running `has_irregulars()`:
+After this operation, all `Datetime` entries in `dataCC` align perfectly on 5-second boundaries (e.g. **08:00:00**, **08:00:05**, **08:00:10**, etc.). We can verify that no irregular intervals remain by re-running `has_irregulars()`. We also check whether there are duplicate entries:
 
 ```{r}
 #| filename: Re-check if data are on a perfectly regular 5-second schedule
 dataCC |> has_irregulars()
+dataCC |> count_difftime() |> ungroup() |>  count(difftime, sort = TRUE) #<1>
 ```
 
-Next, we want to quantify the missing data. LightLogR distinguishes between **explicit missing values** (actual `NA`s in the data, possibly from sentinel replacements or gaps we have filled in) and **implicit missing intervals** (time points where the device *should* have a reading but none was recorded, and we have not yet filled them in). See @fig-gaps for a visual aid to these terms. Initially, many gaps are still implicit (between the first and last timestamp of each day). 
+1.  `count_difftime()` gives us a summary of all the time differences (`difftime`) between consecutive measurements. `ungroup()` removes all grouping variables, so that `count()` can give us a sorted list of all the time differences. The smallest is `5s`, so there are no duplicate entries - otherwise the smallest would be `0s`.
 
-::: {#fig-gaps layout-ncol=2}
+Next, we want to quantify the missing data. LightLogR distinguishes between **explicit missing values** (actual `NA`s in the data, possibly from sentinel replacements or gaps we have filled in) and **implicit missing intervals** (time points where the device *should* have a reading but none was recorded, and we have not yet filled them in). See @fig-gaps for a visual aid to these terms. Initially, many gaps are still implicit (between the first and last timestamp of each day).
 
+::: {#fig-gaps layout-ncol="2"}
 ![Terminology of gaps and irregular data in LightLogR](assets/gap_terminology.png)
 
 ![Handling of gaps with LightLogR's `gap_handler()` function](assets/gap_handler.png)
 
 Gaps and irregular data
-
 :::
 
 We can generate a gap summary table:
@@ -205,13 +214,13 @@ We can generate a gap summary table:
 #| label: tbl-gaps
 #| tbl-cap: "Summary of missing and observed data for the Clouclip device"
 #| filename: Summarize observed vs missing data by day for distance
-dataCC |> gap_table(Dis, Variable.label = "Distance (cm)") |>
+dataCC |> gap_table(Lux, Variable.label = "Illuminance (lx)") |>
   cols_hide(contains("_n"))   #<1>
 ```
 
-1. Hide absolute counts for brevity in output
+1.  Hide absolute counts for brevity in output
 
-This summary (@tbl-gaps) breaks down, for each day, how much data is present vs. missing. It reports the total duration of recorded data and the duration of gaps. After rounding the times, there are no irregular timestamp issues, but we see substantial **implicit gaps** — periods where the device was not recording (e.g., overnight when the device was likely not worn or was in sleep mode). Notably, the first and last days of the week have very little data (less than 1 hour each), since they probably represent partial recording days (the trial started and ended on those days).
+This summary (@tbl-gaps) breaks down, for each day, how much data is present vs. missing. It reports the total duration of recorded data and the duration of gaps. After rounding the times, there are no irregular timestamp issues, but we see substantial **implicit gaps** — periods where the device was not recording (e.g., overnight when the device was likely not worn or was in sleep mode). Often, the first and last days of a recording period have fewer datapoints, usually because they represent partial recording days (the trial started and ended on those days).
 
 To prepare the dataset for analysis, we will convert all those implicit gaps into explicit missing entries, and remove days that are mostly incomplete. Converting implicit gaps means inserting rows with `NA` for each missing 5-second slot, so that the time series becomes continuous and explicit about missingness (see @fig-gaps). We use `gap_handler()` for this, and then drop the nearly-empty days:
 
@@ -220,12 +229,12 @@ To prepare the dataset for analysis, we will convert all those implicit gaps int
 dataCC <- dataCC |> 
   mutate(across(c(Lux_status, Dis_status), ~ replace_na(.x, "operational"))) |> #<1>
   gap_handler(full.days = TRUE) |> #<2> 
-  remove_partial_data(Dis, threshold.missing = "-1 hour") #<3>
+  remove_partial_data(Lux, threshold.missing = "-1 hour") #<3>
 ```
 
-1. First ensure that status columns have an "operational" tag for non-missing periods
-2. Fill in all implicit gaps with explicit NA rows (for full days range)
-3. Remove any day that has less than 1 hour of recorded data
+1.  First ensure that status columns have an "operational" tag for non-missing periods
+2.  Fill in all implicit gaps with explicit NA rows (for full days range)
+3.  Remove any day that has less than 1 hour of recorded data
 
 After these steps, `dataCC` contains continuous 5-second timestamps for each day that remains. We chose a threshold of “-1 hours” to remove days with less than one hour of data, which in this dataset removes the first and last (partial) days. The cleaned `Clouclip` data now covers six full days with bouts of continuous wear.
 
@@ -240,19 +249,37 @@ It is often helpful to double-check how the sentinel values and missing data are
 coordinates <- c(29.75, -95.36) #<1>
 dataCC |> 
   fill(c(Lux_status, Dis_status), .direction = "downup") |> #<2>
-  gg_day(y.axis = Dis, geom = "line", y.axis.label = y.label) |> #<3>
+  gg_day(y.axis = Dis, geom = "line", y.axis.label = "Distance (cm)") |> #<3>
   gg_state(Dis_status, aes_fill = Dis_status, ymin = 0, ymax = 0.5, alpha = 1) |> #<4>
   gg_photoperiod(coordinates, alpha = 0.1) + #<5>
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  labs(fill = "Distance status")
 ```
 
-1. Setting coordinates for Houston, Texas (recording location)
-2. Retain status markers until a new marker arrives
-3. Create the basic plot
-4. Add the status times
-5. Add the photoperiod (day/night)
+1.  Setting coordinates for Houston, Texas (recording location)
+2.  Retain status markers until a new marker arrives
+3.  Create the basic plot
+4.  Add the status times
+5.  Add the photoperiod (day/night)
 
-In this plot, blue segments indicate times when the Clouclip was *operational* (actively measuring), grey segments indicate the device in *sleep mode* (no recording, typically at night), and yellow segments indicate *out-of-range* distance readings. The red outlined regions show nighttime (from civil dusk to dawn) based on the given latitude/longitude and dates. As expected, most of the grey “sleep” periods align with night hours, and we see a few yellow spans when the user’s viewing distance exceeded the device’s range (e.g. presumably when no object was within 100 cm, such as when the user looked into the distance). At this stage, the Clouclip dataset `dataCC` is fully preprocessed: all timestamps are regular 5-second intervals, missing data are explicitly marked, extraneous partial days are removed, and sentinel codes are handled via the status columns. The data are ready for calculating daily distance and light exposure metrics (as done in the [main tutorial](index.qmd)’s Results).
+In this plot, there is a `Distance status` in the lower portion of each day. Blue segments indicate times when the Clouclip was *operational* (actively measuring), grey segments indicate the device in *sleep mode* (no recording, typically at night), and yellow segments indicate *out-of-range* distance readings. The large grey regions across the full plot height of each day show nighttime (from civil dusk to dawn) based on the given latitude/longitude and dates. As expected, most of the grey “sleep” periods align with night hours, and we see many yellow spans when the user’s viewing distance exceeded the device’s range (e.g., such as when the user looked into the far distance).
+
+We note many values that far exceed the `Clouplip`s sensitivity range of up to 120 cm. As [@Bhandari2020OphthalmicPhysiolOpt] showed that the measurements start to deviate from actual measurements around 100 cm distance, it is sensible to cap the devices measurements at that point.
+
+```{r}
+#| filename: Cap sensor values at 120 cm
+dataCC <- 
+  dataCC |> 
+  mutate(
+    Dis_status = replace_when(Dis_status,
+                              Dis > 120 ~ "over 120cm"),
+    Dis = replace_when(Dis,
+                       Dis > 120 ~ NA)
+  )
+```
+
+
+At this stage, the Clouclip dataset `dataCC` is fully preprocessed: all timestamps are regular 5-second intervals, missing data are explicitly marked, extraneous partial days are removed, sentinel codes are handled via the status columns, and values above 120 cm are set to `NA`. The data are ready for calculating daily distance and light exposure metrics (as done in the [main tutorial](index.qmd)’s Results).
 
 ## `VEET` Data: Ambient Light (Illuminance) Processing
 
@@ -277,21 +304,20 @@ tz   <- "US/Central"
 dataVEET <- import$VEET(path, tz = tz, modality = "ALS", manual.id = "VEET") #<1>
 ```
 
-1. In difference to the `Clouclip` file, we simply respecify the device type with `import$VEET(...)`, but must also provide a `modality` argument.
+1.  In difference to the `Clouclip` file, we simply respecify the device type with `import$VEET(...)`, but must also provide a `modality` argument.
 
-::: {.callout-note}
-
+::: callout-note
 We get one warning as a single time stamp could not be parsed into a datetime - with \~300k observations, this is not an issue.
-
 :::
 
-This call reads in only the lines corresponding to the `ALS` modality from the `VEET` file. The result `dataVEET` is a tibble[^2] with columns such as `Datetime` (parsed from the `time_stamp`  to POSIXct in US/Central time), `Lux` (illuminance in lux), `Flicker`, and the various sensor gains/values. Columns we don't need for our analysis, like the modality code or file name, are also included but can be ignored or removed. From the import summary, we learn that the `VEET` light data, like the `Clouclip`, also exhibits irregularities and gaps. (The device nominally records every 2 seconds, but timing may drift or pause when not worn.)
+This call reads in only the lines corresponding to the `ALS` modality from the `VEET` file. The result `dataVEET` is a tibble[^3] with columns such as `Datetime` (parsed from the `time_stamp`  to POSIXct in US/Central time), `Lux` (illuminance in lux), `Flicker`, and the various sensor gains/values. Columns we don't need for our analysis, like the modality code or file name, are also included but can be ignored or removed. From the import summary, we learn that the `VEET` light data, like the `Clouclip`, also exhibits irregularities and gaps. (The device nominally records every 2 seconds, but timing may drift or pause when not worn.)
+
+[^3]: **tibble** are data.tables with tweaked behavior, ideal for a tidy analysis workflow. For more information, visit the documentation page for [tibbles](https://tibble.tidyverse.org/index.html)
 
 ```{r}
 #| filename: Print the first 6 rows of the VEETs light dataset
 dataVEET |> head()
 ```
-
 
 To make the VEET light data comparable to the Clouclip’s and to simplify analysis, we choose to **aggregate the VEET illuminance data to 5-second intervals**. This slight downsampling will both reduce data volume and remove irregularities.
 
@@ -304,10 +330,10 @@ dataVEET <- dataVEET |>
   remove_partial_data(Lux, threshold.missing = "1 hour") #<4>
 ```
 
-1. Resample to 5-sec bins (e.g. average Lux over 2-sec readings)
-2. Fill in implicit gaps with NA rows
-3. Add Date column for daily grouping
-4. Remove participant days with more than one hour of missing data
+1.  Resample to 5-sec bins (e.g. average Lux over 2-sec readings)
+2.  Fill in implicit gaps with NA rows
+3.  Add Date column for daily grouping
+4.  Remove participant days with more than one hour of missing data
 
 First, `aggregate_Datetime(unit = "5 seconds")` combines the high-frequency 2-second observations into 5-second slots. By default, this function will average numeric columns like `Lux` over each 5-second period (and have sensible defaults for strings or categorical data). All of these *data type handlers* can be changed with the function call. The result is that `dataVEET` now has a reading every 5 seconds (or an NA if none were present in that window). Next, `gap_handler(full.days = TRUE)` inserts explicit NA entries for any 5-second timestamp that had no data within the continuous span of the recording. Then we add a `Date` column for grouping, and finally we remove days with more than 1 hour of missing data (using a more strict criterion as we did for `Clouclip`). According to the gap summary (@tbl-gaps2), this leaves six full days of `VEET` light data with good coverage, after dropping the very incomplete start/end days.
 
@@ -327,22 +353,20 @@ At this point, the `dataVEET` object (for illuminance) is cleaned and ready fo
 
 Not all recorded time points of the `VEET` can be considered as `wear time`. `Non-wear` times should generally be labelled in the wearable time series, if possible. There are several ways how `Non-wear` can be classified [@Zauner2025npj]:
 
-1. A device detects `non-wear` and does not record any measurements during non-wear times, or has a variable in the exported data to denote non-wear times. The `Clouclip` is an example here with the `sleep mode` sentinel state.
+1.  A device detects `non-wear` and does not record any measurements during non-wear times, or has a variable in the exported data to denote non-wear times. The `Clouclip` is an example here with the `sleep mode` sentinel state.
 
-2. Record non-wear separately, e.g. with a wear-log or diary. This is easy to implement, but puts a higher burden on participants and research staff, and can be error prone: forgotten, or incorrect data entries can mis-classify wear and non-wear times. For an implementation on how to remove non-wear times based on such a log, see, e.g., this [tutorial](https://tscnlab.github.io/LightLogR_webinar/advanced_01_a_day_in_daylight-live.html). These information can also be derived from contextual information. For example, the `VEET` records charging times in a separate file `log.csv`, which can be considered as definitive non-wear times.
+2.  Record non-wear separately, e.g. with a wear-log or diary. This is easy to implement, but puts a higher burden on participants and research staff, and can be error prone: forgotten, or incorrect data entries can mis-classify wear and non-wear times. For an implementation on how to remove non-wear times based on such a log, see, e.g., this [tutorial](https://tscnlab.github.io/LightLogR_webinar/advanced_01_a_day_in_daylight-live.html). These information can also be derived from contextual information. For example, the `VEET` records charging times in a separate file `log.csv`, which can be considered as definitive non-wear times.
 
-3. Instruct participants with a certain behavior when removing the device to ease automated detection of non-wear times in the data. These include putting a device in a black opaque bag, so that sensor readings for light are zero, or pressing an event button (if one exists). Up- and downsides are similar to the previous option, but the measures are usually harder to decipher in the data: when a buttonpress was forgotten, does that mess up the automated detection moving forward, which expects two presses per non-wear period (at beginning and at start). When there is zero lux during the day - was it in a black bag, or was this person just in a dark environment?
+3.  Instruct participants with a certain behavior when removing the device to ease automated detection of non-wear times in the data. These include putting a device in a black opaque bag, so that sensor readings for light are zero, or pressing an event button (if one exists). Up- and downsides are similar to the previous option, but the measures are usually harder to decipher in the data: when a buttonpress was forgotten, does that mess up the automated detection moving forward, which expects two presses per non-wear period (at beginning and at start). When there is zero lux during the day - was it in a black bag, or was this person just in a dark environment?
 
-4. Automated detection by an algorithm. There are several possibilities to try to classify non-wear times based on the available data from a wearable. E.g., if there is an activity tracker, that can be used to determine periods of inactivity, which could indicate non-wear. If only light data is available, the standard deviation (or coefficient of variance) of light in a moving window of a few minutes can be used to determine low variance, which also indicates inactivity. Usually a histogram of values shows a spike in those periods of inactivity.
+4.  Automated detection by an algorithm. There are several possibilities to try to classify non-wear times based on the available data from a wearable. E.g., if there is an activity tracker, that can be used to determine periods of inactivity, which could indicate non-wear. If only light data is available, the standard deviation (or coefficient of variance) of light in a moving window of a few minutes can be used to determine low variance, which also indicates inactivity. Usually a histogram of values shows a spike in those periods of inactivity.
 
-::: {.callout-note}
-
+::: callout-note
 #### How to handle non-wear intervals
 
-Whether classified non-wear intervals should be removed, i.e., observations set to `NA`, or not should be a deliberate decision by the researcher. If it can be assumed that non-wear times misrepresent the measurement environment of the participant, then these observations are best set to `NA`. If, on the other hand, they might be somewhat representative, then it might be enough to label these times but still include them in analyses. Usually, this requires special instructions to the participants for non-wear. E.g., instructions for bed-time could include setting the device on the night stand facing into the room (i.e., sensors not obstructed). While this would not represent distance well, it can be considered as sufficient for ambient light measurements. 
+Whether classified non-wear intervals should be removed, i.e., observations set to `NA`, or not should be a deliberate decision by the researcher. If it can be assumed that non-wear times misrepresent the measurement environment of the participant, then these observations are best set to `NA`. If, on the other hand, they might be somewhat representative, then it might be enough to label these times but still include them in analyses. Usually, this requires special instructions to the participants for non-wear. E.g., instructions for bed-time could include setting the device on the night stand facing into the room (i.e., sensors not obstructed). While this would not represent distance well, it can be considered as sufficient for ambient light measurements.
 
 If datasets are large enough, i.e., collect data from a long enought period, `non-wear` has a diminishing effect, at least as daily metrics of light are concerned. E.g., in a monthlong study of 39 participants from Switzerland and Malaysia, [@Biller2025] found that based on a sensitivity anaylsis up to 6 hours of data could be missing **every day**, and still the daily metrics across that month would not significantly change. This assumption only holds when non-wear times are not systematic, i.e., at the same time each day.
-
 :::
 
 We will perform a simple variant of the third option, and look at the `VEET`'s `IMU` modality.
@@ -359,8 +383,8 @@ dataIMU <-
               silent = TRUE) #<2>
 ```
 
-1. Some rows in the data are duplicated. These will be removed during import
-2. In this instance, we skip the import summary
+1.  Some rows in the data are duplicated. These will be removed during import
+2.  In this instance, we skip the import summary
 
 To get a quick feeling for the data, we visualize the activity variable for the x axis in @fig-IMU
 
@@ -416,9 +440,9 @@ wear_data |> #<3>
 wear_data <- wear_data |> select(Id, wear, start, end) #<2>
 ```
 
-1. Calculation of the wear-variable
-2. Extracting the start and end times of wear and non-wear
-3. Summarizing wear and non-wear times in a table
+1.  Calculation of the wear-variable
+2.  Extracting the start and end times of wear and non-wear
+3.  Summarizing wear and non-wear times in a table
 
 We see that most of the recorded timespan is actually non-wear (including sleep), with an average wear time of 2.6 hours.
 
@@ -470,7 +494,6 @@ dataVEET2 <- import$VEET(path, tz = tz, modality = "PHO", manual.id = "VEET")
 #| filename: Print the first 6 rows of the VEETs spectral dataset
 dataVEET2 |> head()
 ```
-
 
 After import, `data` contains columns for the timestamp (`Datetime`), `Gain` (the sensor gain setting), and the nine spectral sensor channels plus a clear channel. These appear as numeric columns named `s415, s445, ..., s940, Dark, Clear`. Other columns are also present but not needed for now. The spectral sensor was logging at a 2-second rate. It is informative to look at a snippet of the imported spectral data before further processing. @tbl-PHO shows three rows of `data` after import (before calibration), with some technical columns omitted for brevity:
 
@@ -536,10 +559,10 @@ dataVEET2 <- dataVEET2 |>
   remove_partial_data(Clear, threshold.missing = "1 hour") #<4> 
 ```
 
-1. Aggregate to 5-minute bins
-2. Explicit NA for any gaps in between
-3. Add a date identifier for grouping
-4. remove days with more than one hour of data missing
+1.  Aggregate to 5-minute bins
+2.  Explicit NA for any gaps in between
+3.  Add a date identifier for grouping
+4.  remove days with more than one hour of data missing
 
 We aggregate over 5-minute windows; within each 5-minute bin, multiple spectral readings (if present) are combined (averaged). We use one of the channels (here `Clear`) as the reference variable for `remove_partial_data` to drop incomplete days (the choice of channel is arbitrary as all channels share the same level of completeness).
 
@@ -572,13 +595,15 @@ dataVEET2 <-
 )
 ```
 
-1. Import the calibration matrix and make certain `wavelength` is set a rownames
+1.  Import the calibration matrix and make certain `wavelength` is set a rownames
 2.  The function `spectral_reconstruction()` does not work on the level of the dataset, but has to be called within `mutate()`(or provided the data directly)
 3.  Pick the normalized sensor columns
 4.  Provide the calibration matrix
 5.  Return a long-form list column (wavelength, intensity)
 
-Here, we use `format = "long"` so that the result for each observation is a **list-column** `Spectrum`, where each entry is a tibble[^2] containing two columns: `wavelength` and `irradiance` (one row per wavelength in the calibration matrix). In other words, each row of `dataVEET2` now holds a full reconstructed spectrum in the `Spectrum` column. The long format is convenient for further calculations and plotting. (An alternative `format = "wide"` would add each wavelength as a separate column, but that is less practical when there are many wavelengths.)
+Here, we use `format = "long"` so that the result for each observation is a **list-column** `Spectrum`, where each entry is a tibble[^4] containing two columns: `wavelength` and `irradiance` (one row per wavelength in the calibration matrix). In other words, each row of `dataVEET2` now holds a full reconstructed spectrum in the `Spectrum` column. The long format is convenient for further calculations and plotting. (An alternative `format = "wide"` would add each wavelength as a separate column, but that is less practical when there are many wavelengths.)
+
+[^4]: **tibble** are data.tables with tweaked behavior, ideal for a tidy analysis workflow. For more information, visit the documentation page for [tibbles](https://tibble.tidyverse.org/index.html)
 
 To visualize the data we will calculate the photopic illuminance based on the spectra and plot each spectrum color-scaled by their illuminance. For clarity, we reduce the data to observations within the day that has the most observations (non-`NA`).
 
@@ -645,12 +670,11 @@ data_spectra |>
   theme_minimal()
 ```
 
-
-At this stage, the `dataVEET2` dataset has been processed to yield time-series of spectral power distributions. We can use these to compute biologically relevant light metrics. For instance, one possible metric is the proportion of power in short wavelengths versus long wavelengths. 
+At this stage, the `dataVEET2` dataset has been processed to yield time-series of spectral power distributions. We can use these to compute biologically relevant light metrics. For instance, one possible metric is the proportion of power in short wavelengths versus long wavelengths.
 
 In the main analysis, we defined **short-wavelength (blue light) content** as the integrated intensity in the 400–500 nm range, and **long-wavelength content** as the integrated intensity in a longer range (e.g. 600–700 nm), then computed the *short-to-long ratio* (“sl ratio”). Calculating these metrics is the first step of spectrum analysis in the [main tutorial](index.qmd#spectrum).
 
-```
+```         
 dataVEET2 |> 
   select(Id, Date, Datetime, Spectrum) |>    # focus on ID, date, time, and spectrum
   mutate(
@@ -664,10 +688,8 @@ dataVEET2 |>
 
 With the `VEET` spectral preprocessing complete, we emphasize that these steps – normalizing by gain, applying calibration, and perhaps simplifying channels – are **device-specific** requirements. They ensure that the raw sensor counts are translated into meaningful physical measures (like spectral irradiance). Researchers using other spectral devices would follow a similar procedure, adjusting for their device’s particulars (some may output spectra directly, whereas others, like `VEET`, require reconstruction.
 
-::: {.callout-note}
-
+::: callout-note
 Some devices may output normalized counts instead of raw counts. For example, the `ActLumus` device outputs normalized counts, while the `VEET` device records raw counts and the gain. Manufacturers will be able to speficy exact outputs for a given model and software version.
-
 :::
 
 ## `VEET` Data: Time of flight (distance)
@@ -696,7 +718,6 @@ dataVEET3 <- import$VEET(path,
 dataVEET3 |> head()
 ```
 
-
 In a first step, we condition the data similarly to the other `VEET` modalities. For computational reasons of the use cases, we remove the second object and set the interval to `10 seconds`. *Note that the next step still takes considerable computation time*.
 
 ```{r}
@@ -716,7 +737,7 @@ dataVEET3 |> summary_overview(dist1_0)
 2.  Aggregate to 10-second bins
 3.  Explicit NA for any gaps
 
-In the next step, we need to transform the `wide` format of the imported dataset into a `long` format, where each row contains exactly one observation for one grid-point. 
+In the next step, we need to transform the `wide` format of the imported dataset into a `long` format, where each row contains exactly one observation for one grid-point.
 
 ```{r}
 #| label: VEET-long
@@ -813,7 +834,6 @@ dataVEET3 <-
   group_by(Id, Date)
 ```
 
-
 ## Saving the Cleaned Data
 
 After executing all the above steps, we have three cleaned data frames in our R session:
@@ -834,8 +854,8 @@ if (!dir.exists("data/cleaned")) dir.create("data/cleaned", recursive = TRUE) #<
 save(dataCC, dataVEET, dataVEET2, dataVEET3, file = "data/cleaned/data.RData") #<2>
 ```
 
-1. Create directory for cleaned data if it doesn't exist
-2. Save all cleaned datasets into one .RData file
+1.  Create directory for cleaned data if it doesn't exist
+2.  Save all cleaned datasets into one .RData file
 
 The above code creates (if necessary) a folder `data/cleaned/` and saves a single RData file (`data.RData`) containing the three objects. To retrieve them later, one can use `<- load("data/cleaned/data.RData")`, which will return the objects into the environment. This single-file approach simplifies sharing and keeps the cleaned data together.
 

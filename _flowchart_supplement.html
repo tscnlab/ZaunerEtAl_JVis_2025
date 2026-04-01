@@ -103,13 +103,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>CC_IMP[Import&lt;br/&gt;Clouclip data]:::process</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>CC_QC[Inspect data,&lt;br/&gt;check for gaps and&lt;br/&gt;irregular data]:::process</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>CC_REG[Regularize timestamps&lt;br/&gt;and handle gaps]:::process</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>CC_VIS[Visualize cleaned&lt;br/&gt;Clouclip data]:::process</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>CC_CAP[Cap distance&lt;br/&gt;at 120 cm]:::process</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>RAW_CC --&gt; Clouclip</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>subgraph Clouclip[**Light and distance**]</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>CC_IMP --&gt; CC_QC</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>CC_QC --&gt; CC_REG</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>CC_REG --&gt; CC_VIS</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>CC_REG --&gt; CC_CAP</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>end</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>%% ===== VEET ALS light preprocessing =====</span>
@@ -163,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>%% ===== Save outputs =====</span>
 <span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>SAVE[(Pre-processed datasets)]:::input</span>
 <span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>CC_VIS -- Cleaned Clouclip&lt;br/&gt;dataset&lt;br/&gt;**dataCC** --&gt; SAVE</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>CC_CAP -- Cleaned Clouclip&lt;br/&gt;dataset&lt;br/&gt;**dataCC** --&gt; SAVE</span>
 <span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>ALS_CLEAN -- Cleaned VEET&lt;br/&gt;ALS dataset&lt;br/&gt;**dataVEET** --&gt; SAVE</span>
 <span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>SPEC_RECON -- Cleaned VEET&lt;br/&gt;spectral dataset&lt;br/&gt;**dataVEET2** --&gt; SAVE</span>
 <span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>TOF_NONWEAR -- Cleaned VEET&lt;br/&gt;distance dataset&lt;br/&gt;**dataVEET3** --&gt; SAVE</span>
@@ -189,13 +189,13 @@ RAW_VEET[(Raw VEET file)]:::input
 CC_IMP[Import&lt;br/&gt;Clouclip data]:::process
 CC_QC[Inspect data,&lt;br/&gt;check for gaps and&lt;br/&gt;irregular data]:::process
 CC_REG[Regularize timestamps&lt;br/&gt;and handle gaps]:::process
-CC_VIS[Visualize cleaned&lt;br/&gt;Clouclip data]:::process
+CC_CAP[Cap distance&lt;br/&gt;at 120 cm]:::process
 
 RAW_CC --&gt; Clouclip
 subgraph Clouclip[**Light and distance**]
 CC_IMP --&gt; CC_QC
 CC_QC --&gt; CC_REG
-CC_REG --&gt; CC_VIS
+CC_REG --&gt; CC_CAP
 end
 
 %% ===== VEET ALS light preprocessing =====
@@ -249,7 +249,7 @@ end
 %% ===== Save outputs =====
 SAVE[(Pre-processed datasets)]:::input
 
-CC_VIS -- Cleaned Clouclip&lt;br/&gt;dataset&lt;br/&gt;**dataCC** --&gt; SAVE
+CC_CAP -- Cleaned Clouclip&lt;br/&gt;dataset&lt;br/&gt;**dataCC** --&gt; SAVE
 ALS_CLEAN -- Cleaned VEET&lt;br/&gt;ALS dataset&lt;br/&gt;**dataVEET** --&gt; SAVE
 SPEC_RECON -- Cleaned VEET&lt;br/&gt;spectral dataset&lt;br/&gt;**dataVEET2** --&gt; SAVE
 TOF_NONWEAR -- Cleaned VEET&lt;br/&gt;distance dataset&lt;br/&gt;**dataVEET3** --&gt; SAVE

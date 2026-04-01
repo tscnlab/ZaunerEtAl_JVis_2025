@@ -20,13 +20,13 @@ RAW_VEET[(Raw VEET file)]:::input
 CC_IMP[Import<br/>Clouclip data]:::process
 CC_QC[Inspect data,<br/>check for gaps and<br/>irregular data]:::process
 CC_REG[Regularize timestamps<br/>and handle gaps]:::process
-CC_VIS[Visualize cleaned<br/>Clouclip data]:::process
+CC_CAP[Cap distance<br/>at 120 cm]:::process
 
 RAW_CC --> Clouclip
 subgraph Clouclip[**Light and distance**]
 CC_IMP --> CC_QC
 CC_QC --> CC_REG
-CC_REG --> CC_VIS
+CC_REG --> CC_CAP
 end
 
 %% ===== VEET ALS light preprocessing =====
@@ -80,7 +80,7 @@ end
 %% ===== Save outputs =====
 SAVE[(Pre-processed datasets)]:::input
 
-CC_VIS -- Cleaned Clouclip<br/>dataset<br/>**dataCC** --> SAVE
+CC_CAP -- Cleaned Clouclip<br/>dataset<br/>**dataCC** --> SAVE
 ALS_CLEAN -- Cleaned VEET<br/>ALS dataset<br/>**dataVEET** --> SAVE
 SPEC_RECON -- Cleaned VEET<br/>spectral dataset<br/>**dataVEET2** --> SAVE
 TOF_NONWEAR -- Cleaned VEET<br/>distance dataset<br/>**dataVEET3** --> SAVE
