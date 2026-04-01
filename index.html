@@ -390,21 +390,29 @@ Table&nbsp;1: Overview of metrics as they are used in this article. In all cases
 </figcaption>
 <div aria-describedby="tbl-one-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table-hover table-bordered caption-top table">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 39%">
+<col style="width: 52%">
+<col style="width: 1%">
+</colgroup>
 <tbody>
 <tr class="odd">
 <td><strong>No.</strong></td>
 <td><strong>Name</strong></td>
-<td><strong>Implementation<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></strong></td>
+<td colspan="2"><strong>Implementation</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></td>
 </tr>
 <tr class="even">
 <td></td>
 <td><strong>Distance</strong></td>
+<td></td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>1</td>
 <td>Total wear time daily</td>
 <td><a href="https://tscnlab.github.io/LightLogR/reference/durations.html">durations()</a></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>2</td>
@@ -419,6 +427,7 @@ Near + Intermediate Work,</em> or</p>
 <p>or</p>
 <p>grouping by distance range +</p>
 <p><a href="https://tscnlab.github.io/LightLogR/reference/durations.html">durations()</a> (for all ranges)</p></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>3</td>
@@ -426,6 +435,7 @@ Near + Intermediate Work,</em> or</p>
 <em>Continuous near work</em></td>
 <td><p><a href="https://tscnlab.github.io/LightLogR/reference/extract_clusters.html">extract_clusters()</a> +</p>
 <p><a href="https://tscnlab.github.io/LightLogR/reference/summarize_numeric.html">summarize_numeric()</a></p></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>4</td>
@@ -436,43 +446,51 @@ and distances of<br>
 <td><p><a href="https://tscnlab.github.io/LightLogR/reference/extract_clusters.html">extract_clusters()</a> +</p>
 <p><a href="https://tscnlab.github.io/LightLogR/reference/extract_metric.html">extract_metric()</a> +</p>
 <p><a href="https://tscnlab.github.io/LightLogR/reference/summarize_numeric.html">summarize_numeric()</a></p></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>5</td>
 <td>Frequency and duration of <em>Visual breaks</em></td>
 <td><p><a href="https://tscnlab.github.io/LightLogR/reference/extract_clusters.html">extract_clusters()</a> +</p>
 <p>filter</p></td>
+<td></td>
 </tr>
 <tr class="even">
 <td></td>
 <td><strong>Light</strong></td>
+<td></td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>6</td>
 <td>Light exposure (in lux)</td>
 <td><a href="https://tscnlab.github.io/LightLogR/reference/summarize_numeric.html">summarize_numeric()</a></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>7</td>
 <td>Duration per <em>Outdoor range</em></td>
 <td><p>grouping by Outdoor range +</p>
 <p><a href="https://tscnlab.github.io/LightLogR/reference/durations.html">durations()</a></p></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>8</td>
 <td>The number of times light level changes from indoor (&lt;1000 lx) to outdoor (&gt;1000 lx)</td>
 <td><p><a href="https://tscnlab.github.io/LightLogR/reference/extract_states.html">extract_states()</a> +</p>
 <p><a href="https://tscnlab.github.io/LightLogR/reference/summarize_numeric.html">summarize_numeric()</a></p></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>9</td>
 <td>Longest period above 1000 lx</td>
 <td><a href="https://tscnlab.github.io/LightLogR/reference/period_above_threshold.html">period_above_threshold()</a></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td><strong>Spectrum</strong></td>
+<td></td>
 <td></td>
 </tr>
 <tr class="even">
@@ -480,12 +498,14 @@ and distances of<br>
 <td>Ratio of short vs.&nbsp;long wavelength light</td>
 <td><p><a href="https://tscnlab.github.io/LightLogR/reference/spectral_integration.html">spectral_integration()</a> +</p>
 <p><a href="https://tscnlab.github.io/LightLogR/reference/summarize_numeric.html">summarize_numeric()</a></p></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>11</td>
 <td>Melanopic daylight efficacy ratio (MDER)</td>
 <td><p><a href="https://tscnlab.github.io/LightLogR/reference/spectral_integration.html">spectral_integration()</a> +</p>
 <p><a href="https://tscnlab.github.io/LightLogR/reference/summarize_numeric.html">summarize_numeric()</a></p></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>12</td>
@@ -496,6 +516,7 @@ and distances of<br>
 <a href="https://tscnlab.github.io/LightLogR/reference/photoperiod.html">add_photoperiod()</a> (for solar times) +</p>
 <p>grouping by time state +</p>
 <p><a href="https://tscnlab.github.io/LightLogR/reference/summarize_numeric.html">summarize_numeric()</a></p></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -1079,23 +1100,23 @@ Table&nbsp;3: Total wear time per day (average across days)
 </figcaption>
 <div aria-describedby="tbl-wear-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tdpgczpbfx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tdpgczpbfx table {
+<div id="excfsmwmen" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#excfsmwmen table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#tdpgczpbfx thead, #tdpgczpbfx tbody, #tdpgczpbfx tfoot, #tdpgczpbfx tr, #tdpgczpbfx td, #tdpgczpbfx th {
+#excfsmwmen thead, #excfsmwmen tbody, #excfsmwmen tfoot, #excfsmwmen tr, #excfsmwmen td, #excfsmwmen th {
   border-style: none;
 }
 
-#tdpgczpbfx p {
+#excfsmwmen p {
   margin: 0;
   padding: 0;
 }
 
-#tdpgczpbfx .gt_table {
+#excfsmwmen .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1121,12 +1142,12 @@ Table&nbsp;3: Total wear time per day (average across days)
   border-left-color: #D3D3D3;
 }
 
-#tdpgczpbfx .gt_caption {
+#excfsmwmen .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#tdpgczpbfx .gt_title {
+#excfsmwmen .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1138,7 +1159,7 @@ Table&nbsp;3: Total wear time per day (average across days)
   border-bottom-width: 0;
 }
 
-#tdpgczpbfx .gt_subtitle {
+#excfsmwmen .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1150,7 +1171,7 @@ Table&nbsp;3: Total wear time per day (average across days)
   border-top-width: 0;
 }
 
-#tdpgczpbfx .gt_heading {
+#excfsmwmen .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1162,13 +1183,13 @@ Table&nbsp;3: Total wear time per day (average across days)
   border-right-color: #D3D3D3;
 }
 
-#tdpgczpbfx .gt_bottom_border {
+#excfsmwmen .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tdpgczpbfx .gt_col_headings {
+#excfsmwmen .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1183,7 +1204,7 @@ Table&nbsp;3: Total wear time per day (average across days)
   border-right-color: #D3D3D3;
 }
 
-#tdpgczpbfx .gt_col_heading {
+#excfsmwmen .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1203,7 +1224,7 @@ Table&nbsp;3: Total wear time per day (average across days)
   overflow-x: hidden;
 }
 
-#tdpgczpbfx .gt_column_spanner_outer {
+#excfsmwmen .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1215,15 +1236,15 @@ Table&nbsp;3: Total wear time per day (average across days)
   padding-right: 4px;
 }
 
-#tdpgczpbfx .gt_column_spanner_outer:first-child {
+#excfsmwmen .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tdpgczpbfx .gt_column_spanner_outer:last-child {
+#excfsmwmen .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tdpgczpbfx .gt_column_spanner {
+#excfsmwmen .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1235,11 +1256,11 @@ Table&nbsp;3: Total wear time per day (average across days)
   width: 100%;
 }
 
-#tdpgczpbfx .gt_spanner_row {
+#excfsmwmen .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#tdpgczpbfx .gt_group_heading {
+#excfsmwmen .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1265,7 +1286,7 @@ Table&nbsp;3: Total wear time per day (average across days)
   text-align: left;
 }
 
-#tdpgczpbfx .gt_empty_group_heading {
+#excfsmwmen .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1280,15 +1301,15 @@ Table&nbsp;3: Total wear time per day (average across days)
   vertical-align: middle;
 }
 
-#tdpgczpbfx .gt_from_md > :first-child {
+#excfsmwmen .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tdpgczpbfx .gt_from_md > :last-child {
+#excfsmwmen .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tdpgczpbfx .gt_row {
+#excfsmwmen .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1307,7 +1328,7 @@ Table&nbsp;3: Total wear time per day (average across days)
   overflow-x: hidden;
 }
 
-#tdpgczpbfx .gt_stub {
+#excfsmwmen .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1320,7 +1341,7 @@ Table&nbsp;3: Total wear time per day (average across days)
   padding-right: 5px;
 }
 
-#tdpgczpbfx .gt_stub_row_group {
+#excfsmwmen .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1334,15 +1355,15 @@ Table&nbsp;3: Total wear time per day (average across days)
   vertical-align: top;
 }
 
-#tdpgczpbfx .gt_row_group_first td {
+#excfsmwmen .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tdpgczpbfx .gt_row_group_first th {
+#excfsmwmen .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#tdpgczpbfx .gt_summary_row {
+#excfsmwmen .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1352,16 +1373,16 @@ Table&nbsp;3: Total wear time per day (average across days)
   padding-right: 5px;
 }
 
-#tdpgczpbfx .gt_first_summary_row {
+#excfsmwmen .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tdpgczpbfx .gt_first_summary_row.thick {
+#excfsmwmen .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tdpgczpbfx .gt_last_summary_row {
+#excfsmwmen .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1371,7 +1392,7 @@ Table&nbsp;3: Total wear time per day (average across days)
   border-bottom-color: #D3D3D3;
 }
 
-#tdpgczpbfx .gt_grand_summary_row {
+#excfsmwmen .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1381,7 +1402,7 @@ Table&nbsp;3: Total wear time per day (average across days)
   padding-right: 5px;
 }
 
-#tdpgczpbfx .gt_first_grand_summary_row {
+#excfsmwmen .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1391,7 +1412,7 @@ Table&nbsp;3: Total wear time per day (average across days)
   border-top-color: #D3D3D3;
 }
 
-#tdpgczpbfx .gt_last_grand_summary_row_top {
+#excfsmwmen .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1401,11 +1422,11 @@ Table&nbsp;3: Total wear time per day (average across days)
   border-bottom-color: #D3D3D3;
 }
 
-#tdpgczpbfx .gt_striped {
+#excfsmwmen .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tdpgczpbfx .gt_table_body {
+#excfsmwmen .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1414,7 +1435,7 @@ Table&nbsp;3: Total wear time per day (average across days)
   border-bottom-color: #D3D3D3;
 }
 
-#tdpgczpbfx .gt_footnotes {
+#excfsmwmen .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1428,7 +1449,7 @@ Table&nbsp;3: Total wear time per day (average across days)
   border-right-color: #D3D3D3;
 }
 
-#tdpgczpbfx .gt_footnote {
+#excfsmwmen .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1437,7 +1458,7 @@ Table&nbsp;3: Total wear time per day (average across days)
   padding-right: 5px;
 }
 
-#tdpgczpbfx .gt_sourcenotes {
+#excfsmwmen .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1451,7 +1472,7 @@ Table&nbsp;3: Total wear time per day (average across days)
   border-right-color: #D3D3D3;
 }
 
-#tdpgczpbfx .gt_sourcenote {
+#excfsmwmen .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1459,72 +1480,72 @@ Table&nbsp;3: Total wear time per day (average across days)
   padding-right: 5px;
 }
 
-#tdpgczpbfx .gt_left {
+#excfsmwmen .gt_left {
   text-align: left;
 }
 
-#tdpgczpbfx .gt_center {
+#excfsmwmen .gt_center {
   text-align: center;
 }
 
-#tdpgczpbfx .gt_right {
+#excfsmwmen .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tdpgczpbfx .gt_font_normal {
+#excfsmwmen .gt_font_normal {
   font-weight: normal;
 }
 
-#tdpgczpbfx .gt_font_bold {
+#excfsmwmen .gt_font_bold {
   font-weight: bold;
 }
 
-#tdpgczpbfx .gt_font_italic {
+#excfsmwmen .gt_font_italic {
   font-style: italic;
 }
 
-#tdpgczpbfx .gt_super {
+#excfsmwmen .gt_super {
   font-size: 65%;
 }
 
-#tdpgczpbfx .gt_footnote_marks {
+#excfsmwmen .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#tdpgczpbfx .gt_asterisk {
+#excfsmwmen .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tdpgczpbfx .gt_indent_1 {
+#excfsmwmen .gt_indent_1 {
   text-indent: 5px;
 }
 
-#tdpgczpbfx .gt_indent_2 {
+#excfsmwmen .gt_indent_2 {
   text-indent: 10px;
 }
 
-#tdpgczpbfx .gt_indent_3 {
+#excfsmwmen .gt_indent_3 {
   text-indent: 15px;
 }
 
-#tdpgczpbfx .gt_indent_4 {
+#excfsmwmen .gt_indent_4 {
   text-indent: 20px;
 }
 
-#tdpgczpbfx .gt_indent_5 {
+#excfsmwmen .gt_indent_5 {
   text-indent: 25px;
 }
 
-#tdpgczpbfx .katex-display {
+#excfsmwmen .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#tdpgczpbfx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#excfsmwmen div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1599,23 +1620,23 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
 </figcaption>
 <div aria-describedby="tbl-nearwork-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="yhtocrvfqt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#yhtocrvfqt table {
+<div id="urwbhgufrb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#urwbhgufrb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#yhtocrvfqt thead, #yhtocrvfqt tbody, #yhtocrvfqt tfoot, #yhtocrvfqt tr, #yhtocrvfqt td, #yhtocrvfqt th {
+#urwbhgufrb thead, #urwbhgufrb tbody, #urwbhgufrb tfoot, #urwbhgufrb tr, #urwbhgufrb td, #urwbhgufrb th {
   border-style: none;
 }
 
-#yhtocrvfqt p {
+#urwbhgufrb p {
   margin: 0;
   padding: 0;
 }
 
-#yhtocrvfqt .gt_table {
+#urwbhgufrb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1641,12 +1662,12 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   border-left-color: #D3D3D3;
 }
 
-#yhtocrvfqt .gt_caption {
+#urwbhgufrb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#yhtocrvfqt .gt_title {
+#urwbhgufrb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1658,7 +1679,7 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   border-bottom-width: 0;
 }
 
-#yhtocrvfqt .gt_subtitle {
+#urwbhgufrb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1670,7 +1691,7 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   border-top-width: 0;
 }
 
-#yhtocrvfqt .gt_heading {
+#urwbhgufrb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1682,13 +1703,13 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   border-right-color: #D3D3D3;
 }
 
-#yhtocrvfqt .gt_bottom_border {
+#urwbhgufrb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#yhtocrvfqt .gt_col_headings {
+#urwbhgufrb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1703,7 +1724,7 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   border-right-color: #D3D3D3;
 }
 
-#yhtocrvfqt .gt_col_heading {
+#urwbhgufrb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1723,7 +1744,7 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   overflow-x: hidden;
 }
 
-#yhtocrvfqt .gt_column_spanner_outer {
+#urwbhgufrb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1735,15 +1756,15 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   padding-right: 4px;
 }
 
-#yhtocrvfqt .gt_column_spanner_outer:first-child {
+#urwbhgufrb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yhtocrvfqt .gt_column_spanner_outer:last-child {
+#urwbhgufrb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yhtocrvfqt .gt_column_spanner {
+#urwbhgufrb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1755,11 +1776,11 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   width: 100%;
 }
 
-#yhtocrvfqt .gt_spanner_row {
+#urwbhgufrb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#yhtocrvfqt .gt_group_heading {
+#urwbhgufrb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1785,7 +1806,7 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   text-align: left;
 }
 
-#yhtocrvfqt .gt_empty_group_heading {
+#urwbhgufrb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1800,15 +1821,15 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   vertical-align: middle;
 }
 
-#yhtocrvfqt .gt_from_md > :first-child {
+#urwbhgufrb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yhtocrvfqt .gt_from_md > :last-child {
+#urwbhgufrb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yhtocrvfqt .gt_row {
+#urwbhgufrb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1827,7 +1848,7 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   overflow-x: hidden;
 }
 
-#yhtocrvfqt .gt_stub {
+#urwbhgufrb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1840,7 +1861,7 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   padding-right: 5px;
 }
 
-#yhtocrvfqt .gt_stub_row_group {
+#urwbhgufrb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1854,15 +1875,15 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   vertical-align: top;
 }
 
-#yhtocrvfqt .gt_row_group_first td {
+#urwbhgufrb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#yhtocrvfqt .gt_row_group_first th {
+#urwbhgufrb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#yhtocrvfqt .gt_summary_row {
+#urwbhgufrb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1872,16 +1893,16 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   padding-right: 5px;
 }
 
-#yhtocrvfqt .gt_first_summary_row {
+#urwbhgufrb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#yhtocrvfqt .gt_first_summary_row.thick {
+#urwbhgufrb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#yhtocrvfqt .gt_last_summary_row {
+#urwbhgufrb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1891,7 +1912,7 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   border-bottom-color: #D3D3D3;
 }
 
-#yhtocrvfqt .gt_grand_summary_row {
+#urwbhgufrb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1901,7 +1922,7 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   padding-right: 5px;
 }
 
-#yhtocrvfqt .gt_first_grand_summary_row {
+#urwbhgufrb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1911,7 +1932,7 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   border-top-color: #D3D3D3;
 }
 
-#yhtocrvfqt .gt_last_grand_summary_row_top {
+#urwbhgufrb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1921,11 +1942,11 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   border-bottom-color: #D3D3D3;
 }
 
-#yhtocrvfqt .gt_striped {
+#urwbhgufrb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#yhtocrvfqt .gt_table_body {
+#urwbhgufrb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1934,7 +1955,7 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   border-bottom-color: #D3D3D3;
 }
 
-#yhtocrvfqt .gt_footnotes {
+#urwbhgufrb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1948,7 +1969,7 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   border-right-color: #D3D3D3;
 }
 
-#yhtocrvfqt .gt_footnote {
+#urwbhgufrb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1957,7 +1978,7 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   padding-right: 5px;
 }
 
-#yhtocrvfqt .gt_sourcenotes {
+#urwbhgufrb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1971,7 +1992,7 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   border-right-color: #D3D3D3;
 }
 
-#yhtocrvfqt .gt_sourcenote {
+#urwbhgufrb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1979,72 +2000,72 @@ Table&nbsp;4: Daily duration of near work (15–60&nbsp;cm viewing distance)
   padding-right: 5px;
 }
 
-#yhtocrvfqt .gt_left {
+#urwbhgufrb .gt_left {
   text-align: left;
 }
 
-#yhtocrvfqt .gt_center {
+#urwbhgufrb .gt_center {
   text-align: center;
 }
 
-#yhtocrvfqt .gt_right {
+#urwbhgufrb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yhtocrvfqt .gt_font_normal {
+#urwbhgufrb .gt_font_normal {
   font-weight: normal;
 }
 
-#yhtocrvfqt .gt_font_bold {
+#urwbhgufrb .gt_font_bold {
   font-weight: bold;
 }
 
-#yhtocrvfqt .gt_font_italic {
+#urwbhgufrb .gt_font_italic {
   font-style: italic;
 }
 
-#yhtocrvfqt .gt_super {
+#urwbhgufrb .gt_super {
   font-size: 65%;
 }
 
-#yhtocrvfqt .gt_footnote_marks {
+#urwbhgufrb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#yhtocrvfqt .gt_asterisk {
+#urwbhgufrb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#yhtocrvfqt .gt_indent_1 {
+#urwbhgufrb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#yhtocrvfqt .gt_indent_2 {
+#urwbhgufrb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#yhtocrvfqt .gt_indent_3 {
+#urwbhgufrb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#yhtocrvfqt .gt_indent_4 {
+#urwbhgufrb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#yhtocrvfqt .gt_indent_5 {
+#urwbhgufrb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#yhtocrvfqt .katex-display {
+#urwbhgufrb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#yhtocrvfqt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#urwbhgufrb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2172,23 +2193,23 @@ Table&nbsp;5: Daily duration in each viewing distance range
 </figcaption>
 <div aria-describedby="tbl-ranges-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="rulfakmoox" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rulfakmoox table {
+<div id="vvrbbusufw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vvrbbusufw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rulfakmoox thead, #rulfakmoox tbody, #rulfakmoox tfoot, #rulfakmoox tr, #rulfakmoox td, #rulfakmoox th {
+#vvrbbusufw thead, #vvrbbusufw tbody, #vvrbbusufw tfoot, #vvrbbusufw tr, #vvrbbusufw td, #vvrbbusufw th {
   border-style: none;
 }
 
-#rulfakmoox p {
+#vvrbbusufw p {
   margin: 0;
   padding: 0;
 }
 
-#rulfakmoox .gt_table {
+#vvrbbusufw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2214,12 +2235,12 @@ Table&nbsp;5: Daily duration in each viewing distance range
   border-left-color: #D3D3D3;
 }
 
-#rulfakmoox .gt_caption {
+#vvrbbusufw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rulfakmoox .gt_title {
+#vvrbbusufw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2231,7 +2252,7 @@ Table&nbsp;5: Daily duration in each viewing distance range
   border-bottom-width: 0;
 }
 
-#rulfakmoox .gt_subtitle {
+#vvrbbusufw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2243,7 +2264,7 @@ Table&nbsp;5: Daily duration in each viewing distance range
   border-top-width: 0;
 }
 
-#rulfakmoox .gt_heading {
+#vvrbbusufw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2255,13 +2276,13 @@ Table&nbsp;5: Daily duration in each viewing distance range
   border-right-color: #D3D3D3;
 }
 
-#rulfakmoox .gt_bottom_border {
+#vvrbbusufw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rulfakmoox .gt_col_headings {
+#vvrbbusufw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2276,7 +2297,7 @@ Table&nbsp;5: Daily duration in each viewing distance range
   border-right-color: #D3D3D3;
 }
 
-#rulfakmoox .gt_col_heading {
+#vvrbbusufw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2296,7 +2317,7 @@ Table&nbsp;5: Daily duration in each viewing distance range
   overflow-x: hidden;
 }
 
-#rulfakmoox .gt_column_spanner_outer {
+#vvrbbusufw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2308,15 +2329,15 @@ Table&nbsp;5: Daily duration in each viewing distance range
   padding-right: 4px;
 }
 
-#rulfakmoox .gt_column_spanner_outer:first-child {
+#vvrbbusufw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rulfakmoox .gt_column_spanner_outer:last-child {
+#vvrbbusufw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rulfakmoox .gt_column_spanner {
+#vvrbbusufw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2328,11 +2349,11 @@ Table&nbsp;5: Daily duration in each viewing distance range
   width: 100%;
 }
 
-#rulfakmoox .gt_spanner_row {
+#vvrbbusufw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rulfakmoox .gt_group_heading {
+#vvrbbusufw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2358,7 +2379,7 @@ Table&nbsp;5: Daily duration in each viewing distance range
   text-align: left;
 }
 
-#rulfakmoox .gt_empty_group_heading {
+#vvrbbusufw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2373,15 +2394,15 @@ Table&nbsp;5: Daily duration in each viewing distance range
   vertical-align: middle;
 }
 
-#rulfakmoox .gt_from_md > :first-child {
+#vvrbbusufw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rulfakmoox .gt_from_md > :last-child {
+#vvrbbusufw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rulfakmoox .gt_row {
+#vvrbbusufw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2400,7 +2421,7 @@ Table&nbsp;5: Daily duration in each viewing distance range
   overflow-x: hidden;
 }
 
-#rulfakmoox .gt_stub {
+#vvrbbusufw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2413,7 +2434,7 @@ Table&nbsp;5: Daily duration in each viewing distance range
   padding-right: 5px;
 }
 
-#rulfakmoox .gt_stub_row_group {
+#vvrbbusufw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2427,15 +2448,15 @@ Table&nbsp;5: Daily duration in each viewing distance range
   vertical-align: top;
 }
 
-#rulfakmoox .gt_row_group_first td {
+#vvrbbusufw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rulfakmoox .gt_row_group_first th {
+#vvrbbusufw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rulfakmoox .gt_summary_row {
+#vvrbbusufw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2445,16 +2466,16 @@ Table&nbsp;5: Daily duration in each viewing distance range
   padding-right: 5px;
 }
 
-#rulfakmoox .gt_first_summary_row {
+#vvrbbusufw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rulfakmoox .gt_first_summary_row.thick {
+#vvrbbusufw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rulfakmoox .gt_last_summary_row {
+#vvrbbusufw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2464,7 +2485,7 @@ Table&nbsp;5: Daily duration in each viewing distance range
   border-bottom-color: #D3D3D3;
 }
 
-#rulfakmoox .gt_grand_summary_row {
+#vvrbbusufw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2474,7 +2495,7 @@ Table&nbsp;5: Daily duration in each viewing distance range
   padding-right: 5px;
 }
 
-#rulfakmoox .gt_first_grand_summary_row {
+#vvrbbusufw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2484,7 +2505,7 @@ Table&nbsp;5: Daily duration in each viewing distance range
   border-top-color: #D3D3D3;
 }
 
-#rulfakmoox .gt_last_grand_summary_row_top {
+#vvrbbusufw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2494,11 +2515,11 @@ Table&nbsp;5: Daily duration in each viewing distance range
   border-bottom-color: #D3D3D3;
 }
 
-#rulfakmoox .gt_striped {
+#vvrbbusufw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rulfakmoox .gt_table_body {
+#vvrbbusufw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2507,7 +2528,7 @@ Table&nbsp;5: Daily duration in each viewing distance range
   border-bottom-color: #D3D3D3;
 }
 
-#rulfakmoox .gt_footnotes {
+#vvrbbusufw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2521,7 +2542,7 @@ Table&nbsp;5: Daily duration in each viewing distance range
   border-right-color: #D3D3D3;
 }
 
-#rulfakmoox .gt_footnote {
+#vvrbbusufw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2530,7 +2551,7 @@ Table&nbsp;5: Daily duration in each viewing distance range
   padding-right: 5px;
 }
 
-#rulfakmoox .gt_sourcenotes {
+#vvrbbusufw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2544,7 +2565,7 @@ Table&nbsp;5: Daily duration in each viewing distance range
   border-right-color: #D3D3D3;
 }
 
-#rulfakmoox .gt_sourcenote {
+#vvrbbusufw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2552,72 +2573,72 @@ Table&nbsp;5: Daily duration in each viewing distance range
   padding-right: 5px;
 }
 
-#rulfakmoox .gt_left {
+#vvrbbusufw .gt_left {
   text-align: left;
 }
 
-#rulfakmoox .gt_center {
+#vvrbbusufw .gt_center {
   text-align: center;
 }
 
-#rulfakmoox .gt_right {
+#vvrbbusufw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rulfakmoox .gt_font_normal {
+#vvrbbusufw .gt_font_normal {
   font-weight: normal;
 }
 
-#rulfakmoox .gt_font_bold {
+#vvrbbusufw .gt_font_bold {
   font-weight: bold;
 }
 
-#rulfakmoox .gt_font_italic {
+#vvrbbusufw .gt_font_italic {
   font-style: italic;
 }
 
-#rulfakmoox .gt_super {
+#vvrbbusufw .gt_super {
   font-size: 65%;
 }
 
-#rulfakmoox .gt_footnote_marks {
+#vvrbbusufw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rulfakmoox .gt_asterisk {
+#vvrbbusufw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rulfakmoox .gt_indent_1 {
+#vvrbbusufw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rulfakmoox .gt_indent_2 {
+#vvrbbusufw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rulfakmoox .gt_indent_3 {
+#vvrbbusufw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rulfakmoox .gt_indent_4 {
+#vvrbbusufw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rulfakmoox .gt_indent_5 {
+#vvrbbusufw .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rulfakmoox .katex-display {
+#vvrbbusufw .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rulfakmoox div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vvrbbusufw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2813,23 +2834,23 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
 </figcaption>
 <div aria-describedby="tbl-continuousnear-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="wjsmrpdpjw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wjsmrpdpjw table {
+<div id="qswjrceevn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qswjrceevn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wjsmrpdpjw thead, #wjsmrpdpjw tbody, #wjsmrpdpjw tfoot, #wjsmrpdpjw tr, #wjsmrpdpjw td, #wjsmrpdpjw th {
+#qswjrceevn thead, #qswjrceevn tbody, #qswjrceevn tfoot, #qswjrceevn tr, #qswjrceevn td, #qswjrceevn th {
   border-style: none;
 }
 
-#wjsmrpdpjw p {
+#qswjrceevn p {
   margin: 0;
   padding: 0;
 }
 
-#wjsmrpdpjw .gt_table {
+#qswjrceevn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2855,12 +2876,12 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   border-left-color: #D3D3D3;
 }
 
-#wjsmrpdpjw .gt_caption {
+#qswjrceevn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wjsmrpdpjw .gt_title {
+#qswjrceevn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2872,7 +2893,7 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   border-bottom-width: 0;
 }
 
-#wjsmrpdpjw .gt_subtitle {
+#qswjrceevn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2884,7 +2905,7 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   border-top-width: 0;
 }
 
-#wjsmrpdpjw .gt_heading {
+#qswjrceevn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2896,13 +2917,13 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   border-right-color: #D3D3D3;
 }
 
-#wjsmrpdpjw .gt_bottom_border {
+#qswjrceevn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wjsmrpdpjw .gt_col_headings {
+#qswjrceevn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2917,7 +2938,7 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   border-right-color: #D3D3D3;
 }
 
-#wjsmrpdpjw .gt_col_heading {
+#qswjrceevn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2937,7 +2958,7 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   overflow-x: hidden;
 }
 
-#wjsmrpdpjw .gt_column_spanner_outer {
+#qswjrceevn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2949,15 +2970,15 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   padding-right: 4px;
 }
 
-#wjsmrpdpjw .gt_column_spanner_outer:first-child {
+#qswjrceevn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wjsmrpdpjw .gt_column_spanner_outer:last-child {
+#qswjrceevn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wjsmrpdpjw .gt_column_spanner {
+#qswjrceevn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2969,11 +2990,11 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   width: 100%;
 }
 
-#wjsmrpdpjw .gt_spanner_row {
+#qswjrceevn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wjsmrpdpjw .gt_group_heading {
+#qswjrceevn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2999,7 +3020,7 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   text-align: left;
 }
 
-#wjsmrpdpjw .gt_empty_group_heading {
+#qswjrceevn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3014,15 +3035,15 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   vertical-align: middle;
 }
 
-#wjsmrpdpjw .gt_from_md > :first-child {
+#qswjrceevn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wjsmrpdpjw .gt_from_md > :last-child {
+#qswjrceevn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wjsmrpdpjw .gt_row {
+#qswjrceevn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3041,7 +3062,7 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   overflow-x: hidden;
 }
 
-#wjsmrpdpjw .gt_stub {
+#qswjrceevn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3054,7 +3075,7 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   padding-right: 5px;
 }
 
-#wjsmrpdpjw .gt_stub_row_group {
+#qswjrceevn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3068,15 +3089,15 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   vertical-align: top;
 }
 
-#wjsmrpdpjw .gt_row_group_first td {
+#qswjrceevn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wjsmrpdpjw .gt_row_group_first th {
+#qswjrceevn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wjsmrpdpjw .gt_summary_row {
+#qswjrceevn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3086,16 +3107,16 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   padding-right: 5px;
 }
 
-#wjsmrpdpjw .gt_first_summary_row {
+#qswjrceevn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wjsmrpdpjw .gt_first_summary_row.thick {
+#qswjrceevn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wjsmrpdpjw .gt_last_summary_row {
+#qswjrceevn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3105,7 +3126,7 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   border-bottom-color: #D3D3D3;
 }
 
-#wjsmrpdpjw .gt_grand_summary_row {
+#qswjrceevn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3115,7 +3136,7 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   padding-right: 5px;
 }
 
-#wjsmrpdpjw .gt_first_grand_summary_row {
+#qswjrceevn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3125,7 +3146,7 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   border-top-color: #D3D3D3;
 }
 
-#wjsmrpdpjw .gt_last_grand_summary_row_top {
+#qswjrceevn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3135,11 +3156,11 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   border-bottom-color: #D3D3D3;
 }
 
-#wjsmrpdpjw .gt_striped {
+#qswjrceevn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wjsmrpdpjw .gt_table_body {
+#qswjrceevn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3148,7 +3169,7 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   border-bottom-color: #D3D3D3;
 }
 
-#wjsmrpdpjw .gt_footnotes {
+#qswjrceevn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3162,7 +3183,7 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   border-right-color: #D3D3D3;
 }
 
-#wjsmrpdpjw .gt_footnote {
+#qswjrceevn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3171,7 +3192,7 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   padding-right: 5px;
 }
 
-#wjsmrpdpjw .gt_sourcenotes {
+#qswjrceevn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3185,7 +3206,7 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   border-right-color: #D3D3D3;
 }
 
-#wjsmrpdpjw .gt_sourcenote {
+#qswjrceevn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3193,72 +3214,72 @@ Table&nbsp;6: Frequency of continuous near-work episodes per day
   padding-right: 5px;
 }
 
-#wjsmrpdpjw .gt_left {
+#qswjrceevn .gt_left {
   text-align: left;
 }
 
-#wjsmrpdpjw .gt_center {
+#qswjrceevn .gt_center {
   text-align: center;
 }
 
-#wjsmrpdpjw .gt_right {
+#qswjrceevn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wjsmrpdpjw .gt_font_normal {
+#qswjrceevn .gt_font_normal {
   font-weight: normal;
 }
 
-#wjsmrpdpjw .gt_font_bold {
+#qswjrceevn .gt_font_bold {
   font-weight: bold;
 }
 
-#wjsmrpdpjw .gt_font_italic {
+#qswjrceevn .gt_font_italic {
   font-style: italic;
 }
 
-#wjsmrpdpjw .gt_super {
+#qswjrceevn .gt_super {
   font-size: 65%;
 }
 
-#wjsmrpdpjw .gt_footnote_marks {
+#qswjrceevn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wjsmrpdpjw .gt_asterisk {
+#qswjrceevn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wjsmrpdpjw .gt_indent_1 {
+#qswjrceevn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wjsmrpdpjw .gt_indent_2 {
+#qswjrceevn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wjsmrpdpjw .gt_indent_3 {
+#qswjrceevn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wjsmrpdpjw .gt_indent_4 {
+#qswjrceevn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wjsmrpdpjw .gt_indent_5 {
+#qswjrceevn .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wjsmrpdpjw .katex-display {
+#qswjrceevn .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wjsmrpdpjw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#qswjrceevn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3411,23 +3432,23 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
 </figcaption>
 <div aria-describedby="tbl-nearworkepisodes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="niudtvfuui" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#niudtvfuui table {
+<div id="ficgbvbjuz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ficgbvbjuz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#niudtvfuui thead, #niudtvfuui tbody, #niudtvfuui tfoot, #niudtvfuui tr, #niudtvfuui td, #niudtvfuui th {
+#ficgbvbjuz thead, #ficgbvbjuz tbody, #ficgbvbjuz tfoot, #ficgbvbjuz tr, #ficgbvbjuz td, #ficgbvbjuz th {
   border-style: none;
 }
 
-#niudtvfuui p {
+#ficgbvbjuz p {
   margin: 0;
   padding: 0;
 }
 
-#niudtvfuui .gt_table {
+#ficgbvbjuz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3453,12 +3474,12 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   border-left-color: #D3D3D3;
 }
 
-#niudtvfuui .gt_caption {
+#ficgbvbjuz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#niudtvfuui .gt_title {
+#ficgbvbjuz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3470,7 +3491,7 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   border-bottom-width: 0;
 }
 
-#niudtvfuui .gt_subtitle {
+#ficgbvbjuz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3482,7 +3503,7 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   border-top-width: 0;
 }
 
-#niudtvfuui .gt_heading {
+#ficgbvbjuz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3494,13 +3515,13 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   border-right-color: #D3D3D3;
 }
 
-#niudtvfuui .gt_bottom_border {
+#ficgbvbjuz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#niudtvfuui .gt_col_headings {
+#ficgbvbjuz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3515,7 +3536,7 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   border-right-color: #D3D3D3;
 }
 
-#niudtvfuui .gt_col_heading {
+#ficgbvbjuz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3535,7 +3556,7 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   overflow-x: hidden;
 }
 
-#niudtvfuui .gt_column_spanner_outer {
+#ficgbvbjuz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3547,15 +3568,15 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   padding-right: 4px;
 }
 
-#niudtvfuui .gt_column_spanner_outer:first-child {
+#ficgbvbjuz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#niudtvfuui .gt_column_spanner_outer:last-child {
+#ficgbvbjuz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#niudtvfuui .gt_column_spanner {
+#ficgbvbjuz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3567,11 +3588,11 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   width: 100%;
 }
 
-#niudtvfuui .gt_spanner_row {
+#ficgbvbjuz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#niudtvfuui .gt_group_heading {
+#ficgbvbjuz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3597,7 +3618,7 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   text-align: left;
 }
 
-#niudtvfuui .gt_empty_group_heading {
+#ficgbvbjuz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3612,15 +3633,15 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   vertical-align: middle;
 }
 
-#niudtvfuui .gt_from_md > :first-child {
+#ficgbvbjuz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#niudtvfuui .gt_from_md > :last-child {
+#ficgbvbjuz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#niudtvfuui .gt_row {
+#ficgbvbjuz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3639,7 +3660,7 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   overflow-x: hidden;
 }
 
-#niudtvfuui .gt_stub {
+#ficgbvbjuz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3652,7 +3673,7 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   padding-right: 5px;
 }
 
-#niudtvfuui .gt_stub_row_group {
+#ficgbvbjuz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3666,15 +3687,15 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   vertical-align: top;
 }
 
-#niudtvfuui .gt_row_group_first td {
+#ficgbvbjuz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#niudtvfuui .gt_row_group_first th {
+#ficgbvbjuz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#niudtvfuui .gt_summary_row {
+#ficgbvbjuz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3684,16 +3705,16 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   padding-right: 5px;
 }
 
-#niudtvfuui .gt_first_summary_row {
+#ficgbvbjuz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#niudtvfuui .gt_first_summary_row.thick {
+#ficgbvbjuz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#niudtvfuui .gt_last_summary_row {
+#ficgbvbjuz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3703,7 +3724,7 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   border-bottom-color: #D3D3D3;
 }
 
-#niudtvfuui .gt_grand_summary_row {
+#ficgbvbjuz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3713,7 +3734,7 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   padding-right: 5px;
 }
 
-#niudtvfuui .gt_first_grand_summary_row {
+#ficgbvbjuz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3723,7 +3744,7 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   border-top-color: #D3D3D3;
 }
 
-#niudtvfuui .gt_last_grand_summary_row_top {
+#ficgbvbjuz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3733,11 +3754,11 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   border-bottom-color: #D3D3D3;
 }
 
-#niudtvfuui .gt_striped {
+#ficgbvbjuz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#niudtvfuui .gt_table_body {
+#ficgbvbjuz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3746,7 +3767,7 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   border-bottom-color: #D3D3D3;
 }
 
-#niudtvfuui .gt_footnotes {
+#ficgbvbjuz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3760,7 +3781,7 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   border-right-color: #D3D3D3;
 }
 
-#niudtvfuui .gt_footnote {
+#ficgbvbjuz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3769,7 +3790,7 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   padding-right: 5px;
 }
 
-#niudtvfuui .gt_sourcenotes {
+#ficgbvbjuz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3783,7 +3804,7 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   border-right-color: #D3D3D3;
 }
 
-#niudtvfuui .gt_sourcenote {
+#ficgbvbjuz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3791,72 +3812,72 @@ Table&nbsp;7: Near-work episodes: mean duration, mean viewing distance, and freq
   padding-right: 5px;
 }
 
-#niudtvfuui .gt_left {
+#ficgbvbjuz .gt_left {
   text-align: left;
 }
 
-#niudtvfuui .gt_center {
+#ficgbvbjuz .gt_center {
   text-align: center;
 }
 
-#niudtvfuui .gt_right {
+#ficgbvbjuz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#niudtvfuui .gt_font_normal {
+#ficgbvbjuz .gt_font_normal {
   font-weight: normal;
 }
 
-#niudtvfuui .gt_font_bold {
+#ficgbvbjuz .gt_font_bold {
   font-weight: bold;
 }
 
-#niudtvfuui .gt_font_italic {
+#ficgbvbjuz .gt_font_italic {
   font-style: italic;
 }
 
-#niudtvfuui .gt_super {
+#ficgbvbjuz .gt_super {
   font-size: 65%;
 }
 
-#niudtvfuui .gt_footnote_marks {
+#ficgbvbjuz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#niudtvfuui .gt_asterisk {
+#ficgbvbjuz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#niudtvfuui .gt_indent_1 {
+#ficgbvbjuz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#niudtvfuui .gt_indent_2 {
+#ficgbvbjuz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#niudtvfuui .gt_indent_3 {
+#ficgbvbjuz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#niudtvfuui .gt_indent_4 {
+#ficgbvbjuz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#niudtvfuui .gt_indent_5 {
+#ficgbvbjuz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#niudtvfuui .katex-display {
+#ficgbvbjuz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#niudtvfuui div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ficgbvbjuz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3972,23 +3993,23 @@ Table&nbsp;8: Frequency of visual breaks
 </figcaption>
 <div aria-describedby="tbl-visualbreaks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="zbzdlyhvmi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zbzdlyhvmi table {
+<div id="auzeghmybf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#auzeghmybf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zbzdlyhvmi thead, #zbzdlyhvmi tbody, #zbzdlyhvmi tfoot, #zbzdlyhvmi tr, #zbzdlyhvmi td, #zbzdlyhvmi th {
+#auzeghmybf thead, #auzeghmybf tbody, #auzeghmybf tfoot, #auzeghmybf tr, #auzeghmybf td, #auzeghmybf th {
   border-style: none;
 }
 
-#zbzdlyhvmi p {
+#auzeghmybf p {
   margin: 0;
   padding: 0;
 }
 
-#zbzdlyhvmi .gt_table {
+#auzeghmybf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4014,12 +4035,12 @@ Table&nbsp;8: Frequency of visual breaks
   border-left-color: #D3D3D3;
 }
 
-#zbzdlyhvmi .gt_caption {
+#auzeghmybf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zbzdlyhvmi .gt_title {
+#auzeghmybf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4031,7 +4052,7 @@ Table&nbsp;8: Frequency of visual breaks
   border-bottom-width: 0;
 }
 
-#zbzdlyhvmi .gt_subtitle {
+#auzeghmybf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4043,7 +4064,7 @@ Table&nbsp;8: Frequency of visual breaks
   border-top-width: 0;
 }
 
-#zbzdlyhvmi .gt_heading {
+#auzeghmybf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4055,13 +4076,13 @@ Table&nbsp;8: Frequency of visual breaks
   border-right-color: #D3D3D3;
 }
 
-#zbzdlyhvmi .gt_bottom_border {
+#auzeghmybf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zbzdlyhvmi .gt_col_headings {
+#auzeghmybf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4076,7 +4097,7 @@ Table&nbsp;8: Frequency of visual breaks
   border-right-color: #D3D3D3;
 }
 
-#zbzdlyhvmi .gt_col_heading {
+#auzeghmybf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4096,7 +4117,7 @@ Table&nbsp;8: Frequency of visual breaks
   overflow-x: hidden;
 }
 
-#zbzdlyhvmi .gt_column_spanner_outer {
+#auzeghmybf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4108,15 +4129,15 @@ Table&nbsp;8: Frequency of visual breaks
   padding-right: 4px;
 }
 
-#zbzdlyhvmi .gt_column_spanner_outer:first-child {
+#auzeghmybf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zbzdlyhvmi .gt_column_spanner_outer:last-child {
+#auzeghmybf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zbzdlyhvmi .gt_column_spanner {
+#auzeghmybf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4128,11 +4149,11 @@ Table&nbsp;8: Frequency of visual breaks
   width: 100%;
 }
 
-#zbzdlyhvmi .gt_spanner_row {
+#auzeghmybf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zbzdlyhvmi .gt_group_heading {
+#auzeghmybf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4158,7 +4179,7 @@ Table&nbsp;8: Frequency of visual breaks
   text-align: left;
 }
 
-#zbzdlyhvmi .gt_empty_group_heading {
+#auzeghmybf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4173,15 +4194,15 @@ Table&nbsp;8: Frequency of visual breaks
   vertical-align: middle;
 }
 
-#zbzdlyhvmi .gt_from_md > :first-child {
+#auzeghmybf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zbzdlyhvmi .gt_from_md > :last-child {
+#auzeghmybf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zbzdlyhvmi .gt_row {
+#auzeghmybf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4200,7 +4221,7 @@ Table&nbsp;8: Frequency of visual breaks
   overflow-x: hidden;
 }
 
-#zbzdlyhvmi .gt_stub {
+#auzeghmybf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4213,7 +4234,7 @@ Table&nbsp;8: Frequency of visual breaks
   padding-right: 5px;
 }
 
-#zbzdlyhvmi .gt_stub_row_group {
+#auzeghmybf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4227,15 +4248,15 @@ Table&nbsp;8: Frequency of visual breaks
   vertical-align: top;
 }
 
-#zbzdlyhvmi .gt_row_group_first td {
+#auzeghmybf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zbzdlyhvmi .gt_row_group_first th {
+#auzeghmybf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zbzdlyhvmi .gt_summary_row {
+#auzeghmybf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4245,16 +4266,16 @@ Table&nbsp;8: Frequency of visual breaks
   padding-right: 5px;
 }
 
-#zbzdlyhvmi .gt_first_summary_row {
+#auzeghmybf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zbzdlyhvmi .gt_first_summary_row.thick {
+#auzeghmybf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zbzdlyhvmi .gt_last_summary_row {
+#auzeghmybf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4264,7 +4285,7 @@ Table&nbsp;8: Frequency of visual breaks
   border-bottom-color: #D3D3D3;
 }
 
-#zbzdlyhvmi .gt_grand_summary_row {
+#auzeghmybf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4274,7 +4295,7 @@ Table&nbsp;8: Frequency of visual breaks
   padding-right: 5px;
 }
 
-#zbzdlyhvmi .gt_first_grand_summary_row {
+#auzeghmybf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4284,7 +4305,7 @@ Table&nbsp;8: Frequency of visual breaks
   border-top-color: #D3D3D3;
 }
 
-#zbzdlyhvmi .gt_last_grand_summary_row_top {
+#auzeghmybf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4294,11 +4315,11 @@ Table&nbsp;8: Frequency of visual breaks
   border-bottom-color: #D3D3D3;
 }
 
-#zbzdlyhvmi .gt_striped {
+#auzeghmybf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zbzdlyhvmi .gt_table_body {
+#auzeghmybf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4307,7 +4328,7 @@ Table&nbsp;8: Frequency of visual breaks
   border-bottom-color: #D3D3D3;
 }
 
-#zbzdlyhvmi .gt_footnotes {
+#auzeghmybf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4321,7 +4342,7 @@ Table&nbsp;8: Frequency of visual breaks
   border-right-color: #D3D3D3;
 }
 
-#zbzdlyhvmi .gt_footnote {
+#auzeghmybf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4330,7 +4351,7 @@ Table&nbsp;8: Frequency of visual breaks
   padding-right: 5px;
 }
 
-#zbzdlyhvmi .gt_sourcenotes {
+#auzeghmybf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4344,7 +4365,7 @@ Table&nbsp;8: Frequency of visual breaks
   border-right-color: #D3D3D3;
 }
 
-#zbzdlyhvmi .gt_sourcenote {
+#auzeghmybf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4352,72 +4373,72 @@ Table&nbsp;8: Frequency of visual breaks
   padding-right: 5px;
 }
 
-#zbzdlyhvmi .gt_left {
+#auzeghmybf .gt_left {
   text-align: left;
 }
 
-#zbzdlyhvmi .gt_center {
+#auzeghmybf .gt_center {
   text-align: center;
 }
 
-#zbzdlyhvmi .gt_right {
+#auzeghmybf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zbzdlyhvmi .gt_font_normal {
+#auzeghmybf .gt_font_normal {
   font-weight: normal;
 }
 
-#zbzdlyhvmi .gt_font_bold {
+#auzeghmybf .gt_font_bold {
   font-weight: bold;
 }
 
-#zbzdlyhvmi .gt_font_italic {
+#auzeghmybf .gt_font_italic {
   font-style: italic;
 }
 
-#zbzdlyhvmi .gt_super {
+#auzeghmybf .gt_super {
   font-size: 65%;
 }
 
-#zbzdlyhvmi .gt_footnote_marks {
+#auzeghmybf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zbzdlyhvmi .gt_asterisk {
+#auzeghmybf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zbzdlyhvmi .gt_indent_1 {
+#auzeghmybf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zbzdlyhvmi .gt_indent_2 {
+#auzeghmybf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zbzdlyhvmi .gt_indent_3 {
+#auzeghmybf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zbzdlyhvmi .gt_indent_4 {
+#auzeghmybf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zbzdlyhvmi .gt_indent_5 {
+#auzeghmybf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zbzdlyhvmi .katex-display {
+#auzeghmybf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zbzdlyhvmi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#auzeghmybf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4727,23 +4748,23 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
 </figcaption>
 <div aria-describedby="tbl-lightexposure-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="aerqknarli" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#aerqknarli table {
+<div id="bkmoauztqs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bkmoauztqs table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#aerqknarli thead, #aerqknarli tbody, #aerqknarli tfoot, #aerqknarli tr, #aerqknarli td, #aerqknarli th {
+#bkmoauztqs thead, #bkmoauztqs tbody, #bkmoauztqs tfoot, #bkmoauztqs tr, #bkmoauztqs td, #bkmoauztqs th {
   border-style: none;
 }
 
-#aerqknarli p {
+#bkmoauztqs p {
   margin: 0;
   padding: 0;
 }
 
-#aerqknarli .gt_table {
+#bkmoauztqs .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4769,12 +4790,12 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   border-left-color: #D3D3D3;
 }
 
-#aerqknarli .gt_caption {
+#bkmoauztqs .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#aerqknarli .gt_title {
+#bkmoauztqs .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4786,7 +4807,7 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   border-bottom-width: 0;
 }
 
-#aerqknarli .gt_subtitle {
+#bkmoauztqs .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4798,7 +4819,7 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   border-top-width: 0;
 }
 
-#aerqknarli .gt_heading {
+#bkmoauztqs .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4810,13 +4831,13 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   border-right-color: #D3D3D3;
 }
 
-#aerqknarli .gt_bottom_border {
+#bkmoauztqs .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#aerqknarli .gt_col_headings {
+#bkmoauztqs .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4831,7 +4852,7 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   border-right-color: #D3D3D3;
 }
 
-#aerqknarli .gt_col_heading {
+#bkmoauztqs .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4851,7 +4872,7 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   overflow-x: hidden;
 }
 
-#aerqknarli .gt_column_spanner_outer {
+#bkmoauztqs .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4863,15 +4884,15 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   padding-right: 4px;
 }
 
-#aerqknarli .gt_column_spanner_outer:first-child {
+#bkmoauztqs .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#aerqknarli .gt_column_spanner_outer:last-child {
+#bkmoauztqs .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#aerqknarli .gt_column_spanner {
+#bkmoauztqs .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4883,11 +4904,11 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   width: 100%;
 }
 
-#aerqknarli .gt_spanner_row {
+#bkmoauztqs .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#aerqknarli .gt_group_heading {
+#bkmoauztqs .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4913,7 +4934,7 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   text-align: left;
 }
 
-#aerqknarli .gt_empty_group_heading {
+#bkmoauztqs .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4928,15 +4949,15 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   vertical-align: middle;
 }
 
-#aerqknarli .gt_from_md > :first-child {
+#bkmoauztqs .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#aerqknarli .gt_from_md > :last-child {
+#bkmoauztqs .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#aerqknarli .gt_row {
+#bkmoauztqs .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4955,7 +4976,7 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   overflow-x: hidden;
 }
 
-#aerqknarli .gt_stub {
+#bkmoauztqs .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4968,7 +4989,7 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   padding-right: 5px;
 }
 
-#aerqknarli .gt_stub_row_group {
+#bkmoauztqs .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4982,15 +5003,15 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   vertical-align: top;
 }
 
-#aerqknarli .gt_row_group_first td {
+#bkmoauztqs .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#aerqknarli .gt_row_group_first th {
+#bkmoauztqs .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#aerqknarli .gt_summary_row {
+#bkmoauztqs .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5000,16 +5021,16 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   padding-right: 5px;
 }
 
-#aerqknarli .gt_first_summary_row {
+#bkmoauztqs .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#aerqknarli .gt_first_summary_row.thick {
+#bkmoauztqs .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#aerqknarli .gt_last_summary_row {
+#bkmoauztqs .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5019,7 +5040,7 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   border-bottom-color: #D3D3D3;
 }
 
-#aerqknarli .gt_grand_summary_row {
+#bkmoauztqs .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5029,7 +5050,7 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   padding-right: 5px;
 }
 
-#aerqknarli .gt_first_grand_summary_row {
+#bkmoauztqs .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5039,7 +5060,7 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   border-top-color: #D3D3D3;
 }
 
-#aerqknarli .gt_last_grand_summary_row_top {
+#bkmoauztqs .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5049,11 +5070,11 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   border-bottom-color: #D3D3D3;
 }
 
-#aerqknarli .gt_striped {
+#bkmoauztqs .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#aerqknarli .gt_table_body {
+#bkmoauztqs .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5062,7 +5083,7 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   border-bottom-color: #D3D3D3;
 }
 
-#aerqknarli .gt_footnotes {
+#bkmoauztqs .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5076,7 +5097,7 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   border-right-color: #D3D3D3;
 }
 
-#aerqknarli .gt_footnote {
+#bkmoauztqs .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -5085,7 +5106,7 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   padding-right: 5px;
 }
 
-#aerqknarli .gt_sourcenotes {
+#bkmoauztqs .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5099,7 +5120,7 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   border-right-color: #D3D3D3;
 }
 
-#aerqknarli .gt_sourcenote {
+#bkmoauztqs .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -5107,72 +5128,72 @@ Table&nbsp;9: Mean light exposure (illuminance) per day
   padding-right: 5px;
 }
 
-#aerqknarli .gt_left {
+#bkmoauztqs .gt_left {
   text-align: left;
 }
 
-#aerqknarli .gt_center {
+#bkmoauztqs .gt_center {
   text-align: center;
 }
 
-#aerqknarli .gt_right {
+#bkmoauztqs .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#aerqknarli .gt_font_normal {
+#bkmoauztqs .gt_font_normal {
   font-weight: normal;
 }
 
-#aerqknarli .gt_font_bold {
+#bkmoauztqs .gt_font_bold {
   font-weight: bold;
 }
 
-#aerqknarli .gt_font_italic {
+#bkmoauztqs .gt_font_italic {
   font-style: italic;
 }
 
-#aerqknarli .gt_super {
+#bkmoauztqs .gt_super {
   font-size: 65%;
 }
 
-#aerqknarli .gt_footnote_marks {
+#bkmoauztqs .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#aerqknarli .gt_asterisk {
+#bkmoauztqs .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#aerqknarli .gt_indent_1 {
+#bkmoauztqs .gt_indent_1 {
   text-indent: 5px;
 }
 
-#aerqknarli .gt_indent_2 {
+#bkmoauztqs .gt_indent_2 {
   text-indent: 10px;
 }
 
-#aerqknarli .gt_indent_3 {
+#bkmoauztqs .gt_indent_3 {
   text-indent: 15px;
 }
 
-#aerqknarli .gt_indent_4 {
+#bkmoauztqs .gt_indent_4 {
   text-indent: 20px;
 }
 
-#aerqknarli .gt_indent_5 {
+#bkmoauztqs .gt_indent_5 {
   text-indent: 25px;
 }
 
-#aerqknarli .katex-display {
+#bkmoauztqs .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#aerqknarli div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#bkmoauztqs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -5247,23 +5268,23 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
 </figcaption>
 <div aria-describedby="tbl-lightexposure2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="zmjkslvflj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zmjkslvflj table {
+<div id="oxcweevkhi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#oxcweevkhi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zmjkslvflj thead, #zmjkslvflj tbody, #zmjkslvflj tfoot, #zmjkslvflj tr, #zmjkslvflj td, #zmjkslvflj th {
+#oxcweevkhi thead, #oxcweevkhi tbody, #oxcweevkhi tfoot, #oxcweevkhi tr, #oxcweevkhi td, #oxcweevkhi th {
   border-style: none;
 }
 
-#zmjkslvflj p {
+#oxcweevkhi p {
   margin: 0;
   padding: 0;
 }
 
-#zmjkslvflj .gt_table {
+#oxcweevkhi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -5289,12 +5310,12 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   border-left-color: #D3D3D3;
 }
 
-#zmjkslvflj .gt_caption {
+#oxcweevkhi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zmjkslvflj .gt_title {
+#oxcweevkhi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5306,7 +5327,7 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   border-bottom-width: 0;
 }
 
-#zmjkslvflj .gt_subtitle {
+#oxcweevkhi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5318,7 +5339,7 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   border-top-width: 0;
 }
 
-#zmjkslvflj .gt_heading {
+#oxcweevkhi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5330,13 +5351,13 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   border-right-color: #D3D3D3;
 }
 
-#zmjkslvflj .gt_bottom_border {
+#oxcweevkhi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zmjkslvflj .gt_col_headings {
+#oxcweevkhi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5351,7 +5372,7 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   border-right-color: #D3D3D3;
 }
 
-#zmjkslvflj .gt_col_heading {
+#oxcweevkhi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5371,7 +5392,7 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   overflow-x: hidden;
 }
 
-#zmjkslvflj .gt_column_spanner_outer {
+#oxcweevkhi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5383,15 +5404,15 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   padding-right: 4px;
 }
 
-#zmjkslvflj .gt_column_spanner_outer:first-child {
+#oxcweevkhi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zmjkslvflj .gt_column_spanner_outer:last-child {
+#oxcweevkhi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zmjkslvflj .gt_column_spanner {
+#oxcweevkhi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5403,11 +5424,11 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   width: 100%;
 }
 
-#zmjkslvflj .gt_spanner_row {
+#oxcweevkhi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zmjkslvflj .gt_group_heading {
+#oxcweevkhi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5433,7 +5454,7 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   text-align: left;
 }
 
-#zmjkslvflj .gt_empty_group_heading {
+#oxcweevkhi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5448,15 +5469,15 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   vertical-align: middle;
 }
 
-#zmjkslvflj .gt_from_md > :first-child {
+#oxcweevkhi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zmjkslvflj .gt_from_md > :last-child {
+#oxcweevkhi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zmjkslvflj .gt_row {
+#oxcweevkhi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5475,7 +5496,7 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   overflow-x: hidden;
 }
 
-#zmjkslvflj .gt_stub {
+#oxcweevkhi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5488,7 +5509,7 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   padding-right: 5px;
 }
 
-#zmjkslvflj .gt_stub_row_group {
+#oxcweevkhi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5502,15 +5523,15 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   vertical-align: top;
 }
 
-#zmjkslvflj .gt_row_group_first td {
+#oxcweevkhi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zmjkslvflj .gt_row_group_first th {
+#oxcweevkhi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zmjkslvflj .gt_summary_row {
+#oxcweevkhi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5520,16 +5541,16 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   padding-right: 5px;
 }
 
-#zmjkslvflj .gt_first_summary_row {
+#oxcweevkhi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zmjkslvflj .gt_first_summary_row.thick {
+#oxcweevkhi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zmjkslvflj .gt_last_summary_row {
+#oxcweevkhi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5539,7 +5560,7 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   border-bottom-color: #D3D3D3;
 }
 
-#zmjkslvflj .gt_grand_summary_row {
+#oxcweevkhi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5549,7 +5570,7 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   padding-right: 5px;
 }
 
-#zmjkslvflj .gt_first_grand_summary_row {
+#oxcweevkhi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5559,7 +5580,7 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   border-top-color: #D3D3D3;
 }
 
-#zmjkslvflj .gt_last_grand_summary_row_top {
+#oxcweevkhi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5569,11 +5590,11 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   border-bottom-color: #D3D3D3;
 }
 
-#zmjkslvflj .gt_striped {
+#oxcweevkhi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zmjkslvflj .gt_table_body {
+#oxcweevkhi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5582,7 +5603,7 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   border-bottom-color: #D3D3D3;
 }
 
-#zmjkslvflj .gt_footnotes {
+#oxcweevkhi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5596,7 +5617,7 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   border-right-color: #D3D3D3;
 }
 
-#zmjkslvflj .gt_footnote {
+#oxcweevkhi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -5605,7 +5626,7 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   padding-right: 5px;
 }
 
-#zmjkslvflj .gt_sourcenotes {
+#oxcweevkhi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5619,7 +5640,7 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   border-right-color: #D3D3D3;
 }
 
-#zmjkslvflj .gt_sourcenote {
+#oxcweevkhi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -5627,72 +5648,72 @@ Table&nbsp;10: Mean light exposure per day (after logarithmic transformation to 
   padding-right: 5px;
 }
 
-#zmjkslvflj .gt_left {
+#oxcweevkhi .gt_left {
   text-align: left;
 }
 
-#zmjkslvflj .gt_center {
+#oxcweevkhi .gt_center {
   text-align: center;
 }
 
-#zmjkslvflj .gt_right {
+#oxcweevkhi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zmjkslvflj .gt_font_normal {
+#oxcweevkhi .gt_font_normal {
   font-weight: normal;
 }
 
-#zmjkslvflj .gt_font_bold {
+#oxcweevkhi .gt_font_bold {
   font-weight: bold;
 }
 
-#zmjkslvflj .gt_font_italic {
+#oxcweevkhi .gt_font_italic {
   font-style: italic;
 }
 
-#zmjkslvflj .gt_super {
+#oxcweevkhi .gt_super {
   font-size: 65%;
 }
 
-#zmjkslvflj .gt_footnote_marks {
+#oxcweevkhi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zmjkslvflj .gt_asterisk {
+#oxcweevkhi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zmjkslvflj .gt_indent_1 {
+#oxcweevkhi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zmjkslvflj .gt_indent_2 {
+#oxcweevkhi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zmjkslvflj .gt_indent_3 {
+#oxcweevkhi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zmjkslvflj .gt_indent_4 {
+#oxcweevkhi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zmjkslvflj .gt_indent_5 {
+#oxcweevkhi .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zmjkslvflj .katex-display {
+#oxcweevkhi .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zmjkslvflj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#oxcweevkhi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -5772,23 +5793,23 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
 </figcaption>
 <div aria-describedby="tbl-outdoor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="pgulguxdup" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pgulguxdup table {
+<div id="mhxhqnrwmv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mhxhqnrwmv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pgulguxdup thead, #pgulguxdup tbody, #pgulguxdup tfoot, #pgulguxdup tr, #pgulguxdup td, #pgulguxdup th {
+#mhxhqnrwmv thead, #mhxhqnrwmv tbody, #mhxhqnrwmv tfoot, #mhxhqnrwmv tr, #mhxhqnrwmv td, #mhxhqnrwmv th {
   border-style: none;
 }
 
-#pgulguxdup p {
+#mhxhqnrwmv p {
   margin: 0;
   padding: 0;
 }
 
-#pgulguxdup .gt_table {
+#mhxhqnrwmv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -5814,12 +5835,12 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   border-left-color: #D3D3D3;
 }
 
-#pgulguxdup .gt_caption {
+#mhxhqnrwmv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pgulguxdup .gt_title {
+#mhxhqnrwmv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5831,7 +5852,7 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   border-bottom-width: 0;
 }
 
-#pgulguxdup .gt_subtitle {
+#mhxhqnrwmv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5843,7 +5864,7 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   border-top-width: 0;
 }
 
-#pgulguxdup .gt_heading {
+#mhxhqnrwmv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5855,13 +5876,13 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   border-right-color: #D3D3D3;
 }
 
-#pgulguxdup .gt_bottom_border {
+#mhxhqnrwmv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pgulguxdup .gt_col_headings {
+#mhxhqnrwmv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5876,7 +5897,7 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   border-right-color: #D3D3D3;
 }
 
-#pgulguxdup .gt_col_heading {
+#mhxhqnrwmv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5896,7 +5917,7 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   overflow-x: hidden;
 }
 
-#pgulguxdup .gt_column_spanner_outer {
+#mhxhqnrwmv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5908,15 +5929,15 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   padding-right: 4px;
 }
 
-#pgulguxdup .gt_column_spanner_outer:first-child {
+#mhxhqnrwmv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pgulguxdup .gt_column_spanner_outer:last-child {
+#mhxhqnrwmv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pgulguxdup .gt_column_spanner {
+#mhxhqnrwmv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5928,11 +5949,11 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   width: 100%;
 }
 
-#pgulguxdup .gt_spanner_row {
+#mhxhqnrwmv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pgulguxdup .gt_group_heading {
+#mhxhqnrwmv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5958,7 +5979,7 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   text-align: left;
 }
 
-#pgulguxdup .gt_empty_group_heading {
+#mhxhqnrwmv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5973,15 +5994,15 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   vertical-align: middle;
 }
 
-#pgulguxdup .gt_from_md > :first-child {
+#mhxhqnrwmv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pgulguxdup .gt_from_md > :last-child {
+#mhxhqnrwmv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pgulguxdup .gt_row {
+#mhxhqnrwmv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6000,7 +6021,7 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   overflow-x: hidden;
 }
 
-#pgulguxdup .gt_stub {
+#mhxhqnrwmv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6013,7 +6034,7 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   padding-right: 5px;
 }
 
-#pgulguxdup .gt_stub_row_group {
+#mhxhqnrwmv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6027,15 +6048,15 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   vertical-align: top;
 }
 
-#pgulguxdup .gt_row_group_first td {
+#mhxhqnrwmv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pgulguxdup .gt_row_group_first th {
+#mhxhqnrwmv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pgulguxdup .gt_summary_row {
+#mhxhqnrwmv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -6045,16 +6066,16 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   padding-right: 5px;
 }
 
-#pgulguxdup .gt_first_summary_row {
+#mhxhqnrwmv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pgulguxdup .gt_first_summary_row.thick {
+#mhxhqnrwmv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pgulguxdup .gt_last_summary_row {
+#mhxhqnrwmv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6064,7 +6085,7 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   border-bottom-color: #D3D3D3;
 }
 
-#pgulguxdup .gt_grand_summary_row {
+#mhxhqnrwmv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -6074,7 +6095,7 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   padding-right: 5px;
 }
 
-#pgulguxdup .gt_first_grand_summary_row {
+#mhxhqnrwmv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6084,7 +6105,7 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   border-top-color: #D3D3D3;
 }
 
-#pgulguxdup .gt_last_grand_summary_row_top {
+#mhxhqnrwmv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6094,11 +6115,11 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   border-bottom-color: #D3D3D3;
 }
 
-#pgulguxdup .gt_striped {
+#mhxhqnrwmv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pgulguxdup .gt_table_body {
+#mhxhqnrwmv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -6107,7 +6128,7 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   border-bottom-color: #D3D3D3;
 }
 
-#pgulguxdup .gt_footnotes {
+#mhxhqnrwmv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -6121,7 +6142,7 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   border-right-color: #D3D3D3;
 }
 
-#pgulguxdup .gt_footnote {
+#mhxhqnrwmv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -6130,7 +6151,7 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   padding-right: 5px;
 }
 
-#pgulguxdup .gt_sourcenotes {
+#mhxhqnrwmv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -6144,7 +6165,7 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   border-right-color: #D3D3D3;
 }
 
-#pgulguxdup .gt_sourcenote {
+#mhxhqnrwmv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -6152,72 +6173,72 @@ Table&nbsp;11: Average daily duration in outdoor-equivalent light conditions
   padding-right: 5px;
 }
 
-#pgulguxdup .gt_left {
+#mhxhqnrwmv .gt_left {
   text-align: left;
 }
 
-#pgulguxdup .gt_center {
+#mhxhqnrwmv .gt_center {
   text-align: center;
 }
 
-#pgulguxdup .gt_right {
+#mhxhqnrwmv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pgulguxdup .gt_font_normal {
+#mhxhqnrwmv .gt_font_normal {
   font-weight: normal;
 }
 
-#pgulguxdup .gt_font_bold {
+#mhxhqnrwmv .gt_font_bold {
   font-weight: bold;
 }
 
-#pgulguxdup .gt_font_italic {
+#mhxhqnrwmv .gt_font_italic {
   font-style: italic;
 }
 
-#pgulguxdup .gt_super {
+#mhxhqnrwmv .gt_super {
   font-size: 65%;
 }
 
-#pgulguxdup .gt_footnote_marks {
+#mhxhqnrwmv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pgulguxdup .gt_asterisk {
+#mhxhqnrwmv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pgulguxdup .gt_indent_1 {
+#mhxhqnrwmv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pgulguxdup .gt_indent_2 {
+#mhxhqnrwmv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pgulguxdup .gt_indent_3 {
+#mhxhqnrwmv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pgulguxdup .gt_indent_4 {
+#mhxhqnrwmv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pgulguxdup .gt_indent_5 {
+#mhxhqnrwmv .gt_indent_5 {
   text-indent: 25px;
 }
 
-#pgulguxdup .katex-display {
+#mhxhqnrwmv .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#pgulguxdup div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mhxhqnrwmv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -6363,23 +6384,23 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
 </figcaption>
 <div aria-describedby="tbl-changesoutdoor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="qrutmcreiv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qrutmcreiv table {
+<div id="hfpgqjacwt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hfpgqjacwt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qrutmcreiv thead, #qrutmcreiv tbody, #qrutmcreiv tfoot, #qrutmcreiv tr, #qrutmcreiv td, #qrutmcreiv th {
+#hfpgqjacwt thead, #hfpgqjacwt tbody, #hfpgqjacwt tfoot, #hfpgqjacwt tr, #hfpgqjacwt td, #hfpgqjacwt th {
   border-style: none;
 }
 
-#qrutmcreiv p {
+#hfpgqjacwt p {
   margin: 0;
   padding: 0;
 }
 
-#qrutmcreiv .gt_table {
+#hfpgqjacwt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -6405,12 +6426,12 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   border-left-color: #D3D3D3;
 }
 
-#qrutmcreiv .gt_caption {
+#hfpgqjacwt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qrutmcreiv .gt_title {
+#hfpgqjacwt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -6422,7 +6443,7 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   border-bottom-width: 0;
 }
 
-#qrutmcreiv .gt_subtitle {
+#hfpgqjacwt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -6434,7 +6455,7 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   border-top-width: 0;
 }
 
-#qrutmcreiv .gt_heading {
+#hfpgqjacwt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -6446,13 +6467,13 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   border-right-color: #D3D3D3;
 }
 
-#qrutmcreiv .gt_bottom_border {
+#hfpgqjacwt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qrutmcreiv .gt_col_headings {
+#hfpgqjacwt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -6467,7 +6488,7 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   border-right-color: #D3D3D3;
 }
 
-#qrutmcreiv .gt_col_heading {
+#hfpgqjacwt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6487,7 +6508,7 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   overflow-x: hidden;
 }
 
-#qrutmcreiv .gt_column_spanner_outer {
+#hfpgqjacwt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6499,15 +6520,15 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   padding-right: 4px;
 }
 
-#qrutmcreiv .gt_column_spanner_outer:first-child {
+#hfpgqjacwt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qrutmcreiv .gt_column_spanner_outer:last-child {
+#hfpgqjacwt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qrutmcreiv .gt_column_spanner {
+#hfpgqjacwt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -6519,11 +6540,11 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   width: 100%;
 }
 
-#qrutmcreiv .gt_spanner_row {
+#hfpgqjacwt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qrutmcreiv .gt_group_heading {
+#hfpgqjacwt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6549,7 +6570,7 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   text-align: left;
 }
 
-#qrutmcreiv .gt_empty_group_heading {
+#hfpgqjacwt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -6564,15 +6585,15 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   vertical-align: middle;
 }
 
-#qrutmcreiv .gt_from_md > :first-child {
+#hfpgqjacwt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qrutmcreiv .gt_from_md > :last-child {
+#hfpgqjacwt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qrutmcreiv .gt_row {
+#hfpgqjacwt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6591,7 +6612,7 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   overflow-x: hidden;
 }
 
-#qrutmcreiv .gt_stub {
+#hfpgqjacwt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6604,7 +6625,7 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   padding-right: 5px;
 }
 
-#qrutmcreiv .gt_stub_row_group {
+#hfpgqjacwt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6618,15 +6639,15 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   vertical-align: top;
 }
 
-#qrutmcreiv .gt_row_group_first td {
+#hfpgqjacwt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qrutmcreiv .gt_row_group_first th {
+#hfpgqjacwt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qrutmcreiv .gt_summary_row {
+#hfpgqjacwt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -6636,16 +6657,16 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   padding-right: 5px;
 }
 
-#qrutmcreiv .gt_first_summary_row {
+#hfpgqjacwt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qrutmcreiv .gt_first_summary_row.thick {
+#hfpgqjacwt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qrutmcreiv .gt_last_summary_row {
+#hfpgqjacwt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6655,7 +6676,7 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   border-bottom-color: #D3D3D3;
 }
 
-#qrutmcreiv .gt_grand_summary_row {
+#hfpgqjacwt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -6665,7 +6686,7 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   padding-right: 5px;
 }
 
-#qrutmcreiv .gt_first_grand_summary_row {
+#hfpgqjacwt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6675,7 +6696,7 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   border-top-color: #D3D3D3;
 }
 
-#qrutmcreiv .gt_last_grand_summary_row_top {
+#hfpgqjacwt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6685,11 +6706,11 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   border-bottom-color: #D3D3D3;
 }
 
-#qrutmcreiv .gt_striped {
+#hfpgqjacwt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qrutmcreiv .gt_table_body {
+#hfpgqjacwt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -6698,7 +6719,7 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   border-bottom-color: #D3D3D3;
 }
 
-#qrutmcreiv .gt_footnotes {
+#hfpgqjacwt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -6712,7 +6733,7 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   border-right-color: #D3D3D3;
 }
 
-#qrutmcreiv .gt_footnote {
+#hfpgqjacwt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -6721,7 +6742,7 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   padding-right: 5px;
 }
 
-#qrutmcreiv .gt_sourcenotes {
+#hfpgqjacwt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -6735,7 +6756,7 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   border-right-color: #D3D3D3;
 }
 
-#qrutmcreiv .gt_sourcenote {
+#hfpgqjacwt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -6743,72 +6764,72 @@ Table&nbsp;12: Average daily count of transitions from indoor (&lt;1000 lx) to o
   padding-right: 5px;
 }
 
-#qrutmcreiv .gt_left {
+#hfpgqjacwt .gt_left {
   text-align: left;
 }
 
-#qrutmcreiv .gt_center {
+#hfpgqjacwt .gt_center {
   text-align: center;
 }
 
-#qrutmcreiv .gt_right {
+#hfpgqjacwt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qrutmcreiv .gt_font_normal {
+#hfpgqjacwt .gt_font_normal {
   font-weight: normal;
 }
 
-#qrutmcreiv .gt_font_bold {
+#hfpgqjacwt .gt_font_bold {
   font-weight: bold;
 }
 
-#qrutmcreiv .gt_font_italic {
+#hfpgqjacwt .gt_font_italic {
   font-style: italic;
 }
 
-#qrutmcreiv .gt_super {
+#hfpgqjacwt .gt_super {
   font-size: 65%;
 }
 
-#qrutmcreiv .gt_footnote_marks {
+#hfpgqjacwt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qrutmcreiv .gt_asterisk {
+#hfpgqjacwt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qrutmcreiv .gt_indent_1 {
+#hfpgqjacwt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qrutmcreiv .gt_indent_2 {
+#hfpgqjacwt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qrutmcreiv .gt_indent_3 {
+#hfpgqjacwt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qrutmcreiv .gt_indent_4 {
+#hfpgqjacwt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qrutmcreiv .gt_indent_5 {
+#hfpgqjacwt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qrutmcreiv .katex-display {
+#hfpgqjacwt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qrutmcreiv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hfpgqjacwt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -6875,23 +6896,23 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
 </figcaption>
 <div aria-describedby="tbl-changesoutdoor2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="ztjazhiekx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ztjazhiekx table {
+<div id="grrxfuvwbi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#grrxfuvwbi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ztjazhiekx thead, #ztjazhiekx tbody, #ztjazhiekx tfoot, #ztjazhiekx tr, #ztjazhiekx td, #ztjazhiekx th {
+#grrxfuvwbi thead, #grrxfuvwbi tbody, #grrxfuvwbi tfoot, #grrxfuvwbi tr, #grrxfuvwbi td, #grrxfuvwbi th {
   border-style: none;
 }
 
-#ztjazhiekx p {
+#grrxfuvwbi p {
   margin: 0;
   padding: 0;
 }
 
-#ztjazhiekx .gt_table {
+#grrxfuvwbi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -6917,12 +6938,12 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   border-left-color: #D3D3D3;
 }
 
-#ztjazhiekx .gt_caption {
+#grrxfuvwbi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ztjazhiekx .gt_title {
+#grrxfuvwbi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -6934,7 +6955,7 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   border-bottom-width: 0;
 }
 
-#ztjazhiekx .gt_subtitle {
+#grrxfuvwbi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -6946,7 +6967,7 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   border-top-width: 0;
 }
 
-#ztjazhiekx .gt_heading {
+#grrxfuvwbi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -6958,13 +6979,13 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   border-right-color: #D3D3D3;
 }
 
-#ztjazhiekx .gt_bottom_border {
+#grrxfuvwbi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ztjazhiekx .gt_col_headings {
+#grrxfuvwbi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -6979,7 +7000,7 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   border-right-color: #D3D3D3;
 }
 
-#ztjazhiekx .gt_col_heading {
+#grrxfuvwbi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6999,7 +7020,7 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   overflow-x: hidden;
 }
 
-#ztjazhiekx .gt_column_spanner_outer {
+#grrxfuvwbi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7011,15 +7032,15 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   padding-right: 4px;
 }
 
-#ztjazhiekx .gt_column_spanner_outer:first-child {
+#grrxfuvwbi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ztjazhiekx .gt_column_spanner_outer:last-child {
+#grrxfuvwbi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ztjazhiekx .gt_column_spanner {
+#grrxfuvwbi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -7031,11 +7052,11 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   width: 100%;
 }
 
-#ztjazhiekx .gt_spanner_row {
+#grrxfuvwbi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ztjazhiekx .gt_group_heading {
+#grrxfuvwbi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7061,7 +7082,7 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   text-align: left;
 }
 
-#ztjazhiekx .gt_empty_group_heading {
+#grrxfuvwbi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -7076,15 +7097,15 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   vertical-align: middle;
 }
 
-#ztjazhiekx .gt_from_md > :first-child {
+#grrxfuvwbi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ztjazhiekx .gt_from_md > :last-child {
+#grrxfuvwbi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ztjazhiekx .gt_row {
+#grrxfuvwbi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7103,7 +7124,7 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   overflow-x: hidden;
 }
 
-#ztjazhiekx .gt_stub {
+#grrxfuvwbi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7116,7 +7137,7 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   padding-right: 5px;
 }
 
-#ztjazhiekx .gt_stub_row_group {
+#grrxfuvwbi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7130,15 +7151,15 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   vertical-align: top;
 }
 
-#ztjazhiekx .gt_row_group_first td {
+#grrxfuvwbi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ztjazhiekx .gt_row_group_first th {
+#grrxfuvwbi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ztjazhiekx .gt_summary_row {
+#grrxfuvwbi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -7148,16 +7169,16 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   padding-right: 5px;
 }
 
-#ztjazhiekx .gt_first_summary_row {
+#grrxfuvwbi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ztjazhiekx .gt_first_summary_row.thick {
+#grrxfuvwbi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ztjazhiekx .gt_last_summary_row {
+#grrxfuvwbi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7167,7 +7188,7 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   border-bottom-color: #D3D3D3;
 }
 
-#ztjazhiekx .gt_grand_summary_row {
+#grrxfuvwbi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -7177,7 +7198,7 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   padding-right: 5px;
 }
 
-#ztjazhiekx .gt_first_grand_summary_row {
+#grrxfuvwbi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7187,7 +7208,7 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   border-top-color: #D3D3D3;
 }
 
-#ztjazhiekx .gt_last_grand_summary_row_top {
+#grrxfuvwbi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7197,11 +7218,11 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   border-bottom-color: #D3D3D3;
 }
 
-#ztjazhiekx .gt_striped {
+#grrxfuvwbi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ztjazhiekx .gt_table_body {
+#grrxfuvwbi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -7210,7 +7231,7 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   border-bottom-color: #D3D3D3;
 }
 
-#ztjazhiekx .gt_footnotes {
+#grrxfuvwbi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -7224,7 +7245,7 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   border-right-color: #D3D3D3;
 }
 
-#ztjazhiekx .gt_footnote {
+#grrxfuvwbi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -7233,7 +7254,7 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   padding-right: 5px;
 }
 
-#ztjazhiekx .gt_sourcenotes {
+#grrxfuvwbi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -7247,7 +7268,7 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   border-right-color: #D3D3D3;
 }
 
-#ztjazhiekx .gt_sourcenote {
+#grrxfuvwbi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -7255,72 +7276,72 @@ Table&nbsp;13: Daily indoor-to-outdoor transition count (requiring ≥5&nbsp;min
   padding-right: 5px;
 }
 
-#ztjazhiekx .gt_left {
+#grrxfuvwbi .gt_left {
   text-align: left;
 }
 
-#ztjazhiekx .gt_center {
+#grrxfuvwbi .gt_center {
   text-align: center;
 }
 
-#ztjazhiekx .gt_right {
+#grrxfuvwbi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ztjazhiekx .gt_font_normal {
+#grrxfuvwbi .gt_font_normal {
   font-weight: normal;
 }
 
-#ztjazhiekx .gt_font_bold {
+#grrxfuvwbi .gt_font_bold {
   font-weight: bold;
 }
 
-#ztjazhiekx .gt_font_italic {
+#grrxfuvwbi .gt_font_italic {
   font-style: italic;
 }
 
-#ztjazhiekx .gt_super {
+#grrxfuvwbi .gt_super {
   font-size: 65%;
 }
 
-#ztjazhiekx .gt_footnote_marks {
+#grrxfuvwbi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ztjazhiekx .gt_asterisk {
+#grrxfuvwbi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ztjazhiekx .gt_indent_1 {
+#grrxfuvwbi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ztjazhiekx .gt_indent_2 {
+#grrxfuvwbi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ztjazhiekx .gt_indent_3 {
+#grrxfuvwbi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ztjazhiekx .gt_indent_4 {
+#grrxfuvwbi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ztjazhiekx .gt_indent_5 {
+#grrxfuvwbi .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ztjazhiekx .katex-display {
+#grrxfuvwbi .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ztjazhiekx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#grrxfuvwbi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -7473,23 +7494,23 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
 </figcaption>
 <div aria-describedby="tbl-periodoutdoor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="hcnytezdna" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hcnytezdna table {
+<div id="vxvwsgztqo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vxvwsgztqo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hcnytezdna thead, #hcnytezdna tbody, #hcnytezdna tfoot, #hcnytezdna tr, #hcnytezdna td, #hcnytezdna th {
+#vxvwsgztqo thead, #vxvwsgztqo tbody, #vxvwsgztqo tfoot, #vxvwsgztqo tr, #vxvwsgztqo td, #vxvwsgztqo th {
   border-style: none;
 }
 
-#hcnytezdna p {
+#vxvwsgztqo p {
   margin: 0;
   padding: 0;
 }
 
-#hcnytezdna .gt_table {
+#vxvwsgztqo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -7515,12 +7536,12 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   border-left-color: #D3D3D3;
 }
 
-#hcnytezdna .gt_caption {
+#vxvwsgztqo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hcnytezdna .gt_title {
+#vxvwsgztqo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -7532,7 +7553,7 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   border-bottom-width: 0;
 }
 
-#hcnytezdna .gt_subtitle {
+#vxvwsgztqo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -7544,7 +7565,7 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   border-top-width: 0;
 }
 
-#hcnytezdna .gt_heading {
+#vxvwsgztqo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -7556,13 +7577,13 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   border-right-color: #D3D3D3;
 }
 
-#hcnytezdna .gt_bottom_border {
+#vxvwsgztqo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hcnytezdna .gt_col_headings {
+#vxvwsgztqo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -7577,7 +7598,7 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   border-right-color: #D3D3D3;
 }
 
-#hcnytezdna .gt_col_heading {
+#vxvwsgztqo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7597,7 +7618,7 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   overflow-x: hidden;
 }
 
-#hcnytezdna .gt_column_spanner_outer {
+#vxvwsgztqo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7609,15 +7630,15 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   padding-right: 4px;
 }
 
-#hcnytezdna .gt_column_spanner_outer:first-child {
+#vxvwsgztqo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hcnytezdna .gt_column_spanner_outer:last-child {
+#vxvwsgztqo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hcnytezdna .gt_column_spanner {
+#vxvwsgztqo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -7629,11 +7650,11 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   width: 100%;
 }
 
-#hcnytezdna .gt_spanner_row {
+#vxvwsgztqo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#hcnytezdna .gt_group_heading {
+#vxvwsgztqo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7659,7 +7680,7 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   text-align: left;
 }
 
-#hcnytezdna .gt_empty_group_heading {
+#vxvwsgztqo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -7674,15 +7695,15 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   vertical-align: middle;
 }
 
-#hcnytezdna .gt_from_md > :first-child {
+#vxvwsgztqo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hcnytezdna .gt_from_md > :last-child {
+#vxvwsgztqo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hcnytezdna .gt_row {
+#vxvwsgztqo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7701,7 +7722,7 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   overflow-x: hidden;
 }
 
-#hcnytezdna .gt_stub {
+#vxvwsgztqo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7714,7 +7735,7 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   padding-right: 5px;
 }
 
-#hcnytezdna .gt_stub_row_group {
+#vxvwsgztqo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7728,15 +7749,15 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   vertical-align: top;
 }
 
-#hcnytezdna .gt_row_group_first td {
+#vxvwsgztqo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hcnytezdna .gt_row_group_first th {
+#vxvwsgztqo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#hcnytezdna .gt_summary_row {
+#vxvwsgztqo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -7746,16 +7767,16 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   padding-right: 5px;
 }
 
-#hcnytezdna .gt_first_summary_row {
+#vxvwsgztqo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hcnytezdna .gt_first_summary_row.thick {
+#vxvwsgztqo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hcnytezdna .gt_last_summary_row {
+#vxvwsgztqo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7765,7 +7786,7 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   border-bottom-color: #D3D3D3;
 }
 
-#hcnytezdna .gt_grand_summary_row {
+#vxvwsgztqo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -7775,7 +7796,7 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   padding-right: 5px;
 }
 
-#hcnytezdna .gt_first_grand_summary_row {
+#vxvwsgztqo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7785,7 +7806,7 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   border-top-color: #D3D3D3;
 }
 
-#hcnytezdna .gt_last_grand_summary_row_top {
+#vxvwsgztqo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7795,11 +7816,11 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   border-bottom-color: #D3D3D3;
 }
 
-#hcnytezdna .gt_striped {
+#vxvwsgztqo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hcnytezdna .gt_table_body {
+#vxvwsgztqo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -7808,7 +7829,7 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   border-bottom-color: #D3D3D3;
 }
 
-#hcnytezdna .gt_footnotes {
+#vxvwsgztqo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -7822,7 +7843,7 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   border-right-color: #D3D3D3;
 }
 
-#hcnytezdna .gt_footnote {
+#vxvwsgztqo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -7831,7 +7852,7 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   padding-right: 5px;
 }
 
-#hcnytezdna .gt_sourcenotes {
+#vxvwsgztqo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -7845,7 +7866,7 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   border-right-color: #D3D3D3;
 }
 
-#hcnytezdna .gt_sourcenote {
+#vxvwsgztqo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -7853,72 +7874,72 @@ Table&nbsp;14: Longest period and total duration illuminance above 1000&nbsp;lx 
   padding-right: 5px;
 }
 
-#hcnytezdna .gt_left {
+#vxvwsgztqo .gt_left {
   text-align: left;
 }
 
-#hcnytezdna .gt_center {
+#vxvwsgztqo .gt_center {
   text-align: center;
 }
 
-#hcnytezdna .gt_right {
+#vxvwsgztqo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hcnytezdna .gt_font_normal {
+#vxvwsgztqo .gt_font_normal {
   font-weight: normal;
 }
 
-#hcnytezdna .gt_font_bold {
+#vxvwsgztqo .gt_font_bold {
   font-weight: bold;
 }
 
-#hcnytezdna .gt_font_italic {
+#vxvwsgztqo .gt_font_italic {
   font-style: italic;
 }
 
-#hcnytezdna .gt_super {
+#vxvwsgztqo .gt_super {
   font-size: 65%;
 }
 
-#hcnytezdna .gt_footnote_marks {
+#vxvwsgztqo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#hcnytezdna .gt_asterisk {
+#vxvwsgztqo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hcnytezdna .gt_indent_1 {
+#vxvwsgztqo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hcnytezdna .gt_indent_2 {
+#vxvwsgztqo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hcnytezdna .gt_indent_3 {
+#vxvwsgztqo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hcnytezdna .gt_indent_4 {
+#vxvwsgztqo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hcnytezdna .gt_indent_5 {
+#vxvwsgztqo .gt_indent_5 {
   text-indent: 25px;
 }
 
-#hcnytezdna .katex-display {
+#vxvwsgztqo .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#hcnytezdna div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vxvwsgztqo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -7978,23 +7999,23 @@ Table&nbsp;15: Overview of the merged dataset
 </figcaption>
 <div aria-describedby="tbl-merge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="egbnasiwes" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#egbnasiwes table {
+<div id="rjvjobyxov" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rjvjobyxov table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#egbnasiwes thead, #egbnasiwes tbody, #egbnasiwes tfoot, #egbnasiwes tr, #egbnasiwes td, #egbnasiwes th {
+#rjvjobyxov thead, #rjvjobyxov tbody, #rjvjobyxov tfoot, #rjvjobyxov tr, #rjvjobyxov td, #rjvjobyxov th {
   border-style: none;
 }
 
-#egbnasiwes p {
+#rjvjobyxov p {
   margin: 0;
   padding: 0;
 }
 
-#egbnasiwes .gt_table {
+#rjvjobyxov .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -8020,12 +8041,12 @@ Table&nbsp;15: Overview of the merged dataset
   border-left-color: #D3D3D3;
 }
 
-#egbnasiwes .gt_caption {
+#rjvjobyxov .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#egbnasiwes .gt_title {
+#rjvjobyxov .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -8037,7 +8058,7 @@ Table&nbsp;15: Overview of the merged dataset
   border-bottom-width: 0;
 }
 
-#egbnasiwes .gt_subtitle {
+#rjvjobyxov .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -8049,7 +8070,7 @@ Table&nbsp;15: Overview of the merged dataset
   border-top-width: 0;
 }
 
-#egbnasiwes .gt_heading {
+#rjvjobyxov .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -8061,13 +8082,13 @@ Table&nbsp;15: Overview of the merged dataset
   border-right-color: #D3D3D3;
 }
 
-#egbnasiwes .gt_bottom_border {
+#rjvjobyxov .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#egbnasiwes .gt_col_headings {
+#rjvjobyxov .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -8082,7 +8103,7 @@ Table&nbsp;15: Overview of the merged dataset
   border-right-color: #D3D3D3;
 }
 
-#egbnasiwes .gt_col_heading {
+#rjvjobyxov .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8102,7 +8123,7 @@ Table&nbsp;15: Overview of the merged dataset
   overflow-x: hidden;
 }
 
-#egbnasiwes .gt_column_spanner_outer {
+#rjvjobyxov .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8114,15 +8135,15 @@ Table&nbsp;15: Overview of the merged dataset
   padding-right: 4px;
 }
 
-#egbnasiwes .gt_column_spanner_outer:first-child {
+#rjvjobyxov .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#egbnasiwes .gt_column_spanner_outer:last-child {
+#rjvjobyxov .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#egbnasiwes .gt_column_spanner {
+#rjvjobyxov .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -8134,11 +8155,11 @@ Table&nbsp;15: Overview of the merged dataset
   width: 100%;
 }
 
-#egbnasiwes .gt_spanner_row {
+#rjvjobyxov .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#egbnasiwes .gt_group_heading {
+#rjvjobyxov .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8164,7 +8185,7 @@ Table&nbsp;15: Overview of the merged dataset
   text-align: left;
 }
 
-#egbnasiwes .gt_empty_group_heading {
+#rjvjobyxov .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -8179,15 +8200,15 @@ Table&nbsp;15: Overview of the merged dataset
   vertical-align: middle;
 }
 
-#egbnasiwes .gt_from_md > :first-child {
+#rjvjobyxov .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#egbnasiwes .gt_from_md > :last-child {
+#rjvjobyxov .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#egbnasiwes .gt_row {
+#rjvjobyxov .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8206,7 +8227,7 @@ Table&nbsp;15: Overview of the merged dataset
   overflow-x: hidden;
 }
 
-#egbnasiwes .gt_stub {
+#rjvjobyxov .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8219,7 +8240,7 @@ Table&nbsp;15: Overview of the merged dataset
   padding-right: 5px;
 }
 
-#egbnasiwes .gt_stub_row_group {
+#rjvjobyxov .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8233,15 +8254,15 @@ Table&nbsp;15: Overview of the merged dataset
   vertical-align: top;
 }
 
-#egbnasiwes .gt_row_group_first td {
+#rjvjobyxov .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#egbnasiwes .gt_row_group_first th {
+#rjvjobyxov .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#egbnasiwes .gt_summary_row {
+#rjvjobyxov .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -8251,16 +8272,16 @@ Table&nbsp;15: Overview of the merged dataset
   padding-right: 5px;
 }
 
-#egbnasiwes .gt_first_summary_row {
+#rjvjobyxov .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#egbnasiwes .gt_first_summary_row.thick {
+#rjvjobyxov .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#egbnasiwes .gt_last_summary_row {
+#rjvjobyxov .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8270,7 +8291,7 @@ Table&nbsp;15: Overview of the merged dataset
   border-bottom-color: #D3D3D3;
 }
 
-#egbnasiwes .gt_grand_summary_row {
+#rjvjobyxov .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -8280,7 +8301,7 @@ Table&nbsp;15: Overview of the merged dataset
   padding-right: 5px;
 }
 
-#egbnasiwes .gt_first_grand_summary_row {
+#rjvjobyxov .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8290,7 +8311,7 @@ Table&nbsp;15: Overview of the merged dataset
   border-top-color: #D3D3D3;
 }
 
-#egbnasiwes .gt_last_grand_summary_row_top {
+#rjvjobyxov .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8300,11 +8321,11 @@ Table&nbsp;15: Overview of the merged dataset
   border-bottom-color: #D3D3D3;
 }
 
-#egbnasiwes .gt_striped {
+#rjvjobyxov .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#egbnasiwes .gt_table_body {
+#rjvjobyxov .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -8313,7 +8334,7 @@ Table&nbsp;15: Overview of the merged dataset
   border-bottom-color: #D3D3D3;
 }
 
-#egbnasiwes .gt_footnotes {
+#rjvjobyxov .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -8327,7 +8348,7 @@ Table&nbsp;15: Overview of the merged dataset
   border-right-color: #D3D3D3;
 }
 
-#egbnasiwes .gt_footnote {
+#rjvjobyxov .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -8336,7 +8357,7 @@ Table&nbsp;15: Overview of the merged dataset
   padding-right: 5px;
 }
 
-#egbnasiwes .gt_sourcenotes {
+#rjvjobyxov .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -8350,7 +8371,7 @@ Table&nbsp;15: Overview of the merged dataset
   border-right-color: #D3D3D3;
 }
 
-#egbnasiwes .gt_sourcenote {
+#rjvjobyxov .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -8358,72 +8379,72 @@ Table&nbsp;15: Overview of the merged dataset
   padding-right: 5px;
 }
 
-#egbnasiwes .gt_left {
+#rjvjobyxov .gt_left {
   text-align: left;
 }
 
-#egbnasiwes .gt_center {
+#rjvjobyxov .gt_center {
   text-align: center;
 }
 
-#egbnasiwes .gt_right {
+#rjvjobyxov .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#egbnasiwes .gt_font_normal {
+#rjvjobyxov .gt_font_normal {
   font-weight: normal;
 }
 
-#egbnasiwes .gt_font_bold {
+#rjvjobyxov .gt_font_bold {
   font-weight: bold;
 }
 
-#egbnasiwes .gt_font_italic {
+#rjvjobyxov .gt_font_italic {
   font-style: italic;
 }
 
-#egbnasiwes .gt_super {
+#rjvjobyxov .gt_super {
   font-size: 65%;
 }
 
-#egbnasiwes .gt_footnote_marks {
+#rjvjobyxov .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#egbnasiwes .gt_asterisk {
+#rjvjobyxov .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#egbnasiwes .gt_indent_1 {
+#rjvjobyxov .gt_indent_1 {
   text-indent: 5px;
 }
 
-#egbnasiwes .gt_indent_2 {
+#rjvjobyxov .gt_indent_2 {
   text-indent: 10px;
 }
 
-#egbnasiwes .gt_indent_3 {
+#rjvjobyxov .gt_indent_3 {
   text-indent: 15px;
 }
 
-#egbnasiwes .gt_indent_4 {
+#rjvjobyxov .gt_indent_4 {
   text-indent: 20px;
 }
 
-#egbnasiwes .gt_indent_5 {
+#rjvjobyxov .gt_indent_5 {
   text-indent: 25px;
 }
 
-#egbnasiwes .katex-display {
+#rjvjobyxov .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#egbnasiwes div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rjvjobyxov div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -8505,23 +8526,23 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
 </figcaption>
 <div aria-describedby="tbl-relight-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="henwajepau" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#henwajepau table {
+<div id="ignixyoopo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ignixyoopo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#henwajepau thead, #henwajepau tbody, #henwajepau tfoot, #henwajepau tr, #henwajepau td, #henwajepau th {
+#ignixyoopo thead, #ignixyoopo tbody, #ignixyoopo tfoot, #ignixyoopo tr, #ignixyoopo td, #ignixyoopo th {
   border-style: none;
 }
 
-#henwajepau p {
+#ignixyoopo p {
   margin: 0;
   padding: 0;
 }
 
-#henwajepau .gt_table {
+#ignixyoopo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -8547,12 +8568,12 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   border-left-color: #D3D3D3;
 }
 
-#henwajepau .gt_caption {
+#ignixyoopo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#henwajepau .gt_title {
+#ignixyoopo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -8564,7 +8585,7 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   border-bottom-width: 0;
 }
 
-#henwajepau .gt_subtitle {
+#ignixyoopo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -8576,7 +8597,7 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   border-top-width: 0;
 }
 
-#henwajepau .gt_heading {
+#ignixyoopo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -8588,13 +8609,13 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   border-right-color: #D3D3D3;
 }
 
-#henwajepau .gt_bottom_border {
+#ignixyoopo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#henwajepau .gt_col_headings {
+#ignixyoopo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -8609,7 +8630,7 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   border-right-color: #D3D3D3;
 }
 
-#henwajepau .gt_col_heading {
+#ignixyoopo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8629,7 +8650,7 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   overflow-x: hidden;
 }
 
-#henwajepau .gt_column_spanner_outer {
+#ignixyoopo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8641,15 +8662,15 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   padding-right: 4px;
 }
 
-#henwajepau .gt_column_spanner_outer:first-child {
+#ignixyoopo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#henwajepau .gt_column_spanner_outer:last-child {
+#ignixyoopo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#henwajepau .gt_column_spanner {
+#ignixyoopo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -8661,11 +8682,11 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   width: 100%;
 }
 
-#henwajepau .gt_spanner_row {
+#ignixyoopo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#henwajepau .gt_group_heading {
+#ignixyoopo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8691,7 +8712,7 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   text-align: left;
 }
 
-#henwajepau .gt_empty_group_heading {
+#ignixyoopo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -8706,15 +8727,15 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   vertical-align: middle;
 }
 
-#henwajepau .gt_from_md > :first-child {
+#ignixyoopo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#henwajepau .gt_from_md > :last-child {
+#ignixyoopo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#henwajepau .gt_row {
+#ignixyoopo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8733,7 +8754,7 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   overflow-x: hidden;
 }
 
-#henwajepau .gt_stub {
+#ignixyoopo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8746,7 +8767,7 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   padding-right: 5px;
 }
 
-#henwajepau .gt_stub_row_group {
+#ignixyoopo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8760,15 +8781,15 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   vertical-align: top;
 }
 
-#henwajepau .gt_row_group_first td {
+#ignixyoopo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#henwajepau .gt_row_group_first th {
+#ignixyoopo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#henwajepau .gt_summary_row {
+#ignixyoopo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -8778,16 +8799,16 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   padding-right: 5px;
 }
 
-#henwajepau .gt_first_summary_row {
+#ignixyoopo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#henwajepau .gt_first_summary_row.thick {
+#ignixyoopo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#henwajepau .gt_last_summary_row {
+#ignixyoopo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8797,7 +8818,7 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   border-bottom-color: #D3D3D3;
 }
 
-#henwajepau .gt_grand_summary_row {
+#ignixyoopo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -8807,7 +8828,7 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   padding-right: 5px;
 }
 
-#henwajepau .gt_first_grand_summary_row {
+#ignixyoopo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8817,7 +8838,7 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   border-top-color: #D3D3D3;
 }
 
-#henwajepau .gt_last_grand_summary_row_top {
+#ignixyoopo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8827,11 +8848,11 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   border-bottom-color: #D3D3D3;
 }
 
-#henwajepau .gt_striped {
+#ignixyoopo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#henwajepau .gt_table_body {
+#ignixyoopo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -8840,7 +8861,7 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   border-bottom-color: #D3D3D3;
 }
 
-#henwajepau .gt_footnotes {
+#ignixyoopo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -8854,7 +8875,7 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   border-right-color: #D3D3D3;
 }
 
-#henwajepau .gt_footnote {
+#ignixyoopo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -8863,7 +8884,7 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   padding-right: 5px;
 }
 
-#henwajepau .gt_sourcenotes {
+#ignixyoopo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -8877,7 +8898,7 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   border-right-color: #D3D3D3;
 }
 
-#henwajepau .gt_sourcenote {
+#ignixyoopo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -8885,72 +8906,72 @@ Table&nbsp;16: Recalculation of the mean light exposure per day (after logarithm
   padding-right: 5px;
 }
 
-#henwajepau .gt_left {
+#ignixyoopo .gt_left {
   text-align: left;
 }
 
-#henwajepau .gt_center {
+#ignixyoopo .gt_center {
   text-align: center;
 }
 
-#henwajepau .gt_right {
+#ignixyoopo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#henwajepau .gt_font_normal {
+#ignixyoopo .gt_font_normal {
   font-weight: normal;
 }
 
-#henwajepau .gt_font_bold {
+#ignixyoopo .gt_font_bold {
   font-weight: bold;
 }
 
-#henwajepau .gt_font_italic {
+#ignixyoopo .gt_font_italic {
   font-style: italic;
 }
 
-#henwajepau .gt_super {
+#ignixyoopo .gt_super {
   font-size: 65%;
 }
 
-#henwajepau .gt_footnote_marks {
+#ignixyoopo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#henwajepau .gt_asterisk {
+#ignixyoopo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#henwajepau .gt_indent_1 {
+#ignixyoopo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#henwajepau .gt_indent_2 {
+#ignixyoopo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#henwajepau .gt_indent_3 {
+#ignixyoopo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#henwajepau .gt_indent_4 {
+#ignixyoopo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#henwajepau .gt_indent_5 {
+#ignixyoopo .gt_indent_5 {
   text-indent: 25px;
 }
 
-#henwajepau .katex-display {
+#ignixyoopo .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#henwajepau div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ignixyoopo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -9078,23 +9099,23 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
 </figcaption>
 <div aria-describedby="tbl-ratio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="cvojqrmpja" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#cvojqrmpja table {
+<div id="qdytwcuujf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qdytwcuujf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#cvojqrmpja thead, #cvojqrmpja tbody, #cvojqrmpja tfoot, #cvojqrmpja tr, #cvojqrmpja td, #cvojqrmpja th {
+#qdytwcuujf thead, #qdytwcuujf tbody, #qdytwcuujf tfoot, #qdytwcuujf tr, #qdytwcuujf td, #qdytwcuujf th {
   border-style: none;
 }
 
-#cvojqrmpja p {
+#qdytwcuujf p {
   margin: 0;
   padding: 0;
 }
 
-#cvojqrmpja .gt_table {
+#qdytwcuujf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -9120,12 +9141,12 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   border-left-color: #D3D3D3;
 }
 
-#cvojqrmpja .gt_caption {
+#qdytwcuujf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#cvojqrmpja .gt_title {
+#qdytwcuujf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -9137,7 +9158,7 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   border-bottom-width: 0;
 }
 
-#cvojqrmpja .gt_subtitle {
+#qdytwcuujf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -9149,7 +9170,7 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   border-top-width: 0;
 }
 
-#cvojqrmpja .gt_heading {
+#qdytwcuujf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -9161,13 +9182,13 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   border-right-color: #D3D3D3;
 }
 
-#cvojqrmpja .gt_bottom_border {
+#qdytwcuujf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cvojqrmpja .gt_col_headings {
+#qdytwcuujf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -9182,7 +9203,7 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   border-right-color: #D3D3D3;
 }
 
-#cvojqrmpja .gt_col_heading {
+#qdytwcuujf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -9202,7 +9223,7 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   overflow-x: hidden;
 }
 
-#cvojqrmpja .gt_column_spanner_outer {
+#qdytwcuujf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -9214,15 +9235,15 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   padding-right: 4px;
 }
 
-#cvojqrmpja .gt_column_spanner_outer:first-child {
+#qdytwcuujf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cvojqrmpja .gt_column_spanner_outer:last-child {
+#qdytwcuujf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cvojqrmpja .gt_column_spanner {
+#qdytwcuujf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -9234,11 +9255,11 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   width: 100%;
 }
 
-#cvojqrmpja .gt_spanner_row {
+#qdytwcuujf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#cvojqrmpja .gt_group_heading {
+#qdytwcuujf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9264,7 +9285,7 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   text-align: left;
 }
 
-#cvojqrmpja .gt_empty_group_heading {
+#qdytwcuujf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -9279,15 +9300,15 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   vertical-align: middle;
 }
 
-#cvojqrmpja .gt_from_md > :first-child {
+#qdytwcuujf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cvojqrmpja .gt_from_md > :last-child {
+#qdytwcuujf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cvojqrmpja .gt_row {
+#qdytwcuujf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9306,7 +9327,7 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   overflow-x: hidden;
 }
 
-#cvojqrmpja .gt_stub {
+#qdytwcuujf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -9319,7 +9340,7 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   padding-right: 5px;
 }
 
-#cvojqrmpja .gt_stub_row_group {
+#qdytwcuujf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -9333,15 +9354,15 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   vertical-align: top;
 }
 
-#cvojqrmpja .gt_row_group_first td {
+#qdytwcuujf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cvojqrmpja .gt_row_group_first th {
+#qdytwcuujf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#cvojqrmpja .gt_summary_row {
+#qdytwcuujf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -9351,16 +9372,16 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   padding-right: 5px;
 }
 
-#cvojqrmpja .gt_first_summary_row {
+#qdytwcuujf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#cvojqrmpja .gt_first_summary_row.thick {
+#qdytwcuujf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cvojqrmpja .gt_last_summary_row {
+#qdytwcuujf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9370,7 +9391,7 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   border-bottom-color: #D3D3D3;
 }
 
-#cvojqrmpja .gt_grand_summary_row {
+#qdytwcuujf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -9380,7 +9401,7 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   padding-right: 5px;
 }
 
-#cvojqrmpja .gt_first_grand_summary_row {
+#qdytwcuujf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9390,7 +9411,7 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   border-top-color: #D3D3D3;
 }
 
-#cvojqrmpja .gt_last_grand_summary_row_top {
+#qdytwcuujf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9400,11 +9421,11 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   border-bottom-color: #D3D3D3;
 }
 
-#cvojqrmpja .gt_striped {
+#qdytwcuujf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cvojqrmpja .gt_table_body {
+#qdytwcuujf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -9413,7 +9434,7 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   border-bottom-color: #D3D3D3;
 }
 
-#cvojqrmpja .gt_footnotes {
+#qdytwcuujf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -9427,7 +9448,7 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   border-right-color: #D3D3D3;
 }
 
-#cvojqrmpja .gt_footnote {
+#qdytwcuujf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -9436,7 +9457,7 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   padding-right: 5px;
 }
 
-#cvojqrmpja .gt_sourcenotes {
+#qdytwcuujf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -9450,7 +9471,7 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   border-right-color: #D3D3D3;
 }
 
-#cvojqrmpja .gt_sourcenote {
+#qdytwcuujf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -9458,72 +9479,72 @@ Table&nbsp;17: Average (mW/m²) and ratio of short-wavelength (400–500&nbsp;nm
   padding-right: 5px;
 }
 
-#cvojqrmpja .gt_left {
+#qdytwcuujf .gt_left {
   text-align: left;
 }
 
-#cvojqrmpja .gt_center {
+#qdytwcuujf .gt_center {
   text-align: center;
 }
 
-#cvojqrmpja .gt_right {
+#qdytwcuujf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cvojqrmpja .gt_font_normal {
+#qdytwcuujf .gt_font_normal {
   font-weight: normal;
 }
 
-#cvojqrmpja .gt_font_bold {
+#qdytwcuujf .gt_font_bold {
   font-weight: bold;
 }
 
-#cvojqrmpja .gt_font_italic {
+#qdytwcuujf .gt_font_italic {
   font-style: italic;
 }
 
-#cvojqrmpja .gt_super {
+#qdytwcuujf .gt_super {
   font-size: 65%;
 }
 
-#cvojqrmpja .gt_footnote_marks {
+#qdytwcuujf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#cvojqrmpja .gt_asterisk {
+#qdytwcuujf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cvojqrmpja .gt_indent_1 {
+#qdytwcuujf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cvojqrmpja .gt_indent_2 {
+#qdytwcuujf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cvojqrmpja .gt_indent_3 {
+#qdytwcuujf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cvojqrmpja .gt_indent_4 {
+#qdytwcuujf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cvojqrmpja .gt_indent_5 {
+#qdytwcuujf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#cvojqrmpja .katex-display {
+#qdytwcuujf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#cvojqrmpja div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#qdytwcuujf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -9630,23 +9651,23 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
 </figcaption>
 <div aria-describedby="tbl-mder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="fvqhiirfew" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fvqhiirfew table {
+<div id="ttvhuamsch" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ttvhuamsch table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fvqhiirfew thead, #fvqhiirfew tbody, #fvqhiirfew tfoot, #fvqhiirfew tr, #fvqhiirfew td, #fvqhiirfew th {
+#ttvhuamsch thead, #ttvhuamsch tbody, #ttvhuamsch tfoot, #ttvhuamsch tr, #ttvhuamsch td, #ttvhuamsch th {
   border-style: none;
 }
 
-#fvqhiirfew p {
+#ttvhuamsch p {
   margin: 0;
   padding: 0;
 }
 
-#fvqhiirfew .gt_table {
+#ttvhuamsch .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -9672,12 +9693,12 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   border-left-color: #D3D3D3;
 }
 
-#fvqhiirfew .gt_caption {
+#ttvhuamsch .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fvqhiirfew .gt_title {
+#ttvhuamsch .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -9689,7 +9710,7 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   border-bottom-width: 0;
 }
 
-#fvqhiirfew .gt_subtitle {
+#ttvhuamsch .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -9701,7 +9722,7 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   border-top-width: 0;
 }
 
-#fvqhiirfew .gt_heading {
+#ttvhuamsch .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -9713,13 +9734,13 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   border-right-color: #D3D3D3;
 }
 
-#fvqhiirfew .gt_bottom_border {
+#ttvhuamsch .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fvqhiirfew .gt_col_headings {
+#ttvhuamsch .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -9734,7 +9755,7 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   border-right-color: #D3D3D3;
 }
 
-#fvqhiirfew .gt_col_heading {
+#ttvhuamsch .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -9754,7 +9775,7 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   overflow-x: hidden;
 }
 
-#fvqhiirfew .gt_column_spanner_outer {
+#ttvhuamsch .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -9766,15 +9787,15 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   padding-right: 4px;
 }
 
-#fvqhiirfew .gt_column_spanner_outer:first-child {
+#ttvhuamsch .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fvqhiirfew .gt_column_spanner_outer:last-child {
+#ttvhuamsch .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fvqhiirfew .gt_column_spanner {
+#ttvhuamsch .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -9786,11 +9807,11 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   width: 100%;
 }
 
-#fvqhiirfew .gt_spanner_row {
+#ttvhuamsch .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fvqhiirfew .gt_group_heading {
+#ttvhuamsch .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9816,7 +9837,7 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   text-align: left;
 }
 
-#fvqhiirfew .gt_empty_group_heading {
+#ttvhuamsch .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -9831,15 +9852,15 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   vertical-align: middle;
 }
 
-#fvqhiirfew .gt_from_md > :first-child {
+#ttvhuamsch .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fvqhiirfew .gt_from_md > :last-child {
+#ttvhuamsch .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fvqhiirfew .gt_row {
+#ttvhuamsch .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9858,7 +9879,7 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   overflow-x: hidden;
 }
 
-#fvqhiirfew .gt_stub {
+#ttvhuamsch .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -9871,7 +9892,7 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   padding-right: 5px;
 }
 
-#fvqhiirfew .gt_stub_row_group {
+#ttvhuamsch .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -9885,15 +9906,15 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   vertical-align: top;
 }
 
-#fvqhiirfew .gt_row_group_first td {
+#ttvhuamsch .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fvqhiirfew .gt_row_group_first th {
+#ttvhuamsch .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fvqhiirfew .gt_summary_row {
+#ttvhuamsch .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -9903,16 +9924,16 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   padding-right: 5px;
 }
 
-#fvqhiirfew .gt_first_summary_row {
+#ttvhuamsch .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fvqhiirfew .gt_first_summary_row.thick {
+#ttvhuamsch .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fvqhiirfew .gt_last_summary_row {
+#ttvhuamsch .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9922,7 +9943,7 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   border-bottom-color: #D3D3D3;
 }
 
-#fvqhiirfew .gt_grand_summary_row {
+#ttvhuamsch .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -9932,7 +9953,7 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   padding-right: 5px;
 }
 
-#fvqhiirfew .gt_first_grand_summary_row {
+#ttvhuamsch .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9942,7 +9963,7 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   border-top-color: #D3D3D3;
 }
 
-#fvqhiirfew .gt_last_grand_summary_row_top {
+#ttvhuamsch .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9952,11 +9973,11 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   border-bottom-color: #D3D3D3;
 }
 
-#fvqhiirfew .gt_striped {
+#ttvhuamsch .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fvqhiirfew .gt_table_body {
+#ttvhuamsch .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -9965,7 +9986,7 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   border-bottom-color: #D3D3D3;
 }
 
-#fvqhiirfew .gt_footnotes {
+#ttvhuamsch .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -9979,7 +10000,7 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   border-right-color: #D3D3D3;
 }
 
-#fvqhiirfew .gt_footnote {
+#ttvhuamsch .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -9988,7 +10009,7 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   padding-right: 5px;
 }
 
-#fvqhiirfew .gt_sourcenotes {
+#ttvhuamsch .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -10002,7 +10023,7 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   border-right-color: #D3D3D3;
 }
 
-#fvqhiirfew .gt_sourcenote {
+#ttvhuamsch .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -10010,72 +10031,72 @@ Table&nbsp;18: Average melanopic daylight efficacy ratio (MDER)
   padding-right: 5px;
 }
 
-#fvqhiirfew .gt_left {
+#ttvhuamsch .gt_left {
   text-align: left;
 }
 
-#fvqhiirfew .gt_center {
+#ttvhuamsch .gt_center {
   text-align: center;
 }
 
-#fvqhiirfew .gt_right {
+#ttvhuamsch .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fvqhiirfew .gt_font_normal {
+#ttvhuamsch .gt_font_normal {
   font-weight: normal;
 }
 
-#fvqhiirfew .gt_font_bold {
+#ttvhuamsch .gt_font_bold {
   font-weight: bold;
 }
 
-#fvqhiirfew .gt_font_italic {
+#ttvhuamsch .gt_font_italic {
   font-style: italic;
 }
 
-#fvqhiirfew .gt_super {
+#ttvhuamsch .gt_super {
   font-size: 65%;
 }
 
-#fvqhiirfew .gt_footnote_marks {
+#ttvhuamsch .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fvqhiirfew .gt_asterisk {
+#ttvhuamsch .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fvqhiirfew .gt_indent_1 {
+#ttvhuamsch .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fvqhiirfew .gt_indent_2 {
+#ttvhuamsch .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fvqhiirfew .gt_indent_3 {
+#ttvhuamsch .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fvqhiirfew .gt_indent_4 {
+#ttvhuamsch .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fvqhiirfew .gt_indent_5 {
+#ttvhuamsch .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fvqhiirfew .katex-display {
+#ttvhuamsch .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fvqhiirfew div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ttvhuamsch div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -10178,23 +10199,23 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
 </figcaption>
 <div aria-describedby="tbl-shortfilter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="mafhnsizib" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mafhnsizib table {
+<div id="fykrunchhp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fykrunchhp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mafhnsizib thead, #mafhnsizib tbody, #mafhnsizib tfoot, #mafhnsizib tr, #mafhnsizib td, #mafhnsizib th {
+#fykrunchhp thead, #fykrunchhp tbody, #fykrunchhp tfoot, #fykrunchhp tr, #fykrunchhp td, #fykrunchhp th {
   border-style: none;
 }
 
-#mafhnsizib p {
+#fykrunchhp p {
   margin: 0;
   padding: 0;
 }
 
-#mafhnsizib .gt_table {
+#fykrunchhp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -10220,12 +10241,12 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   border-left-color: #D3D3D3;
 }
 
-#mafhnsizib .gt_caption {
+#fykrunchhp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mafhnsizib .gt_title {
+#fykrunchhp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -10237,7 +10258,7 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   border-bottom-width: 0;
 }
 
-#mafhnsizib .gt_subtitle {
+#fykrunchhp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -10249,7 +10270,7 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   border-top-width: 0;
 }
 
-#mafhnsizib .gt_heading {
+#fykrunchhp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -10261,13 +10282,13 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   border-right-color: #D3D3D3;
 }
 
-#mafhnsizib .gt_bottom_border {
+#fykrunchhp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mafhnsizib .gt_col_headings {
+#fykrunchhp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -10282,7 +10303,7 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   border-right-color: #D3D3D3;
 }
 
-#mafhnsizib .gt_col_heading {
+#fykrunchhp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -10302,7 +10323,7 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   overflow-x: hidden;
 }
 
-#mafhnsizib .gt_column_spanner_outer {
+#fykrunchhp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -10314,15 +10335,15 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   padding-right: 4px;
 }
 
-#mafhnsizib .gt_column_spanner_outer:first-child {
+#fykrunchhp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mafhnsizib .gt_column_spanner_outer:last-child {
+#fykrunchhp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mafhnsizib .gt_column_spanner {
+#fykrunchhp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -10334,11 +10355,11 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   width: 100%;
 }
 
-#mafhnsizib .gt_spanner_row {
+#fykrunchhp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mafhnsizib .gt_group_heading {
+#fykrunchhp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -10364,7 +10385,7 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   text-align: left;
 }
 
-#mafhnsizib .gt_empty_group_heading {
+#fykrunchhp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -10379,15 +10400,15 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   vertical-align: middle;
 }
 
-#mafhnsizib .gt_from_md > :first-child {
+#fykrunchhp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mafhnsizib .gt_from_md > :last-child {
+#fykrunchhp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mafhnsizib .gt_row {
+#fykrunchhp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -10406,7 +10427,7 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   overflow-x: hidden;
 }
 
-#mafhnsizib .gt_stub {
+#fykrunchhp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -10419,7 +10440,7 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   padding-right: 5px;
 }
 
-#mafhnsizib .gt_stub_row_group {
+#fykrunchhp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -10433,15 +10454,15 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   vertical-align: top;
 }
 
-#mafhnsizib .gt_row_group_first td {
+#fykrunchhp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mafhnsizib .gt_row_group_first th {
+#fykrunchhp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mafhnsizib .gt_summary_row {
+#fykrunchhp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -10451,16 +10472,16 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   padding-right: 5px;
 }
 
-#mafhnsizib .gt_first_summary_row {
+#fykrunchhp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mafhnsizib .gt_first_summary_row.thick {
+#fykrunchhp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mafhnsizib .gt_last_summary_row {
+#fykrunchhp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -10470,7 +10491,7 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   border-bottom-color: #D3D3D3;
 }
 
-#mafhnsizib .gt_grand_summary_row {
+#fykrunchhp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -10480,7 +10501,7 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   padding-right: 5px;
 }
 
-#mafhnsizib .gt_first_grand_summary_row {
+#fykrunchhp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -10490,7 +10511,7 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   border-top-color: #D3D3D3;
 }
 
-#mafhnsizib .gt_last_grand_summary_row_top {
+#fykrunchhp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -10500,11 +10521,11 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   border-bottom-color: #D3D3D3;
 }
 
-#mafhnsizib .gt_striped {
+#fykrunchhp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mafhnsizib .gt_table_body {
+#fykrunchhp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -10513,7 +10534,7 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   border-bottom-color: #D3D3D3;
 }
 
-#mafhnsizib .gt_footnotes {
+#fykrunchhp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -10527,7 +10548,7 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   border-right-color: #D3D3D3;
 }
 
-#mafhnsizib .gt_footnote {
+#fykrunchhp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -10536,7 +10557,7 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   padding-right: 5px;
 }
 
-#mafhnsizib .gt_sourcenotes {
+#fykrunchhp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -10550,7 +10571,7 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   border-right-color: #D3D3D3;
 }
 
-#mafhnsizib .gt_sourcenote {
+#fykrunchhp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -10558,72 +10579,72 @@ Table&nbsp;19: Average short-wavelength light (400–500&nbsp;nm) exposure betwe
   padding-right: 5px;
 }
 
-#mafhnsizib .gt_left {
+#fykrunchhp .gt_left {
   text-align: left;
 }
 
-#mafhnsizib .gt_center {
+#fykrunchhp .gt_center {
   text-align: center;
 }
 
-#mafhnsizib .gt_right {
+#fykrunchhp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mafhnsizib .gt_font_normal {
+#fykrunchhp .gt_font_normal {
   font-weight: normal;
 }
 
-#mafhnsizib .gt_font_bold {
+#fykrunchhp .gt_font_bold {
   font-weight: bold;
 }
 
-#mafhnsizib .gt_font_italic {
+#fykrunchhp .gt_font_italic {
   font-style: italic;
 }
 
-#mafhnsizib .gt_super {
+#fykrunchhp .gt_super {
   font-size: 65%;
 }
 
-#mafhnsizib .gt_footnote_marks {
+#fykrunchhp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mafhnsizib .gt_asterisk {
+#fykrunchhp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mafhnsizib .gt_indent_1 {
+#fykrunchhp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mafhnsizib .gt_indent_2 {
+#fykrunchhp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mafhnsizib .gt_indent_3 {
+#fykrunchhp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mafhnsizib .gt_indent_4 {
+#fykrunchhp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mafhnsizib .gt_indent_5 {
+#fykrunchhp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#mafhnsizib .katex-display {
+#fykrunchhp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#mafhnsizib div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fykrunchhp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -10744,23 +10765,23 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
 </figcaption>
 <div aria-describedby="tbl-daytime-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="mcekgwrkrd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mcekgwrkrd table {
+<div id="qpyivvzjvh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qpyivvzjvh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mcekgwrkrd thead, #mcekgwrkrd tbody, #mcekgwrkrd tfoot, #mcekgwrkrd tr, #mcekgwrkrd td, #mcekgwrkrd th {
+#qpyivvzjvh thead, #qpyivvzjvh tbody, #qpyivvzjvh tfoot, #qpyivvzjvh tr, #qpyivvzjvh td, #qpyivvzjvh th {
   border-style: none;
 }
 
-#mcekgwrkrd p {
+#qpyivvzjvh p {
   margin: 0;
   padding: 0;
 }
 
-#mcekgwrkrd .gt_table {
+#qpyivvzjvh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -10786,12 +10807,12 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   border-left-color: #D3D3D3;
 }
 
-#mcekgwrkrd .gt_caption {
+#qpyivvzjvh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mcekgwrkrd .gt_title {
+#qpyivvzjvh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -10803,7 +10824,7 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   border-bottom-width: 0;
 }
 
-#mcekgwrkrd .gt_subtitle {
+#qpyivvzjvh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -10815,7 +10836,7 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   border-top-width: 0;
 }
 
-#mcekgwrkrd .gt_heading {
+#qpyivvzjvh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -10827,13 +10848,13 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   border-right-color: #D3D3D3;
 }
 
-#mcekgwrkrd .gt_bottom_border {
+#qpyivvzjvh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mcekgwrkrd .gt_col_headings {
+#qpyivvzjvh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -10848,7 +10869,7 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   border-right-color: #D3D3D3;
 }
 
-#mcekgwrkrd .gt_col_heading {
+#qpyivvzjvh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -10868,7 +10889,7 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   overflow-x: hidden;
 }
 
-#mcekgwrkrd .gt_column_spanner_outer {
+#qpyivvzjvh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -10880,15 +10901,15 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   padding-right: 4px;
 }
 
-#mcekgwrkrd .gt_column_spanner_outer:first-child {
+#qpyivvzjvh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mcekgwrkrd .gt_column_spanner_outer:last-child {
+#qpyivvzjvh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mcekgwrkrd .gt_column_spanner {
+#qpyivvzjvh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -10900,11 +10921,11 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   width: 100%;
 }
 
-#mcekgwrkrd .gt_spanner_row {
+#qpyivvzjvh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mcekgwrkrd .gt_group_heading {
+#qpyivvzjvh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -10930,7 +10951,7 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   text-align: left;
 }
 
-#mcekgwrkrd .gt_empty_group_heading {
+#qpyivvzjvh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -10945,15 +10966,15 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   vertical-align: middle;
 }
 
-#mcekgwrkrd .gt_from_md > :first-child {
+#qpyivvzjvh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mcekgwrkrd .gt_from_md > :last-child {
+#qpyivvzjvh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mcekgwrkrd .gt_row {
+#qpyivvzjvh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -10972,7 +10993,7 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   overflow-x: hidden;
 }
 
-#mcekgwrkrd .gt_stub {
+#qpyivvzjvh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -10985,7 +11006,7 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   padding-right: 5px;
 }
 
-#mcekgwrkrd .gt_stub_row_group {
+#qpyivvzjvh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -10999,15 +11020,15 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   vertical-align: top;
 }
 
-#mcekgwrkrd .gt_row_group_first td {
+#qpyivvzjvh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mcekgwrkrd .gt_row_group_first th {
+#qpyivvzjvh .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mcekgwrkrd .gt_summary_row {
+#qpyivvzjvh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -11017,16 +11038,16 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   padding-right: 5px;
 }
 
-#mcekgwrkrd .gt_first_summary_row {
+#qpyivvzjvh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mcekgwrkrd .gt_first_summary_row.thick {
+#qpyivvzjvh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mcekgwrkrd .gt_last_summary_row {
+#qpyivvzjvh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -11036,7 +11057,7 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   border-bottom-color: #D3D3D3;
 }
 
-#mcekgwrkrd .gt_grand_summary_row {
+#qpyivvzjvh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -11046,7 +11067,7 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   padding-right: 5px;
 }
 
-#mcekgwrkrd .gt_first_grand_summary_row {
+#qpyivvzjvh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -11056,7 +11077,7 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   border-top-color: #D3D3D3;
 }
 
-#mcekgwrkrd .gt_last_grand_summary_row_top {
+#qpyivvzjvh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -11066,11 +11087,11 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   border-bottom-color: #D3D3D3;
 }
 
-#mcekgwrkrd .gt_striped {
+#qpyivvzjvh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mcekgwrkrd .gt_table_body {
+#qpyivvzjvh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -11079,7 +11100,7 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   border-bottom-color: #D3D3D3;
 }
 
-#mcekgwrkrd .gt_footnotes {
+#qpyivvzjvh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -11093,7 +11114,7 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   border-right-color: #D3D3D3;
 }
 
-#mcekgwrkrd .gt_footnote {
+#qpyivvzjvh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -11102,7 +11123,7 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   padding-right: 5px;
 }
 
-#mcekgwrkrd .gt_sourcenotes {
+#qpyivvzjvh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -11116,7 +11137,7 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   border-right-color: #D3D3D3;
 }
 
-#mcekgwrkrd .gt_sourcenote {
+#qpyivvzjvh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -11124,72 +11145,72 @@ Table&nbsp;20: Short wavelength light exposure (mW/m²) during the day and at ni
   padding-right: 5px;
 }
 
-#mcekgwrkrd .gt_left {
+#qpyivvzjvh .gt_left {
   text-align: left;
 }
 
-#mcekgwrkrd .gt_center {
+#qpyivvzjvh .gt_center {
   text-align: center;
 }
 
-#mcekgwrkrd .gt_right {
+#qpyivvzjvh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mcekgwrkrd .gt_font_normal {
+#qpyivvzjvh .gt_font_normal {
   font-weight: normal;
 }
 
-#mcekgwrkrd .gt_font_bold {
+#qpyivvzjvh .gt_font_bold {
   font-weight: bold;
 }
 
-#mcekgwrkrd .gt_font_italic {
+#qpyivvzjvh .gt_font_italic {
   font-style: italic;
 }
 
-#mcekgwrkrd .gt_super {
+#qpyivvzjvh .gt_super {
   font-size: 65%;
 }
 
-#mcekgwrkrd .gt_footnote_marks {
+#qpyivvzjvh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mcekgwrkrd .gt_asterisk {
+#qpyivvzjvh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mcekgwrkrd .gt_indent_1 {
+#qpyivvzjvh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mcekgwrkrd .gt_indent_2 {
+#qpyivvzjvh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mcekgwrkrd .gt_indent_3 {
+#qpyivvzjvh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mcekgwrkrd .gt_indent_4 {
+#qpyivvzjvh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mcekgwrkrd .gt_indent_5 {
+#qpyivvzjvh .gt_indent_5 {
   text-indent: 25px;
 }
 
-#mcekgwrkrd .katex-display {
+#qpyivvzjvh .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#mcekgwrkrd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#qpyivvzjvh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -11445,7 +11466,7 @@ Zauner, J., L. Udovicic, and M. Spitschan. 2024. <span>“Power Analysis for Per
 </div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>Note that older firmware versions of the <code>VEET</code> prior to <em>2.1.7</em> contained two <code>Clear</code> channels and the highest spectral channel was indicated as 940&nbsp;nm. Data collected with this early firmware version are not suitable for spectral reconstruction in the context of research projects.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p><strong>Functions from <code>LightLogR</code> are presented as links to the function documentation. General analysis functions (from package <code>dplyr</code>) are presented as normal text.</strong><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>The upper threshold refers to the <code>Clouclips</code>` maximum distance measurement and is not theoretically based<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>This deviates from the common definition of luminous exposure, which is the sum of illuminance measurements scaled to hourly observation intervals<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>Note that older firmware versions of the <code>VEET</code> prior to <em>2.1.7</em> contained two <code>Clear</code> channels and the highest spectral channel was indicated as 940&nbsp;nm. Data collected with this early firmware version are not suitable for spectral reconstruction in the context of research projects.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
