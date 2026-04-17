@@ -518,7 +518,7 @@ ggsave("manuscript/figures/Figure5.png",
 #### Distance with spatial distribution
 
 The `Clouclip` device outputs a singular measure for distance, while the visual environment in natural conditions contains many distances, depending on the solid angle and direction of the measurement. A device like the `VEET` increases the spatial resolution of these measurements, allowing for more in-depth analyses of the size and position of an object within the field of view. In the case of the `VEET`, data are collected from an 8x8 measurement grid, spanning 52° vertically and 41° horizontally. @fig-VEET-distance shows sample observations from six different days at the same time.
-
+d
 ```{r}
 #| filename: Collect plot partials to plot the spatial distance grids
 extras <- list(
@@ -565,7 +565,7 @@ ggsave("manuscript/figures/Figure6.png",
                 height = 6)
 ```
 
-To use these distance data in the framework shown above for the `Clouclip` device, a sensible method to condense the data has to be applied. There are many ways how a spatially resolved distance measure could be utilized for analysis:
+This spatial resolution comes at a cost of complexity. When we try to apply this preprocessed `VEET` data to the functions described above for the `Clouclip` device, we run into issues. This is because each time point is repeated 64 times to include the 64 different spatial positions. `LightLogR` expects unique time points for all observations within each group (in our case days within participants). To use these distance data in the framework shown above for the `Clouclip` device, a sensible method to condense the data has to be applied. There are many ways how a spatially resolved distance measure could be utilized for analysis:
 
 -   Where in the field of view are objects in close range?
 -   How large are near objects in the field of view?
