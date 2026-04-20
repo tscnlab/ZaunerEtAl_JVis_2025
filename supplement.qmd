@@ -63,7 +63,7 @@ In the following sections, we detail how these raw data are structured and how t
 
 The `Clouclip` device exports its data as a text file (not a true Excel file despite sometimes using an .xls extension), which is actually tab-separated values. See @fig-Clouclip_file for the structure of this type of file.
 
-The dataset we will be using comes from a data collection during COVID-19 (November 2020). More information on the context of data collection are to be found in [@bhandari2022]
+The dataset we will be using comes from a data collection during COVID-19 (November 2020). The dataset was obtained from a 30-year-old male graduate student in the United States and was previously presented as part of a published study. The light exposure profile reflects relatively limited time outdoors, which is consistent with patterns reported in individuals engaged in intensive academic training. [@bhandari2021]
 
 ![Screenshot of the first rows of the `Clouclip` export file format as seen in a text editor](assets/Clouclip_fileformat.png){#fig-Clouclip_file width="35%"}
 
