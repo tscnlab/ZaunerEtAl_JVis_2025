@@ -109,7 +109,7 @@ dataVEET3 |>
     extras 
   
 # dist_bar <- animate(dist_bar, height = 160, width = 200, res = 110, fps = 5, duration = 1, renderer = magick_renderer())
-dist_bar <- animate(dist_bar, height = 160, width = 208, res = 110, fps = 5, duration = 60, renderer = magick_renderer())
+dist_bar <- animate(dist_bar, height = 59, width = 77, res = 110, fps = 5, duration = 60, renderer = magick_renderer())
 dist_bar
 
 # prepare spectral data ---------------------------------------------------
@@ -187,13 +187,14 @@ dataVEET2 |>
   labs(y = " ") +
   theme_void() +
   coord_cartesian(expand = FALSE)+
-  theme(plot.title = element_text(hjust = 0, margin = margin(l = -18, t = 3)),
+  theme(plot.title = element_text(hjust = 0, margin = margin(l = -6.9, t = 1),
+                                  size = 5),
         plot.title.position = "plot",
         axis.title.y = element_text(angle = 90, size = 12)
         )
 
 # ill_bar  <- animate(ill_bar, height = 160, width = 52, res = 110, fps = 5, duration = 1, renderer = magick_renderer())
-ill_bar  <- animate(ill_bar, height = 160, width = 52, res = 110, fps = 5, duration = 60, renderer = magick_renderer())
+ill_bar  <- animate(ill_bar, height = 59, width = 19, res = 110, fps = 5, duration = 60, renderer = magick_renderer())
 ill_bar
 
 spec_bar <-
@@ -224,7 +225,7 @@ dataVEET2 |>
   transition_time(Time)
 
 # spec_bar  <- animate(spec_bar , height = 100, width = 260, res = 110, fps = 5, duration = 1, renderer = magick_renderer())
-spec_bar  <- animate(spec_bar , height = 100, width = 260, res = 110, fps = 5, duration = 60, renderer = magick_renderer())
+spec_bar  <- animate(spec_bar , height = 37, width = 96, res = 110, fps = 5, duration = 60, renderer = magick_renderer())
 spec_bar
 
 # Animation ---------------------------------------------------------------
@@ -237,8 +238,8 @@ for(i in 1:300){
 
 new_gif
 
-magick::image_write(new_gif, path = "output/abstract_small.gif")
-image_write_gif(new_gif,"output/abstract_small.gif", delay = 1/5)
+magick::image_write(new_gif, path = "output/abstract_tiny.gif")
+image_write_gif(new_gif,"output/abstract_tiny.gif", delay = 1/5)
 
 # p
 # 

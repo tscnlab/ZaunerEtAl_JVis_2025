@@ -329,7 +329,8 @@ dataCC |>
   theme_minimal() +
   labs(y = "Relative duration (%)", x = NULL, fill = NULL) +
   coord_flip()
-ggsave("manuscript/figures/Figure3.png",
+ggsave("manuscript/figures/Figure3.pdf",
+                device = cairo_pdf,
                 width = 7,
                 height = 5)
 ```
@@ -399,7 +400,8 @@ dataCC |> # <1>
 ```{r}
 #| echo: false
 #| output: false
-ggsave("manuscript/figures/Figure4.png",
+ggsave("manuscript/figures/Figure4.pdf",
+                device = cairo_pdf,
                 width = 9,
                 height = 9)
 ```
@@ -512,7 +514,8 @@ dataCC |> # <1>
 ```{r}
 #| echo: false
 #| output: false
-ggsave("manuscript/figures/Figure5.png",
+ggsave("manuscript/figures/Figure5.pdf",
+                device = cairo_pdf,
                 width = 9,
                 height = 9)
 ```
@@ -520,7 +523,7 @@ ggsave("manuscript/figures/Figure5.png",
 #### Distance with spatial distribution
 
 The `Clouclip` device outputs a singular measure for distance, while the visual environment in natural conditions contains many distances, depending on the solid angle and direction of the measurement. A device like the `VEET` increases the spatial resolution of these measurements, allowing for more in-depth analyses of the size and position of an object within the field of view. In the case of the `VEET`, data are collected from an 8x8 measurement grid, spanning 52° vertically and 41° horizontally. @fig-VEET-distance shows sample observations from six different days at the same time.
-d
+
 ```{r}
 #| filename: Collect plot partials to plot the spatial distance grids
 extras <- list(
@@ -531,7 +534,7 @@ extras <- list(
   theme_minimal(),
   guides(colour = "none"),
   geom_text(aes(label = (dist1/10) |> round(0), colour = dist1>1000), size = 2.5),
-  coord_fixed(),#<2>
+  coord_fixed(),
   labs(x = "X position (°)", y = "Y position (°)",
        fill = "Distance (cm)", alpha = "Confidence (0-255)"))
 ```
@@ -562,7 +565,8 @@ dataVEET3 |>
 ```{r}
 #| echo: false
 #| output: false
-ggsave("manuscript/figures/Figure6.png",
+ggsave("manuscript/figures/Figure6.pdf",
+                device = cairo_pdf,
                 width = 8,
                 height = 6)
 ```
@@ -641,7 +645,8 @@ dataVEET3_condensed |>
 ```{r}
 #| echo: false
 #| output: false
-ggsave("manuscript/figures/Figure7.png",
+ggsave("manuscript/figures/Figure7.pdf",
+                device = cairo_pdf,
                 width = 7,
                 height = 4)
 ```
@@ -671,7 +676,8 @@ dataCC |>
   scale_x_continuous(trans = "symlog", breaks = c(0, 1, 10, 100, 1000, 10000), 
                      ) +
   coord_cartesian(xlim = c(-0.1, 5*10^4), ylim = c(1, 3), expand = FALSE)
-ggsave("manuscript/figures/Figure8.png",
+ggsave("manuscript/figures/Figure8.pdf",
+                device = cairo_pdf,
                 width = 7,
                 height = 5)
 ```
@@ -783,7 +789,8 @@ dataVEET |>
 ```{r}
 #| echo: false
 #| output: false
-ggsave("manuscript/figures/Figure9.png",
+ggsave("manuscript/figures/Figure9.pdf",
+                device = cairo_pdf,
                 width = 9,
                 height = 7)
 ```
@@ -888,7 +895,8 @@ plot_timeline + plot_histogram + #<1>
 ```{r}
 #| echo: false
 #| output: false
-ggsave("manuscript/figures/Figure10.png",
+ggsave("manuscript/figures/Figure10.pdf",
+                device = cairo_pdf,
                 width = 9,
                 height = 5)
 ```
@@ -1096,7 +1104,8 @@ dataVEETtime |> #<4>
 ```{r}
 #| echo: false
 #| output: false
-ggsave("manuscript/figures/Figure11.png",
+ggsave("manuscript/figures/Figure11.pdf",
+                device = cairo_pdf,
                 width = 5,
                 height = 4)
 ```
